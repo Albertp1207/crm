@@ -11,7 +11,7 @@ render(){
         <Router>
             <div className="main">
                 <div className="header">
-                    <h1>- CRM -</h1>
+                    <h1>- CRM 1-</h1>
                 </div>
                 <Menu />
                 <Wrapper />
