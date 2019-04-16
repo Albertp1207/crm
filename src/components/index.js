@@ -4,7 +4,11 @@ import React,{Component} from "react";
 class App extends Component{
 render(){
     return (
-        <h1>asds</h1>
+        <div className="main">
+            <div className="header">
+                
+            </div>
+        </div>
     );
 }
 }
