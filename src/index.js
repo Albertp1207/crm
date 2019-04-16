@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Index from "./components"
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import reducerr from "./reducerr"
+// import { Provider } from 'react-redux'
+// import { createStore } from 'redux'
+// import reducerr from "./reducerr"
 
-let store = createStore(reducers)
+// let store = createStore(reducers)
 
 ReactDOM.render(
-    <Provider store={store}>
+    // <Provider store={store}>
         <Index />
-    </Provider>
+    // </Provider>
 , document.getElementById('root'));
