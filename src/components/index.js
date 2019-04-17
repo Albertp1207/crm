@@ -3,6 +3,7 @@ import Menu from "./menu";
 import Wrapper from "./wrapper";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../styles/index.sass';
+import logo from '../styles/images/Logo.jpg';
 // import { Provider } from 'react-redux'
 
 class App extends Component{
@@ -11,10 +12,28 @@ render(){
         <Router>
             <div className="main">
                 <div className="header">
-                    <h1>- CRM 1-</h1>
+                    <div className = 'size'>
+                        <div id = 'logo'>
+                            <a href = '#'>
+                                <img src = {logo}/>
+                            </a>
+                        </div>
+                        <h1>C<span>ustomer</span> R<span>elationship</span> M<span>anagement</span></h1>
+                    </div>
                 </div>
-                <Menu />
-                <Wrapper />
+                <section>
+                    <Menu />
+                    <div id = 'container'>
+                        <div id = 'content'>
+                            <Wrapper />
+                        </div>
+                        <div id = 'containerFooter'>
+                        asa
+                        </div>
+                        
+                    </div>
+                </section>
+                
             </div>
         </Router>
 

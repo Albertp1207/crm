@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 class Menu extends Component{
     render(){
         return (
-            <div className="mainMenu">
+            <div id="mainMenu">
                 <div>
                     <Link to="/mailinglist">mailinglist</Link>                    
                 </div>

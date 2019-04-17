@@ -1,2 +1,27 @@
 .header
-    background: red
+    height: 10%
+    min-height: 54px
+    font-family: Orbitron
+    color: $font-color
+    background: $header-bg
+    display: flex
+    align-content: center
+    box-shadow: 0 8px 6px -6px black;
+    .size
+        width: 100%
+        display: flex
+        justify-content: space-between
+        align-items: center
+        padding: 1% 2%
+        #logo
+            width: 5%
+            a 
+                display: inline-block
+                img 
+                    width: 100%
+        h1 
+            text-align: end
+            span 
+                font-size: 15px
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen
+                color: $header-span
