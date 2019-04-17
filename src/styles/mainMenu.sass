@@ -1,2 +1,31 @@
+@mixin flex() 
+    display: flex
+    flex-direction: column
+    justify-content: center
+    
 #mainMenu
+    width: 10%
+    @include flex()
+    align-items: flex-start
+
+.itemMenu
+    width: 100%
+    height: 60px
+    background: black
+    padding: 1%
+    margin: 20px 0 5px
+    border-radius: 0 5px 5px 0
+    position: relative
+    z-index: 100
+    left: 0
+    transition: all .5s
+    &:hover
+        background: rgba(200, 0, 0, 0.9)
+        height: 150px
+    a 
+        height: 100%
+        color: white
+        @include flex()
+        align-items: center
+
     
