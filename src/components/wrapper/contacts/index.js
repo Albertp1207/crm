@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import ContactsList from './ContactsList';
-import Footer from './Footer';
+import ContactsList from './contactsList/ContactsList';
+import Footer from './contactsListMenu/ContactsListMenu';
 
 class Contacts extends Component{
     state = {

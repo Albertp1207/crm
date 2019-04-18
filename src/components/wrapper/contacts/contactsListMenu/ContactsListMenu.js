@@ -1,13 +1,13 @@
 import React, { Component} from 'react';
 
-class Footer extends Component{
+class ContactsListMenu extends Component{
     render() {
         return (
-            <div className = 'footer'>
+            <div className = 'contactsListMenu'>
                 asa
             </div>
         );
     }
 }
 
-export default Footer;
+export default ContactsListMenu;

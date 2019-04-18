@@ -7,7 +7,7 @@ class ContactsList extends Component{
         return (
             
             <div className = 'contacts'>
-
+                
                 <div><input type = 'checkbox' /></div>
                 <div>{this.props.person['Full Name']}</div>
                 <div>{this.props.person['Company Name']}</div>
