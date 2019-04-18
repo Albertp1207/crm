@@ -24,13 +24,7 @@ render(){
                 <section>
                     <Menu />
                     <div id = 'container'>
-                        <div id = 'content'>
-                            <Wrapper />
-                        </div>
-                        <div id = 'containerFooter'>
-                        asa
-                        </div>
-                        
+                        <Wrapper />  
                     </div>
                 </section>
                 

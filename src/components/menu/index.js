@@ -7,7 +7,7 @@ class Menu extends Component{
     render(){
         return (
             <div id="mainMenu">
-                <div className = 'itemMenu contacts'>
+                <div className = 'itemMenu contactsMenu'>
                     <Link to="/contacts">
                         <FaUsers />
                         <span>Contacts</span>
