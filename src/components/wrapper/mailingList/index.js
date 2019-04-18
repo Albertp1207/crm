@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import myFetch from "../../../tools/fetch"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Lists from "./lists";
-// import List from "./list";
+import List from "./list";
 
 class MailingList extends Component {
     
@@ -33,7 +33,13 @@ class MailingList extends Component {
         return (
             <div className="mailinglist">
                 {lists.length> 0? <Lists openList={this.openList} lists={lists} /> : "Loading lists"}
-                <Route path = "/asd" component={MailingList}  />
+                {/* <Route path='/mailinglist/:listname' render={(props) => {
+                    console.log(props);
+                    
+                    return (
+                    <h1>{props.match.params.listname}</h1>
+                )}}/> */}
+                <Route path='/mailinglist/:listid' component = {List} />
                 {/* <List /> */}
             </div>
         )
