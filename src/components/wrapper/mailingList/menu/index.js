@@ -8,7 +8,7 @@ class Menu extends Component{
     render(){
         return (
             <div id="menu">
-                <div>
+                <div>asdsd
                     <button onClick = {this.props.deleteCheckedClients}>Delete checkeds</button>
                     <button onClick = {this.props.createML}>Create mailing list</button>   
                     {/* <button onClick = {this.props.send}>Send</button>        */}
