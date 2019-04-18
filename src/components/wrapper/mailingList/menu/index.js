@@ -9,7 +9,7 @@ class Menu extends Component{
         return (
             <div id="menu">
                 <div>
-                    <button onClick = {this.props.deleteCheckeds}>Delete checkeds</button>
+                    <button onClick = {this.props.deleteCheckedClients}>Delete checkeds</button>
                     <button onClick = {this.props.createML}>Create mailing list</button>   
                     {/* <button onClick = {this.props.send}>Send</button>        */}
                 </div>

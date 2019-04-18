@@ -3,6 +3,7 @@ import myFetch from "../../../tools/fetch"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Lists from "./lists";
 import List from "./list";
+import Menu from "./menu"
 
 class MailingList extends Component {
     
@@ -40,6 +41,7 @@ class MailingList extends Component {
                     <h1>{props.match.params.listname}</h1>
                 )}}/> */}
                 <Route path='/mailinglist/:listid' component = {List} />
+                <Menu />
                 {/* <List /> */}
             </div>
         )

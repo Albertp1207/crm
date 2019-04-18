@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import myFetch from "../../../../tools/fetch"
-
+import myFetch from "../../../../tools/fetch";
+import Table from "../../../../reusableComponents/Table"
 
 export default class extends Component{
 
@@ -27,9 +27,11 @@ export default class extends Component{
         };
     }
     render() {
+        console.log(this.state.list)
         return(
             <div className="lists">
                 {/* <div className="lis"></div>  */}
+                <Table person = {this.state.list} />
                 {this.state.list ? <h1>{this.state.list.EmailListName}</h1>: <h2>LOADIGN</h2>}
             </div>
         )
