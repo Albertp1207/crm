@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 import Menu from "./menu";
 import Wrapper from "./wrapper";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router,Link } from "react-router-dom";
 import '../styles/index.sass';
 import logo from '../styles/images/logo.png';
 // import { Provider } from 'react-redux'
@@ -14,9 +14,9 @@ render(){
                 <div className="header">
                     <div className = 'size'>
                         <div id = 'logo'>
-                            <a href = '#'>
-                                <img src = {logo}/>
-                            </a>
+                            <Link to = '/'>
+                                <img src = {logo} alt="home"/>
+                            </Link>
                         </div>
                         <h1>C<span>ustomer</span> R<span>elationship</span> M<span>anagement</span></h1>
                     </div>
