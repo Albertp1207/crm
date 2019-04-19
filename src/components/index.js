@@ -4,36 +4,42 @@ import Wrapper from "./wrapper";
 import { BrowserRouter as Router } from "react-router-dom";
 import '../styles/index.sass';
 import logo from '../styles/images/Logo.jpg';
-// import { Provider } from 'react-redux'
+import { connect } from 'react-redux';
+
+
 
 class App extends Component{
-render(){
-    return (
-        <Router>
-            <div className="main">
-                <div className="header">
-                    <div className = 'size'>
-                        <div id = 'logo'>
-                            <a href = '#'>
-                                <img src = {logo} alt = 'logo'/>
-                            </a>
+    render(){
+        return (
+            <Router>
+                <div className="main">
+                    <div className="header">
+                        <div className = 'size'>
+                            <div id = 'logo'>
+                                <a href = '#'>
+                                    <img src = {logo} alt = 'logo'/>
+                                </a>
+                            </div>
+                            <h1>C<span>ustomer</span> R<span>elationship</span> M<span>anagement</span></h1>
                         </div>
-                        <h1>C<span>ustomer</span> R<span>elationship</span> M<span>anagement</span></h1>
                     </div>
+                    <section>
+                        <Menu />
+                        <div id = 'container'>
+                            <Wrapper />  
+                        </div>
+                    </section>
                 </div>
-                <section>
-                    <Menu />
-                    <div id = 'container'>
-                        <Wrapper />  
-                    </div>
-                </section>
-                
-            </div>
-        </Router>
+            </Router>
 
-    );
-}
+        );
+    }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        popup: state.popup
+    }
+}
 
-export default App;
+export default connect(mapStateToProps)(App);

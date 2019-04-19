@@ -3,7 +3,6 @@ import { FaUserEdit } from "react-icons/fa";
 
 class ContactsList extends Component{
     render() {
-        // console.log(this.props.person['Country']);
         return (
             
             <div className = 'contacts'>

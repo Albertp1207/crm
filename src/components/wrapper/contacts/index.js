@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import ContactsList from './contactsList/ContactsList';
-import Footer from './contactsListMenu/ContactsListMenu';
+import ContactsListMenu from './contactsListMenu';
 
 class Contacts extends Component{
     state = {
@@ -38,7 +38,7 @@ class Contacts extends Component{
                     </div>
                     {this.showContacts()}
                 </div>
-                <Footer />
+                <ContactsListMenu />
             </Fragment>
         );
     }
