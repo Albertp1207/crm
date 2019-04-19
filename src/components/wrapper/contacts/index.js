@@ -19,7 +19,7 @@ class Contacts extends Component{
     showContacts = () => {
         let arr = [];
         for (let item of this.state.contact) {
-           arr.push(<ContactsList person = {item}/>);
+           arr.push(<ContactsList person = {item} key = {item.GuID}/>);
         }
         return arr;
     }

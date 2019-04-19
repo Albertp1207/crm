@@ -14,7 +14,7 @@ class ContactsList extends Component{
                 <div>{this.props.person['Position']}</div>
                 <div>{this.props.person['Country']}</div>
                 <div>{this.props.person['Email']}</div>
-                <div><a href = '#'><FaUserEdit /></a></div>
+                <div><FaUserEdit /></div>
             </div>
         );
     }

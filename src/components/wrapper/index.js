@@ -1,5 +1,5 @@
-import React,{Component} from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React,{ Component } from "react";
+import { Route } from "react-router-dom";
 import Contacts from './contacts';
 import MailingList from "./mailingList";
 
