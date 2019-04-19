@@ -4,24 +4,22 @@
     justify-content: center
     
 #mainMenu
-    width: 10%
+    width: 7%
     min-width: 45px
     max-width: 110px
     @include flex()
-    align-items: flex-start
+    align-items: center
 
 .itemMenu
-    width: 100%
-    height: 60px
-    background: black
+    width: 55px
+    height: 55px
+    background: $header-bg
     padding: 1%
     margin: 20px 0 5px
-    border-radius: 0 5px 5px 0
-    box-shadow: 6px 6px 3px 0px #999
+    border-radius: 50%
     transition: all .5s
     &:hover
         background: rgba(200, 0, 0, 0.9)
-        height: 150px
     a 
         font-size: 18px
         height: 100%

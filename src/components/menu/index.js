@@ -10,13 +10,11 @@ class Menu extends Component{
                 <div className = 'itemMenu contactsMenu'>
                     <Link to="/contacts">
                         <FaUsers />
-                        <span>Contacts</span>
                     </Link>                    
                 </div>
                 <div className = 'itemMenu mailingList'>
                     <Link to="/mailinglist">
                         <IoIosSend /> 
-                        <span>Mailinglist</span>
                     </Link>                    
                 </div>
                  

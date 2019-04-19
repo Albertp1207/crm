@@ -38,7 +38,7 @@ class Contacts extends Component{
                     </div>
                     {this.showContacts()}
                 </div>
-                <Footer />
+                {/* <Footer /> */}
             </Fragment>
         );
     }

@@ -3,7 +3,7 @@ import Menu from "./menu";
 import Wrapper from "./wrapper";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../styles/index.sass';
-import logo from '../styles/images/Logo.jpg';
+import logo from '../styles/images/logo.png';
 // import { Provider } from 'react-redux'
 
 class App extends Component{
