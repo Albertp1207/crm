@@ -38,11 +38,7 @@ class Contacts extends Component{
                     </div>
                     {this.showContacts()}
                 </div>
-<<<<<<< HEAD
                 <ContactsListMenu />
-=======
-                {/* <Footer /> */}
->>>>>>> 6992e8500dba4f576599b2960b88fe80bc7313a7
             </Fragment>
         );
     }
