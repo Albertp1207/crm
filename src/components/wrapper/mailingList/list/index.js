@@ -1,21 +1,35 @@
 import React,{Component} from "react";
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import myFetch from "../../../../tools/fetch";
-import Table from "../../../../reusableComponents/Table"
+// import Table from "../../../../reusableComponents/Table"
+import ListRow from "./listRow"
 
 export default class extends Component{
 
     state = {
-        list: null
+        list: null,
+        tickedContacts: []
     }
 
     getData = () => {
-        myFetch("http://visual.istclabz.com:2112/api/emaillists?id="+this.props.match.params.listid,"GET")
+        myFetch("/emaillists?id="+this.props.match.params.listid,"GET")
         .then(data=>{
             console.log(data)
             this.setState({
                 list:data
             })
+        })
+    }
+    tickContact = (ev) => {
+        console.log(ev.target)
+        const guid = ev.target.getAttribute("guiid");
+        if( !guid) {
+            return
+        }
+        let newTickedContacts = this.state.tickedContacts.slice();
+        newTickedContacts.push(guid)
+        this.setState({
+            tickedContacts:newTickedContacts
         })
     }
     componentDidMount(){
@@ -26,13 +40,29 @@ export default class extends Component{
             this.getData();
         };
     }
+    makeList = () => {
+        let {Contacts} = this.state.list;
+        return (
+            <div onClick = {this.tickContact}>
+                {Contacts.map(contact=><ListRow onTick={this.tickContact} key = {contact.GuID} person={contact} />)}
+            </div>
+        )
+    }
+
     render() {
-        console.log(this.state.list)
+// classNames ....
         return(
-            <div className="lists">
-                {/* <div className="lis"></div>  */}
-                <Table person = {this.state.list} />
-                {this.state.list ? <h1>{this.state.list.EmailListName}</h1>: <h2>LOADIGN</h2>}
+            <div  className="contactsList" >
+                 <div className = 'contactsHead'>
+                    <div>Select</div>
+                    <div>Full Name</div>
+                    <div>Company Name</div>
+                    <div>Position</div>
+                    <div>Country</div>
+                    <div>Email</div>
+                    <div>Edit</div>
+                </div>
+                {this.state.list ? this.makeList(): <h2>LOADIGN</h2>}
             </div>
         )
     }

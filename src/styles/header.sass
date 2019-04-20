@@ -1,12 +1,12 @@
 .header
-    height: 10%
+    height: 32%
     min-height: 58px
+    max-height: 100px;
     font-family: Orbitron
     color: $font-color
     background: $header-bg
     display: flex
     align-content: center
-    box-shadow: 0 8px 6px -6px black
     .size
         width: 100%
         display: flex
@@ -14,18 +14,20 @@
         align-items: center
         padding: 1% 2%
         #logo
-            width: 5%
+            width: 15%
             min-width: 32px
-            max-width: 50px
+            max-width: 85px
             a 
                 display: inline-block
                 img 
                     width: 100%
         h1 
             text-align: end
+            font-size: 35px
+            font-family: Times
             span 
-                font-size: 15px
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen
+                font-size: 30px
+                font-family: Times
                 color: $header-span
 
 @media only screen and (max-width: 640px) 

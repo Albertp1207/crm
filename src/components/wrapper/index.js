@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React,{ Component } from "react";
 import { Route } from "react-router-dom";
+=======
+import React,{Component} from "react";
+import {Route} from "react-router-dom";
+>>>>>>> 6992e8500dba4f576599b2960b88fe80bc7313a7
 import Contacts from './contacts';
 import MailingList from "./mailingList";
 

@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import myFetch from "../../../tools/fetch"
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {Route} from "react-router-dom";
 import Lists from "./lists";
 import List from "./list";
 import Menu from "./menu"
@@ -12,11 +12,7 @@ class MailingList extends Component {
     }
 
     componentDidMount() {
-        console.log("ASD")
-        // fetch("https://jsonplaceholder.typicode.com/todos/1")
-        //     .then(d=>console.log(d))
-        //     .then(t=>console.log(t))
-        myFetch("http://visual.istclabz.com:2112/api/emaillists","GET")
+        myFetch("/emaillists","GET")
             .then(data=>{
                 console.log(data)
                 this.setState({
