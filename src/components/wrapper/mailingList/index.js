@@ -4,21 +4,25 @@ import {Route} from "react-router-dom";
 import Lists from "./lists";
 import List from "./list";
 import Menu from "./menu"
+import { connect } from "react-redux";
+
+import {getMailingLists} from "../../../myRedux/actions/fetchActions"
 
 class MailingList extends Component {
     
-    state = {
-        lists:[]
-    }
+    // state = {
+    //     lists:[]
+    // }
 
     componentDidMount() {
-        myFetch("/emaillists","GET")
-            .then(data=>{
-                console.log(data)
-                this.setState({
-                    lists:data
-                })
-            })
+        // myFetch("/emaillists","GET")
+        //     .then(data=>{
+        //         console.log(data)
+        //         this.setState({
+        //             lists:data
+        //         })
+        //     })
+        this.props.dispatch(getMailingLists());
     }
     openList = (ev) => {
         if(!ev.target.getAttribute("listId")) return;
@@ -26,16 +30,21 @@ class MailingList extends Component {
     }
     render(){
         // console.log("????")
-        let {lists} = this.state;
+        let {error,lists,loading} = this.props;
+        console.log(this.props)
+        if(error) {
+            return <div>ERROR --- {error.message}</div>
+        }
+
+        if( loading) {
+            return <div>Loading ...</div>
+        }
+        // console.log(thi)
+
         return (
             <div className="mailinglist">
-                {lists.length> 0? <Lists openList={this.openList} lists={lists} /> : "Loading lists"}
-                {/* <Route path='/mailinglist/:listname' render={(props) => {
-                    console.log(props);
-                    
-                    return (
-                    <h1>{props.match.params.listname}</h1>
-                )}}/> */}
+            
+                <Lists openList={this.openList} lists={lists} /> 
                 <Route path='/mailinglist/:listid' component = {List} />
                 <Menu />
                 {/* <List /> */}
@@ -44,4 +53,12 @@ class MailingList extends Component {
     }
 }
 
-export default MailingList;
+const mapStateToProps = state => ({
+    lists: state.mailingLists.lists,
+    loading: state.mailingLists.loading,
+    error: state.mailingLists.error
+})
+
+export default connect(mapStateToProps)(MailingList);
+
+//komponent@ jnjum enq, en vijak@ vor@ menak iran er petq mnuma !? 
