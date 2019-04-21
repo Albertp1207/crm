@@ -1,17 +1,19 @@
-import React from "react";
-import {Link } from "react-router-dom";
+import {getMailingLists} from "../../../../myRedux/actions/fetchActions"
+import { connect } from "react-redux";
+import Lists from "./lists"
 
-export default props => (
-    <div className="lists">
-        <ul>
-            {props.lists.map(el=>{
-                // console.log(el)
-                return (
-                    <li key={el.EmailListID} onClick={props.openList} listid={el.EmailListID}>
-                        <Link to={"/mailinglist/"+el.EmailListID}>{el.EmailListName}</Link>
-                    </li>
-                )
-            })}
-        </ul>
-    </div>
-)
+const mapStateToProps = state => ({
+    lists: state.mailingLists.lists,
+    loading: state.mailingLists.loading,
+    error: state.mailingLists.error
+})
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getMailingLists: ()=>{
+            dispatch(getMailingLists())
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Lists);
