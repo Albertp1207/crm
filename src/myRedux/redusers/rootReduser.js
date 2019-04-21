@@ -1,13 +1,16 @@
 import popup from './reduserPopup';
-import mailingLists from "./mailingListsReducer";
 import sendEmailPopup from "./sendEmailPopupReducer";
+import contactsList from './contactsListReduser'
+import mailingLists from "./mailingListsReducer"
 import { combineReducers } from "redux";
 
 
 const rootReducer = combineReducers({
     popup,
     mailingLists,
-    sendEmailPopup
+    sendEmailPopup,
+    contactsList,
+    mailingLists
 });
 
 export default rootReducer;

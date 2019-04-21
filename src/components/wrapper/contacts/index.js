@@ -1,33 +1,31 @@
 import React, { Component, Fragment } from 'react';
-import ContactsList from './contactsList/ContactsList';
+import ContactsListRow from './contactsList/ContactsListRow';
 import ContactsListMenu from './contactsListMenu';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { getContactsList } from '../../../myRedux/actions/contactsListFetchAction'
 
-class Contacts extends Component{
-    state = {
-        contact: []
-    }
+class ContactsList extends Component{
+ 
     componentDidMount = () => {
-        fetch('http://visual.istclabz.com:2112/api/contacts')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                this.setState({contact: data}) 
-            })
-            .catch(error => console.error(error))
+        this.props.getContactsList();
     }
 
-    showContacts = () => {
-        let arr = [];
-        for (let item of this.state.contact) {
-           arr.push(<ContactsList person = {item} key = {item.GuID}/>);
-        }
-        return arr;
-    }
     render() {
+        console.log(this.props.contacts);
+        const { lists, loading, error } = this.props.contacts;
+
+        if(error) {
+            return <div>ERROR --- {error.message}</div>
+        }
+
+        if( loading) {
+            return <div>Loading ...</div>
+        }
         return (
             <Fragment>
-                <div className = 'contactsList'>
-                    <div className = 'contactsHead'>
+                <div className = 'contactsListTable'>
+                    <div className = 'contactsListHead'>
                         <div>Select</div>
                         <div>Full Name</div>
                         <div>Company Name</div>
@@ -36,7 +34,9 @@ class Contacts extends Component{
                         <div>Email</div>
                         <div>Edit</div>
                     </div>
-                    {this.showContacts()}
+                    <div className = 'contactsListBody'>
+                        { lists.map( item => <ContactsListRow person = {item} key = {item.GuID}/> )}
+                    </div>
                 </div>
                 <ContactsListMenu />
             </Fragment>
@@ -44,4 +44,19 @@ class Contacts extends Component{
     }
 }
 
-export default Contacts;
+const mapStateToProps = (state) => {
+    return {
+        contacts: state.contactsList
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(
+        { 
+            getContactsList
+        },
+        dispatch
+    )
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);

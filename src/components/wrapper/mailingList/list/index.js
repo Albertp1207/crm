@@ -52,8 +52,8 @@ export default class extends Component{
     render() {
 // classNames ....
         return(
-            <div  className="contactsList" >
-                 <div className = 'contactsHead'>
+            <div  className="contactsListTable" >
+                 <div className = 'contactsListHead'>
                     <div>Select</div>
                     <div>Full Name</div>
                     <div>Company Name</div>

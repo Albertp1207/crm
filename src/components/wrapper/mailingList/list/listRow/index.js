@@ -5,7 +5,7 @@ export default (props) => {
     const {person} = props;
     console.log(person)
     return (
-        <div  className = 'contacts'>                
+        <div  className = 'contactsListRow'>                
             <div><input  guiid= {person.GuID} type = 'checkbox'/></div>
             <div>{person['Full Name']}</div>
             <div>{person['Company Name']}</div>
