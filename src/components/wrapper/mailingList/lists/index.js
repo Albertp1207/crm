@@ -1,7 +1,14 @@
-import {getMailingLists} from "../../../../myRedux/actions/fetchActions"
+import {getMailingLists} from "../../../../myRedux/actions/mailingListActions/mailingListFetchActions"
 import { connect } from "react-redux";
 import Lists from "./lists"
+import myFetch from "../../../../tools/fetch";
 
+
+const deleteEmailList = id => {
+    myFetch("/emaillists?id="+id,"DELETE")
+        .then(t=>console.log(t))
+        .catch(err=>console.log(err));
+} 
 const mapStateToProps = state => ({
     lists: state.mailingLists.lists,
     loading: state.mailingLists.loading,
@@ -12,7 +19,18 @@ const mapDispatchToProps = dispatch => {
     return {
         getMailingLists: ()=>{
             dispatch(getMailingLists())
-        }
+        },
+        onCklickOnListName:(ev)=>{
+            // console.log(ev.target.getAttribute("action"))
+            switch(ev.target.getAttribute("action")){
+                case "send":
+                    // temaplesList
+                    return
+                case "delete":
+                    deleteEmailList(ev.target.getAttribute("listid"))
+                    return
+            }
+        }// funkcia poxancum Listsin ...???
     }
 }
 

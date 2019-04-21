@@ -2,7 +2,7 @@ import {
     GET_MAILLING_LISTS_BEGIN,
     GET_MAILLING_LISTS_SUCCESS,
     GET_MAILLING_LISTS_FAIL
-} from "../actions/fetchActions"
+} from "../actions/mailingListActions/mailingListFetchActions"
 
 const initState = {
     lists: [],

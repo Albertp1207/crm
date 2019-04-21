@@ -1,4 +1,4 @@
-import myFetch from "../../tools/fetch";
+import myFetch from "../../../tools/fetch";
 
 export const GET_MAILLING_LISTS_BEGIN = "GET_MAILLING_LISTS_BEGIN"
 export const GET_MAILLING_LISTS_SUCCESS = "GET_MAILLING_LISTS_SUCCESS"

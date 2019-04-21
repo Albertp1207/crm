@@ -21,10 +21,10 @@ class Lists extends Component{
                 <ul>
                     {lists.map(el=>{
                         return (
-                            <li key={el.EmailListID} onClick={this.props.openList} listid={el.EmailListID}>
+                            <li onClick = {this.props.onCklickOnListName}key={el.EmailListID} listid={el.EmailListID}>
                                 <Link to={"/mailinglist/"+el.EmailListID}>{el.EmailListName}</Link>
-                                <label> Send </label>
-                                <label> delete </label>
+                                <label action = "send" > Send </label>
+                                <label action = "delete" listid = {el.EmailListID} > delete </label>
                             </li>
                         )
                     })}
@@ -35,3 +35,5 @@ class Lists extends Component{
 }
 
 export default Lists;
+
+//shouldc-i mej hamematel imast ka te reactna anum ...?
