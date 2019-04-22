@@ -54,15 +54,19 @@ export default class extends Component{
         return(
             <div  className="contactsListTable" >
                  <div className = 'contactsListHead'>
-                    <div>Select</div>
-                    <div>Full Name</div>
-                    <div>Company Name</div>
-                    <div>Position</div>
-                    <div>Country</div>
-                    <div>Email</div>
-                    <div>Edit</div>
+                    <div className = 'contactsListRow'>
+                        <div>Select</div>
+                        <div>Full Name</div>
+                        <div>Company Name</div>
+                        <div>Position</div>
+                        <div>Country</div>
+                        <div>Email</div>
+                        <div>Edit</div>
+                    </div>
                 </div>
-                {this.state.list ? this.makeList(): <h2>LOADIGN</h2>}
+                <div className = 'contactsListBody'>
+                    {this.state.list ? this.makeList(): <h2>LOADIGN</h2>}
+                </div>
             </div>
         )
     }

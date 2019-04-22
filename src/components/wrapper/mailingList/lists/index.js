@@ -1,5 +1,5 @@
 import {getMailingLists} from "../../../../myRedux/actions/mailingListActions/mailingListFetchActions";
-import {OPEN_SEND_EMAIL_POPUP} from "../../../../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions"
+import {openSendEmailPopup} from "../../../../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions"
 import { connect } from "react-redux";
 import Lists from "./lists"
 import myFetch from "../../../../tools/fetch";
@@ -25,7 +25,8 @@ const mapDispatchToProps = dispatch => {
             // console.log(ev.target.getAttribute("action"))
             switch(ev.target.getAttribute("action")){
                 case "send":
-                    dispatch(OPEN_SEND_EMAIL_POPUP("/emaillistId"))//pakel@ popupi koxmic !
+                    console.log(ev.target.getAttribute("listid"))
+                    dispatch(openSendEmailPopup(null,ev.target.getAttribute("listid")))//pakel@ popupi koxmic !
                     return
                 case "delete":
                     deleteEmailList(ev.target.getAttribute("listid"))

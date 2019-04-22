@@ -26,25 +26,6 @@ const mapStateToProps = state => ({
     isOpenSendEmailPopup: state.sendEmailPopup.isOpen
 })
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         getMailingLists: ()=>{
-//             dispatch(getMailingLists())
-//         },
-//         onCklickOnListName:(ev)=>{
-//             // console.log(ev.target.getAttribute("action"))
-//             switch(ev.target.getAttribute("action")){
-//                 case "send":
-//                     temaplesList
-//                     return
-//                 case "delete":
-//                     deleteEmailList(ev.target.getAttribute("listid"))
-//                     return
-//             }
-//         }// funkcia poxancum Listsin ...???
-//     }
-// }
-
 export default connect(mapStateToProps)(MailingList);
 
 //komponent@ jnjum enq, en vijak@ vor@ menak iran er petq mnuma !? 

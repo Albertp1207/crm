@@ -4,27 +4,31 @@ import {
 } from "../actions/sendEmailPopupActions/sendEmailPopupActions"
 
 const initState = {
-    isOpen:false,
-    url: null,
-    data: null
+  isOpen:false,
+  GuIDArr:null,
+  mailingListId:null
 };
 
-export default function sendEmailPopupReducer(state = initState,action) {
+export default function sendEmailPopupReducer(state = initState,action) {    
+    console.log(action);
     switch(action.type) {
         case OPEN_SEND_EMAIL_POPUP:
+        const {GuIDArr,mailingListId} = action.payload
           return {
             isOpen:true,
-            withWhat: action.payload.type,
-            data: action.payload.data
+            GuIDArr,
+            mailingListId
         };
     
         case CLOSE_SEND_EMAIL_POPUP:
+        console.log("CLOSE action");
           return {
             isOpen:false,
-            withWhat: null,
-            data: null
-        };
+            GuIDArr:null,
+            mailingListId:null
+          };
         default:
           return state;
       }
 }
+

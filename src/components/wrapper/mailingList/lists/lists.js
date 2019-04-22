@@ -23,7 +23,7 @@ class Lists extends Component{
                         return (
                             <li onClick = {this.props.onCklickOnListName}key={el.EmailListID} listid={el.EmailListID}>
                                 <Link to={"/mailinglist/"+el.EmailListID}>{el.EmailListName}</Link>
-                                <label action = "send" > Send </label>
+                                <label action = "send" listid = {el.EmailListID} > Send </label>
                                 <label action = "delete" listid = {el.EmailListID} > delete </label>
                             </li>
                         )
