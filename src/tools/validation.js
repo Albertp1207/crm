@@ -1,8 +1,8 @@
 const regExp = {
-    fullName: /^[a-z]+$/i,
-    companyName: /^[a-z]+\w*$/i,
-    position: /^[a-z]+$/i,
-    country: /^[a-z]+$/i,
+    fullName: /^[a-z ]+$/i,
+    companyName: /^[a-z ]+\w*$/i,
+    position: /^[a-z ]+$/i,
+    country: /^[a-z ]+$/i,
     email: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i
 }
 

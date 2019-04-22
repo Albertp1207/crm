@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import  { Redirect } from 'react-router-dom'
+import  { Redirect } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { getContactsList } from '../../myRedux/actions/contactsListFetchAction';
 import myFetch from '../../tools/fetch';
 import validation from '../../tools/validation';
 
 class AddContactPopup extends Component{
     state = {
-        cancle: false
+        cancel: false
     }
     contactData = {
         FullName: '',
@@ -45,7 +48,9 @@ class AddContactPopup extends Component{
         if(Object.values(this.validAllData).every(val => val)){
             myFetch('/contacts', 'POST', this.contactData)
             .catch(error => console.log(error));
-            this.setState({cancle: true});
+            this.props.getContactsList();
+            this.setState({cancel: true});
+            
         } else {
             for (let key in this.validAllData) {
                 // console.log(this.validAllDatay[key]);
@@ -57,13 +62,13 @@ class AddContactPopup extends Component{
         }
     }
 
-    cancle = () => {
-        this.setState({cancle: true})
+    cancel = () => {
+        this.setState({cancel: true})
         
     }
 
     render() {
-        if (this.state.cancle) {
+        if (this.state.cancel) {
             return <Redirect from = '/contacts/add_contact' to='/contacts'  />;
         }
         
@@ -98,7 +103,7 @@ class AddContactPopup extends Component{
                         </div>
                         <div className = 'popupButtons'>
                             <button onClick = { this.sendContact }>Add</button>
-                            <button onClick = { this.cancle }>Cancle</button>
+                            <button onClick = { this.cancel }>Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -107,4 +112,20 @@ class AddContactPopup extends Component{
     }
 }
 
-export default AddContactPopup;
+const mapStateToProps = (state) => {
+    return {
+        contacts: state.contactsList
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(
+        { 
+            getContactsList
+        },
+        dispatch
+    )
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddContactPopup);
+// export default AddContactPopup;

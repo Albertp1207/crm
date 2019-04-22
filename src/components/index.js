@@ -4,7 +4,6 @@ import Wrapper from "./wrapper";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import '../styles/index.sass';
 import logo from '../styles/images/logo.png';
-import { connect } from 'react-redux';
 import AddContactPopup from './popups/AddContactPopup';
 
 
@@ -38,10 +37,5 @@ class App extends Component{
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        popup: state.popup
-    }
-}
 
-export default connect(mapStateToProps)(App);
+export default App;
