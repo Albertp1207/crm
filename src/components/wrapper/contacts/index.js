@@ -12,7 +12,7 @@ class ContactsList extends Component{
     }
 
     render() {
-        console.log(this.props.contacts);
+        // console.log(this.props.contacts);
         const { lists, loading, error } = this.props.contacts;
 
         if(error) {
@@ -26,13 +26,15 @@ class ContactsList extends Component{
             <Fragment>
                 <div className = 'contactsListTable'>
                     <div className = 'contactsListHead'>
-                        <div>Select</div>
-                        <div>Full Name</div>
-                        <div>Company Name</div>
-                        <div>Position</div>
-                        <div>Country</div>
-                        <div>Email</div>
-                        <div>Edit</div>
+                        <div className = 'contactsListRow'>
+                            <div>Select</div>
+                            <div>Full Name</div>
+                            <div>Company Name</div>
+                            <div>Position</div>
+                            <div>Country</div>
+                            <div>Email</div>
+                            <div>Edit</div>
+                        </div>
                     </div>
                     <div className = 'contactsListBody'>
                         { lists.map( item => <ContactsListRow person = {item} key = {item.GuID}/> )}

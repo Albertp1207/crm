@@ -22,7 +22,7 @@ export const getContactsList = () => {
         dispatch(getContactsListBegin());
         return myFetch("/contacts","GET")
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 dispatch(getContactsListSuccess(data))
             })
             .catch(error => dispatch(getContactsListFail(error)));

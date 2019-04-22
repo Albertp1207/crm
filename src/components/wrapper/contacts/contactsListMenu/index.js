@@ -5,12 +5,12 @@ class ContactsListMenu extends Component{
     render() {
         return (
             <div className = 'contactsListMenu'>
-                <Button name = 'Send Email'/>
-                <Button name = 'Create Mailing List'/>
-                <Button name = 'Add to Existing List'/>
-                <Button name = 'Add New Contact'/>
-                <Button name = 'Upload File'/>
-                <Button name = 'Delete Contact'/>
+                <Button name = 'Send Email' path = '/' />
+                <Button name = 'Create Mailing List' path = '/' />
+                <Button name = 'Add to Existing List' path = '/' />
+                <Button name = 'Add New Contact' path = '/contacts/add_contact' />
+                <Button name = 'Upload File' path = '/' />
+                <Button name = 'Delete Contact' path = '/' />
             </div>
         );
     }

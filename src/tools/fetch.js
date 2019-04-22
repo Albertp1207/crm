@@ -1,9 +1,9 @@
 const _URL = "http://visual.istclabz.com:2112/api";
 export default (url,method,data) => {
     const URL = _URL + url
-    console.log(URL)
+    // console.log(URL)
     if( method === "GET") {
-        console.log("Asdas")
+        // console.log("Asdas")
         return fetch(URL).then(data=>data.json())
     } else {
         return fetch(URL,{

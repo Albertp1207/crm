@@ -1,10 +1,11 @@
 import React,{Component} from "react";
 import Menu from "./menu";
 import Wrapper from "./wrapper";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import '../styles/index.sass';
 import logo from '../styles/images/logo.png';
 import { connect } from 'react-redux';
+import AddContactPopup from './popups/AddContactPopup';
 
 
 
@@ -30,6 +31,7 @@ class App extends Component{
                         </div>
                     </section>
                 </div>
+                <Route path = '/contacts/add_contact' component = { AddContactPopup } />
             </Router>
 
         );
