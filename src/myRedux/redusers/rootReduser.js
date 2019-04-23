@@ -7,8 +7,7 @@ import { combineReducers } from "redux";
 const rootReducer = combineReducers({
     mailingLists,
     sendEmailPopup,
-    contactsList,
-    mailingLists
+    contactsList
 });
 
 export default rootReducer;

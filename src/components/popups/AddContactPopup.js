@@ -5,10 +5,13 @@ import { connect } from 'react-redux';
 import { getContactsList } from '../../myRedux/actions/contactsListFetchAction';
 import myFetch from '../../tools/fetch';
 import validation from '../../tools/validation';
+import WaitAnimation from '../../reusableComponents/waitAnimation';
+
 
 class AddContactPopup extends Component{
     state = {
-        cancel: false
+        cancel: false,
+        wait: false
     }
     contactData = {
         FullName: '',
@@ -45,11 +48,15 @@ class AddContactPopup extends Component{
     }
 
     sendContact = () => {
+        this.setState({wait: true});
         if(Object.values(this.validAllData).every(val => val)){
             myFetch('/contacts', 'POST', this.contactData)
+            .then(res => {
+                console.log(res); 
+                this.setState({wait: false, cancel: true}); 
+                this.props.getContactsList();
+            })
             .catch(error => console.log(error));
-            this.props.getContactsList();
-            this.setState({cancel: true});
             
         } else {
             for (let key in this.validAllData) {
@@ -68,6 +75,8 @@ class AddContactPopup extends Component{
     }
 
     render() {
+        
+
         if (this.state.cancel) {
             return <Redirect from = '/contacts/add_contact' to='/contacts'  />;
         }
@@ -105,7 +114,9 @@ class AddContactPopup extends Component{
                             <button onClick = { this.sendContact }>Add</button>
                             <button onClick = { this.cancel }>Cancel</button>
                         </div>
+                        
                     </div>
+                    {this.state.wait? <WaitAnimation />: null}
                 </div>
             </div>
         );

@@ -13,7 +13,7 @@ export default (url,method,data) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(data=>{data.json()})
+        }).then(data => data.json())
     }
 }
 
