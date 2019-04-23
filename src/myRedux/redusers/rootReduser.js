@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
     mailingLists,
     sendEmailPopup,
     contactsList,
-    mailingLists,
     templates
 });
 
