@@ -15,7 +15,7 @@
         min-width: 310px
         max-width: 500px
         height: 50%
-        min-height: 200px
+        min-height: 280px
         max-height: 400px
         background: $popupCont-bg
         padding: 1%
@@ -25,6 +25,22 @@
         position: relative
         .popupSize
             text-align: end
+            .popupButtons
+                display: flex
+                justify-content: space-around
+                button
+                    background: transparent
+                    padding: 0.35em 1.2em
+                    border: 0.1em solid #FFFFFF
+                    margin: 0 0.3em 0.3em 0
+                    border-radius: 0.12em
+                    font-weight: 300
+                    color: #FFFFFF
+                    text-align: center
+                    transition: all .2s
+                    &:hover
+                        color: #000
+                        background: #fff
             div
                 margin-top: 1%
                 input

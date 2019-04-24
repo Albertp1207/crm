@@ -4,7 +4,13 @@
         min-height: 55px
         background: black
         .buttons
-            color: white
+            color: black
             font-size: 12px
             cursor: pointer
+            background: #999
+            border: none
             padding: 5px 5px
+            display: inline-block
+            &:disabled
+                color: #888
+                cursor: default

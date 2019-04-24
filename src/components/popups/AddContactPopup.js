@@ -29,7 +29,7 @@ class AddContactPopup extends Component{
     };
     
     createContact = (el) => {
-        console.log(el.target.getAttribute('name'),el.target.value );
+        // console.log(el.target.getAttribute('name'),el.target.value );
         this.contactData = {
             FullName: this.fullName.value,
             CompanyName: this.companyName.value,
@@ -52,7 +52,7 @@ class AddContactPopup extends Component{
         if(Object.values(this.validAllData).every(val => val)){
             myFetch('/contacts', 'POST', this.contactData)
             .then(res => {
-                console.log(res); 
+                // console.log(res); 
                 this.setState({wait: false, cancel: true}); 
                 this.props.getContactsList();
             })
