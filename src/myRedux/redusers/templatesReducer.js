@@ -10,7 +10,9 @@ const initState = {
     error: null
 };
 
-export default function mailingListsReducer(state = initState,action) {
+export default function templatesReducer(state = initState,action) {
+  console.log(action.type + " ! ! ! ! !")
+
     switch(action.type) {
         case GET_TEMPLATES_BEGIN:
           return {
@@ -20,6 +22,7 @@ export default function mailingListsReducer(state = initState,action) {
           };
     
         case GET_TEMPLATES_SUCCESS:
+        console.log("SUCYAS")
           return {
             ...state,
             loading: false,

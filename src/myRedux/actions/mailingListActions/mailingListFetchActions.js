@@ -18,8 +18,10 @@ export const getMailingListsFail = error => ({
 
 
 export const getMailingLists = () => {
+    console.log("ASD_AS_D-")
     return dispatch => {
         dispatch(getMailingListsBegin());
+        console.log("STTSTTs")
         return myFetch("/emaillists","GET")
             .then(data => {
                 console.log(data)

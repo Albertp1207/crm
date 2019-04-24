@@ -1,10 +1,12 @@
 import React,{Component} from "react";
 import {Link } from "react-router-dom";
-
+import myFetch from "../../../../tools/fetch"
 class Lists extends Component{
     componentDidMount() {
         this.props.getMailingLists();
     }
+    // uxarkel container funcer@ ...\/...
+    
     render(){
         let {error,lists,loading} = this.props;
         console.log(this.props)
@@ -24,7 +26,7 @@ class Lists extends Component{
                             <li onClick = {this.props.onCklickOnListName}key={el.EmailListID} listid={el.EmailListID}>
                                 <Link to={"/mailinglist/"+el.EmailListID}>{el.EmailListName}</Link>
                                 <label action = "send" listid = {el.EmailListID} > Send </label>
-                                <label action = "delete" listid = {el.EmailListID} > delete </label>
+                                <label onClick={this.props.deleteEmailList} action = "delete" listid = {el.EmailListID} > delete </label>
                             </li>
                         )
                     })}

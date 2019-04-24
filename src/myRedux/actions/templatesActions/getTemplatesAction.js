@@ -21,7 +21,6 @@ export const getTemplates = () => {
         dispatch(getTemplatesStart());
         return myFetch("/templates","GET")
             .then(data => {
-                console.log(data)
                 dispatch(getTemplatesSuccess(data))
             })
             .catch(error => dispatch(getTemplatesFail(error)));
