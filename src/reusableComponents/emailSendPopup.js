@@ -14,7 +14,7 @@ class emailSendPopup extends Component {
         this.props.getTemplates();
     }
     makeUrl = () => {
-        console.log(this.props.sendEmailPopup);
+        // console.log(this.props.sendEmailPopup);
         const mailingListId = this.props.sendEmailPopup.mailingListId;
         const templateId = this.state.choosedTemplate
         let url = "";
@@ -34,7 +34,7 @@ class emailSendPopup extends Component {
         })
     }
     makeTemaplesList = list => {
-        console.log(list)
+        // console.log(list)
         return list.map(el => {
             return (
             <div onClick = {this.selectTemplate} key = {el.TemplateId} >
@@ -54,7 +54,7 @@ class emailSendPopup extends Component {
         .catch(err=>console.log(err))
     }
     render() {
-        console.log(this.props.st)
+        // console.log(this.props.st)
         const {error,loading,templates} = this.props.templates
         if(error) {
             return <div>ERROR --- {error.message}</div>

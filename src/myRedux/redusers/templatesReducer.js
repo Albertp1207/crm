@@ -11,7 +11,7 @@ const initState = {
 };
 
 export default function templatesReducer(state = initState,action) {
-  console.log(action.type + " ! ! ! ! !")
+  // console.log(action.type + " ! ! ! ! !")
 
     switch(action.type) {
         case GET_TEMPLATES_BEGIN:
@@ -22,7 +22,7 @@ export default function templatesReducer(state = initState,action) {
           };
     
         case GET_TEMPLATES_SUCCESS:
-        console.log("SUCYAS")
+        // console.log("SUCYAS")
           return {
             ...state,
             loading: false,

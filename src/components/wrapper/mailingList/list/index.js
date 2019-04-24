@@ -8,28 +8,23 @@ export default class extends Component{
 
     state = {
         list: null,
-        tickedContacts: []
+        tickedContacts: [],
+        error:null
     }
 
     getData = () => {
         myFetch("/emaillists?id="+this.props.match.params.listid,"GET")
         .then(data=>{
-            console.log(data)
+            console.log("!!!!!!!!!!!!!!!!!!!!!!!!")
             this.setState({
-                list:data
+                list:data,
+                error:null
             })
         })
-    }
-    tickContact = (ev) => {
-        console.log(ev.target)
-        const guid = ev.target.getAttribute("guiid");
-        if( !guid) {
-            return
-        }
-        let newTickedContacts = this.state.tickedContacts.slice();
-        newTickedContacts.push(guid)
-        this.setState({
-            tickedContacts:newTickedContacts
+        .catch(error=>{
+            this.setState({
+                error:error.message
+            })
         })
     }
     componentDidMount(){
@@ -51,6 +46,9 @@ export default class extends Component{
 
     render() {
 // classNames ....
+        if(this.state.error) {
+            return <div>Error {this.state.error}</div>
+        }
         return(
             <div  className="contactsListTable" >
                  <div className = 'contactsListHead'>

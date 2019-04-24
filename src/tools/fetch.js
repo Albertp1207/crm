@@ -4,7 +4,9 @@ export default (url,method,data) => {
     // console.log(URL)
     if( method === "GET") {
         // console.log("Asdas")
-        return fetch(URL).then(data=>data.json())
+        return fetch(URL)
+            .then(verifyError)
+            .then(data=>data.json())
     } else {
         return fetch(URL,{
             method,
@@ -14,7 +16,16 @@ export default (url,method,data) => {
             },
             body: JSON.stringify(data)
         })
+        .then(verifyError)
+        // then ... error to json ...
     }
+}
+
+function verifyError(res){
+    if(!res.ok && res.statusText) {
+        throw Error(res.statusText)
+    }
+    return res
 }
 
 // true post !!!
