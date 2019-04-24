@@ -5,11 +5,17 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import '../styles/index.sass';
 import logo from '../styles/images/logo.png';
 import AddContactPopup from './popups/AddContactPopup';
+import DeletingPopup from '../reusableComponents/DeletingPopup';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { popupDeletingContacts } from '../myRedux/actions/deletingContactsAction';
 
 
 
 class App extends Component{
     render(){
+        const { popupDeletingIsOpen } = this.props.deletingContacts;
+
         return (
             <Router>
                 <div className="main">
@@ -31,11 +37,18 @@ class App extends Component{
                     </section>
                 </div>
                 <Route path = '/contacts/add_contact' component = { AddContactPopup } />
+                { popupDeletingIsOpen ? < DeletingPopup />: null }
             </Router>
 
         );
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        deletingContacts: state.deletingContacts
+    }
+}
 
-export default App;
+
+export default connect(mapStateToProps)(App);

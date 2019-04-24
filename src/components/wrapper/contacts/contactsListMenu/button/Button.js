@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default (props) => {
+    
+    const { name, disable, openPopup } = props;
     return (
-        <Link to={props.path} className = 'buttons'>{ props.name }</Link>
+        <button className ='buttons'  onClick = { openPopup } disabled = { disable }>{ name }</button>
     );
 }

@@ -3,12 +3,20 @@ import ContactsListRow from './contactsList/ContactsListRow';
 import ContactsListMenu from './contactsListMenu';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getContactsList } from '../../../myRedux/actions/contactsListFetchAction'
+import { getContactsList } from '../../../myRedux/actions/contactsListFetchAction';
+import { addDeletingContactsEnablePopup } from '../../../myRedux/actions/deletingContactsAction';
 
 class ContactsList extends Component{
- 
+
     componentDidMount = () => {
         this.props.getContactsList();
+    }
+
+
+    getDeletingContacts = (e) => {
+       
+        this.props.addDeletingContactsEnablePopup( e.target.value );
+
     }
 
     render() {
@@ -19,7 +27,7 @@ class ContactsList extends Component{
             return <div>ERROR --- {error.message}</div>
         }
 
-        if( loading) {
+        if(loading) {
             return <div>Loading ...</div>
         }
         return (
@@ -37,7 +45,11 @@ class ContactsList extends Component{
                         </div>
                     </div>
                     <div className = 'contactsListBody'>
-                        { lists.map( item => <ContactsListRow person = {item} key = {item.GuID}/> )}
+                        { lists.map( item => <ContactsListRow 
+                                                person = { item } 
+                                                colback = { this.getDeletingContacts }
+                                                key = { item.GuID } /> )
+                        }
                     </div>
                 </div>
                 <ContactsListMenu />
@@ -55,7 +67,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
-            getContactsList
+            getContactsList,
+            addDeletingContactsEnablePopup
         },
         dispatch
     )

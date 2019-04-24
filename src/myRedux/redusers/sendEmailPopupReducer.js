@@ -10,7 +10,7 @@ const initState = {
 };
 
 export default function sendEmailPopupReducer(state = initState,action) {    
-    console.log(action);
+    // console.log(action);
     switch(action.type) {
         case OPEN_SEND_EMAIL_POPUP:
         const {GuIDArr,mailingListId} = action.payload
