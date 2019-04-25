@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getContactsList } from '../../../myRedux/actions/contactsListFetchAction';
 import { addDeletingContactsEnablePopup } from '../../../myRedux/actions/deletingContactsAction';
+import WaitAnimation from '../../../reusableComponents/waitAnimation';
 
 class ContactsList extends Component{
 
@@ -28,7 +29,7 @@ class ContactsList extends Component{
         }
 
         if(loading) {
-            return <div>Loading ...</div>
+            return <WaitAnimation />
         }
         return (
             <Fragment>

@@ -3,6 +3,7 @@ import contactsList from './contactsListReduser';
 import mailingLists from "./mailingListsReducer";
 import { deletingContacts } from './deletingContactsReduser';
 import templates from "./templatesReducer";
+import updatingContactPopup from "./updateContactReducer";
 import { combineReducers } from "redux";
 
 
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     sendEmailPopup,
     contactsList,
     deletingContacts,
-    templates
+    templates,
+    updatingContactPopup
 });
 
 export default rootReducer;

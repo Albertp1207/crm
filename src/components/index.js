@@ -7,15 +7,15 @@ import logo from '../styles/images/logo.png';
 import AddContactPopup from './popups/AddContactPopup';
 import DeletingPopup from '../reusableComponents/DeletingPopup';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { popupDeletingContacts } from '../myRedux/actions/deletingContactsAction';
+import UpdatingContactPopup from '../reusableComponents/UpdatingContactPopup';
 
 
 
 class App extends Component{
     render(){
         const { popupDeletingIsOpen } = this.props.deletingContacts;
-
+        const { updatePopupIsOpen } = this.props.updatingContactPopup;
+        
         return (
             <Router>
                 <div className="main">
@@ -38,6 +38,7 @@ class App extends Component{
                 </div>
                 <Route path = '/contacts/add_contact' component = { AddContactPopup } />
                 { popupDeletingIsOpen ? < DeletingPopup />: null }
+                { updatePopupIsOpen ? < UpdatingContactPopup />: null}
             </Router>
 
         );
@@ -46,7 +47,8 @@ class App extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        deletingContacts: state.deletingContacts
+        deletingContacts: state.deletingContacts,
+        updatingContactPopup: state.updatingContactPopup
     }
 }
 

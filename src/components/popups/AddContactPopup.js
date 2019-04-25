@@ -11,7 +11,8 @@ import WaitAnimation from '../../reusableComponents/waitAnimation';
 class AddContactPopup extends Component{
     state = {
         cancel: false,
-        wait: false
+        wait: false,
+        error: ''
     }
     contactData = {
         FullName: '',
@@ -48,13 +49,19 @@ class AddContactPopup extends Component{
     }
 
     sendContact = () => {
-        this.setState({wait: true});
+        
         if(Object.values(this.validAllData).every(val => val)){
+            this.setState({wait: true});
             myFetch('/contacts', 'POST', this.contactData)
             .then(res => {
-                // console.log(res); 
-                this.setState({wait: false, cancel: true}); 
-                this.props.getContactsList();
+                console.log(res); 
+                if(res.status === 400){                //catch bad request
+                    this.setState({wait: false, error: 'Check the data and try again'});
+                }else{
+                    this.setState({wait: false, cancel: true, error: ''}); 
+                    this.props.getContactsList();
+                }
+                
             })
             .catch(error => console.log(error));
             
@@ -108,7 +115,7 @@ class AddContactPopup extends Component{
                         <div id = 'email'>
                             <label>Email</label>
                             <input type = 'email' ref = {el => this.email = el} onBlur = { this.createContact } name = 'email'/>
-                            <p></p>
+                            <p>{this.state.error}</p>
                         </div>
                         <div className = 'popupButtons'>
                             <button onClick = { this.sendContact }>Add</button>
