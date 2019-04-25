@@ -15,7 +15,7 @@ export default function mailingListsReducer(state = initState,action) {
         case GET_MAILLING_LISTS_BEGIN:
           return {
             ...state,
-            loading: true,
+            loading: state.lists.length>0? false : true,
             error: null
           };
     

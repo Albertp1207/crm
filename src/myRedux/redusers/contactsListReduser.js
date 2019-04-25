@@ -15,7 +15,7 @@ export default function contactsListReducer(state = initState, action) {
         case GET_CONTACTS_LIST_BEGIN:
           return {
             ...state,
-            loading: true,
+            loading: state.lists.length>0? false : true,
             error: null
           };
     
