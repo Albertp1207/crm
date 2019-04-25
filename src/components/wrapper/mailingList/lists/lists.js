@@ -14,23 +14,28 @@ class Lists extends Component{
         this.props.deleteEmailList(ev)
             .then(res=>{
                 if(res.ok) {
-                    this.setState({
-                        redirectToML:true
-                    })
                 }
             })
 // miajamanak state ev props poxvel@...
         
     }
+
+    makeList = (lists) => {
+        return lists.map(el=>{
+            return (
+                <li onClick = {this.props.onCklickOnListName}key={el.EmailListID} listid={el.EmailListID}>
+                    <Link to={"/mailinglist/"+el.EmailListID}>{el.EmailListName}</Link>
+                    <label action = "send" listid = {el.EmailListID} > Send </label>
+                    <Link to="/mailinglist">
+                        <label onClick={this.delete} action = "delete" listid = {el.EmailListID} > delete </label>
+                    </Link>
+                </li>
+            )
+        })
+    }
     render(){
         let {error,lists,loading} = this.props;
         // console.log(this.props)
-        if(this.state.redirectToML) {
-            this.setState({
-                redirectToML:false
-            })
-            return <Redirect  to = "/mailinglist"/>
-        }
         if(error) {
             return <div>ERROR --- {error.message}</div>
         }
@@ -43,15 +48,7 @@ class Lists extends Component{
         return(
             <div className="lists">
                 <ul>
-                    {lists.map(el=>{
-                        return (
-                            <li onClick = {this.props.onCklickOnListName}key={el.EmailListID} listid={el.EmailListID}>
-                                <Link to={"/mailinglist/"+el.EmailListID}>{el.EmailListName}</Link>
-                                <label action = "send" listid = {el.EmailListID} > Send </label>
-                                <label onClick={this.delete} action = "delete" listid = {el.EmailListID} > delete </label>
-                            </li>
-                        )
-                    })}
+                    {this.makeList(lists)}
                 </ul>
             </div>
         )
