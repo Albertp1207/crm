@@ -12,15 +12,17 @@ class UpdatingContactPopup extends Component{
     state = {
         cancel: false,
         wait: false,
-        error: ''
+        error: '',
+        changes: ''
     }
+    contact = this.props.updatingContactPopup.updatingContact;
     contactData = {
-        FullName: this.props.updatingContactPopup.updatingContact['Full Name'],
-        CompanyName: this.props.updatingContactPopup.updatingContact['Company Name'],
-        Position: this.props.updatingContactPopup.updatingContact['Position'],
-        Country: this.props.updatingContactPopup.updatingContact['Country'],
-        Email: this.props.updatingContactPopup.updatingContact['Email'],
-        GuID: this.props.updatingContactPopup.updatingContact['GuID']
+        FullName: this.contact['Full Name'],
+        CompanyName: this.contact['Company Name'],
+        Position: this.contact['Position'],
+        Country: this.contact['Country'],
+        Email: this.contact['Email'],
+        GuID: this.contact['GuID']
     };
     validAllData = {
         fullName: false,
@@ -32,7 +34,10 @@ class UpdatingContactPopup extends Component{
     
     changeContact = (el) => {
         // console.log(el.target.getAttribute('name'),el.target.value );
+        this.setState({changes: ""});
+
         this.contactData = {
+            ...this.contactData,
             FullName: this.fullName.value,
             CompanyName: this.companyName.value,
             Position: this.position.value,
@@ -77,9 +82,41 @@ class UpdatingContactPopup extends Component{
     //     }
     // }
     updateContact = () => {
-        if (Object.values(this.validAllData).some(val => val)) {
-            
-        }
+        if(
+            this.contactData.FullName !== this.contact['Full Name'] ||
+            this.contactData.CompanyName !== this.contact['Company Name'] ||
+            this.contactData.Position !== this.contact['Position'] ||
+            this.contactData.Country !== this.contact['Country'] ||
+            this.contactData.Email !== this.contact['Email']
+            ){
+                    if(Object.values(this.validAllData).every(val => val)){
+                        this.setState({wait: true});
+                        myFetch('/contacts', 'POST', this.contactData)
+                        .then(res => {
+                            console.log(res); 
+                            if(res.status === 400){                //catch bad request
+                                this.setState({wait: false, error: 'Check the data and try again'});
+                            }else{
+                                this.setState({wait: false, cancel: true, error: ''}); 
+                                this.props.getContactsList();
+                            }
+                            
+                        })
+                        .catch(error => console.log(error));
+                        
+                    } else {
+                        for (let key in this.validAllData) {
+                            // console.log(this.validAllDatay[key]);
+                            if (!this.validAllData[key]) {
+                                document.getElementsByName(key)[0].nextSibling.innerHTML = 'Filled incorrectly';
+                                
+                            }
+                        }
+                    }
+            } else {
+                this.setState({changes: "Didn't make a change"});
+            }
+
         console.log(this.contactData)
     }
 
@@ -143,7 +180,8 @@ class UpdatingContactPopup extends Component{
                                     onBlur = { this.changeContact } 
                                     name = 'email'
                                     />
-                            <p>{this.state.error}</p>
+                            <p></p>
+                            <p>{this.state.error}{this.state.changes}</p>
                         </div>
                         <div className = 'popupButtons'>
                             <button onClick = { this.updateContact }>Save</button>
