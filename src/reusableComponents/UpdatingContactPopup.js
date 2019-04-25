@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// import { getContactsList } from '../../myRedux/actions/contactsListFetchAction';
+import { getContactsList } from '../myRedux/actions/contactsListFetchAction';
 import { cancelApdatingContactClosePopup } from '../myRedux/actions/updateContactAction';
-// import myFetch from '../../tools/fetch';
+import myFetch from '../tools/fetch';
 import validation from '../tools/validation';
 import WaitAnimation from '../reusableComponents/waitAnimation';
 
 
 class UpdatingContactPopup extends Component{
     state = {
-        cancel: false,
         wait: false,
         error: '',
         changes: ''
@@ -25,11 +24,11 @@ class UpdatingContactPopup extends Component{
         GuID: this.contact['GuID']
     };
     validAllData = {
-        fullName: false,
-        companyName: false,
-        position: false,
-        country: false,
-        email: false,
+        fullName: true,
+        companyName: true,
+        position: true,
+        country: true,
+        email: true,
     };
     
     changeContact = (el) => {
@@ -54,33 +53,7 @@ class UpdatingContactPopup extends Component{
         // console.log(this.validAllData);
     }
 
-    // sendContact = () => {
-        
-    //     if(Object.values(this.validAllData).every(val => val)){
-    //         this.setState({wait: true});
-    //         myFetch('/contacts', 'POST', this.contactData)
-    //         .then(res => {
-    //             console.log(res); 
-    //             if(res.status === 400){                //catch bad request
-    //                 this.setState({wait: false, error: 'Check the data and try again'});
-    //             }else{
-    //                 this.setState({wait: false, cancel: true, error: ''}); 
-    //                 this.props.getContactsList();
-    //             }
-                
-    //         })
-    //         .catch(error => console.log(error));
-            
-    //     } else {
-    //         for (let key in this.validAllData) {
-    //             // console.log(this.validAllDatay[key]);
-    //             if (!this.validAllData[key]) {
-    //                 document.getElementsByName(key)[0].nextSibling.innerHTML = 'Filled incorrectly';
-                    
-    //             }
-    //         }
-    //     }
-    // }
+    
     updateContact = () => {
         if(
             this.contactData.FullName !== this.contact['Full Name'] ||
@@ -91,18 +64,22 @@ class UpdatingContactPopup extends Component{
             ){
                     if(Object.values(this.validAllData).every(val => val)){
                         this.setState({wait: true});
-                        myFetch('/contacts', 'POST', this.contactData)
+                        myFetch('/contacts', 'PUT', this.contactData)
                         .then(res => {
-                            console.log(res); 
+                            // console.log(res); 
                             if(res.status === 400){                //catch bad request
                                 this.setState({wait: false, error: 'Check the data and try again'});
                             }else{
-                                this.setState({wait: false, cancel: true, error: ''}); 
+                                this.setState({wait: false, error: ''}); 
                                 this.props.getContactsList();
+                                this.props.cancelApdatingContactClosePopup();
                             }
                             
                         })
-                        .catch(error => console.log(error));
+                        .catch(error => {
+                            this.setState({wait: false, error: 'Check the data and try again'});
+                            console.log(error);
+                        });
                         
                     } else {
                         for (let key in this.validAllData) {
@@ -117,7 +94,6 @@ class UpdatingContactPopup extends Component{
                 this.setState({changes: "Didn't make a change"});
             }
 
-        console.log(this.contactData)
     }
 
     cancel = () => {
@@ -205,6 +181,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
+            getContactsList,
             cancelApdatingContactClosePopup
         },
         dispatch

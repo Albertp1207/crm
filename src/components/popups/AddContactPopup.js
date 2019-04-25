@@ -54,7 +54,7 @@ class AddContactPopup extends Component{
             this.setState({wait: true});
             myFetch('/contacts', 'POST', this.contactData)
             .then(res => {
-                console.log(res); 
+                // console.log(res); 
                 if(res.status === 400){                //catch bad request
                     this.setState({wait: false, error: 'Check the data and try again'});
                 }else{
@@ -63,7 +63,10 @@ class AddContactPopup extends Component{
                 }
                 
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                this.setState({wait: false, error: 'Check the data and try again'});
+                console.log(error);
+            });
             
         } else {
             for (let key in this.validAllData) {

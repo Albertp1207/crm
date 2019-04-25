@@ -8,8 +8,7 @@ class ContatsListRow extends Component{
 
     chooseContact = () => {
         let updatingContact = '';
-        console.log(this.iconButId);
-        console.log(this.props.contacts.lists);
+        
         for (let value of this.props.contacts.lists) {
             if (value.GuID === this.iconButId) {
                 updatingContact = value;
@@ -17,7 +16,7 @@ class ContatsListRow extends Component{
             }
         }
         this.props.addApdatingContactOpenPopup(updatingContact);
-        console.log(updatingContact);
+        // console.log(updatingContact);
     }
     
     render () {
