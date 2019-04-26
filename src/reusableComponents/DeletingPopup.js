@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getContactsList } from '../myRedux/actions/contactsListFetchAction';
-import { cancelDeletingContactsClosePopup, deletingContactsOpenPopup } from '../myRedux/actions/deletingContactsAction';
+import { openDeletingContactsPopup, cancelClearContactsClosePopups } from '../myRedux/actions/gatherContactsAction';
 import myFetch from '../tools/fetch';
 import WaitAnimation from '../reusableComponents/waitAnimation';
 
@@ -13,23 +13,24 @@ class DeletingPopup extends Component{
         wait: false
     }
     deleteContacts = () => {
-        const { deletingContactsArr } = this.props.deletingContacts;
+        const { collectionContactsArr } = this.props.gatherContacts;
 
         this.setState({wait: true}); 
         
-        myFetch('/contacts', 'DELETE', deletingContactsArr)
+        myFetch('/contacts', 'DELETE', collectionContactsArr)
         .then(res => {
             // console.log(res); 
             this.setState({wait: false}); 
             this.props.getContactsList();
-            this.props.cancelDeletingContactsClosePopup();
+            this.props.cancelClearContactsClosePopups();
         })
         .catch(error => console.log(error));        
     }
 
-    deleteCancel = () => {
-        this.props.cancelDeletingContactsClosePopup();
+    cancelDeleting = () => {
+        this.props.cancelClearContactsClosePopups();
         this.props.getContactsList();
+        console.log(this.props.gatherContacts.collectionContactsArr)
     }
     
     render() {
@@ -41,7 +42,7 @@ class DeletingPopup extends Component{
                         <p>You want to delete the selected contacts ?</p>
                         <div className = 'popupButtons'>
                             <button onClick = { this.deleteContacts }>Ok</button>
-                            <button onClick = { this.deleteCancel }>Cancel</button>
+                            <button onClick = { this.cancelDeleting }>Cancel</button>
                         </div>
                     </div>
                     { this.state.wait? <WaitAnimation />: null }
@@ -54,7 +55,7 @@ class DeletingPopup extends Component{
 const mapStateToProps = (state) => {
     return {
         contacts: state.contactsList,
-        deletingContacts: state.deletingContacts
+        gatherContacts: state.gatherContacts
     }
 }
 
@@ -62,8 +63,8 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
             getContactsList,
-            cancelDeletingContactsClosePopup,
-            deletingContactsOpenPopup
+            openDeletingContactsPopup, 
+            cancelClearContactsClosePopups
         },
         dispatch
     )

@@ -3,20 +3,20 @@ import ButtonLink from './button/ButtonLink';
 import Button from './button/Button';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { deletingContactsOpenPopup } from '../../../../myRedux/actions/deletingContactsAction';
+import { openDeletingContactsPopup, openCreatingEmailListPopup } from '../../../../myRedux/actions/gatherContactsAction';
 
 
 class ContactsListMenu extends Component{
     render() {
-        const { buttonNotActive } = this.props.deleting;
+        const { buttonsNotActive } = this.props.gatherContacts;
         return (
             <div className = 'contactsListMenu'>
                 <ButtonLink name = 'Send Email' path = '/' />
-                <ButtonLink name = 'Create Mailing List' path = '/' />
+                <Button name = 'Create Mailing List' openPopup = { this.props.openCreatingEmailListPopup } disable = { buttonsNotActive } />
                 <ButtonLink name = 'Add to Existing List' path = '/' />
                 <ButtonLink name = 'Add New Contact' path = '/contacts/add_contact' />
                 <ButtonLink name = 'Upload File' path = '/' />
-                <Button name = 'Delete Contact' openPopup = { this.props.deletingContactsOpenPopup } disable = { buttonNotActive } />
+                <Button name = 'Delete Contact' openPopup = { this.props.openDeletingContactsPopup } disable = { buttonsNotActive } />
             </div>
         );
     }
@@ -25,14 +25,15 @@ class ContactsListMenu extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        deleting: state.deletingContacts
+        gatherContacts: state.gatherContacts
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
-            deletingContactsOpenPopup
+            openDeletingContactsPopup,
+            openCreatingEmailListPopup
         },
         dispatch
     )
