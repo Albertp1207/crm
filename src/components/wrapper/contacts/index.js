@@ -28,7 +28,7 @@ class ContactsList extends Component{
             return <div>ERROR --- {error.message}</div>
         }
 
-        if(loading) {
+        if(loading && lists.length === 0) {
             return <WaitAnimation />
         }
         return (
