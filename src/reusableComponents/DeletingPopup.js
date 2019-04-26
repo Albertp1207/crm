@@ -54,7 +54,6 @@ class DeletingPopup extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        contacts: state.contactsList,
         gatherContacts: state.gatherContacts
     }
 }
@@ -63,7 +62,6 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
             getContactsList,
-            openDeletingContactsPopup, 
             cancelClearContactsClosePopups
         },
         dispatch

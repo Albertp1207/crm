@@ -8,12 +8,12 @@ import AddContactPopup from './popups/AddContactPopup';
 import DeletingPopup from '../reusableComponents/DeletingPopup';
 import { connect } from 'react-redux';
 import EditingContactPopup from '../reusableComponents/EditingContactPopup';
-
+import CreateMailingList from '../reusableComponents/CreateMailingList1';
 
 
 class App extends Component{
     render(){
-        const { deletingPopupIsOpen } = this.props.gatherContacts;
+        const { deletingPopupIsOpen, creatingEmailListPopupIsOpen } = this.props.gatherContacts;
         const { editPopupIsOpen } = this.props.editingContactPopup;
         
         return (
@@ -37,6 +37,7 @@ class App extends Component{
                     </section>
                 </div>
                 <Route path = '/contacts/add_contact' component = { AddContactPopup } />
+                { creatingEmailListPopupIsOpen ? < CreateMailingList />: null}
                 { deletingPopupIsOpen ? < DeletingPopup />: null }
                 { editPopupIsOpen ? < EditingContactPopup />: null}
             </Router>

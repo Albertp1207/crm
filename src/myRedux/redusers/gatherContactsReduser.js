@@ -25,7 +25,7 @@ export default function gatherContacts(state = initState, action) {
                     return item !== action.contact;
                 });
             }
-            console.log(contactsArr); 
+            // console.log(contactsArr); 
             if (contactsArr.length !== 0) {
                 return {
                     ...state,
