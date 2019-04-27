@@ -9,16 +9,7 @@ class Lists extends Component{
     componentDidMount() {
         this.props.getMailingLists();
     }
-    // uxarkel container funcer@ ...\/...
-    delete = (ev) => {
-        this.props.deleteEmailList(ev)
-            .then(res=>{
-                if(res.ok) {
-                }
-            })
-// miajamanak state ev props poxvel@...
-        
-    }
+      
 
     makeList = (lists) => {
         return lists.map(el=>{
@@ -27,7 +18,7 @@ class Lists extends Component{
                     <Link to={"/mailinglist/"+el.EmailListID}>{el.EmailListName}</Link>
                     <label action = "send" listid = {el.EmailListID} > Send </label>
                     <Link to="/mailinglist">
-                        <label onClick={this.delete} action = "delete" listid = {el.EmailListID} > delete </label>
+                        <label onClick={this.props.deleteEmailList} action = "delete" listid = {el.EmailListID} > delete </label>
                     </Link>
                 </li>
             )
@@ -57,4 +48,10 @@ class Lists extends Component{
 
 export default Lists;
 
+
+
+
+
+ // uxarkel container funcer@ ...\/...
+ // miajamanak state ev props poxvel@...
 //shouldc-i mej hamematel imast ka te reactna anum ...?

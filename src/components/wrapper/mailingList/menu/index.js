@@ -3,13 +3,24 @@
 // add new list
 
 import React,{Component} from "react";
+import myFetch from "../../../../tools/addOrDeleteContactsFromML";
+import {connect} from "react-redux";
+
 
 class Menu extends Component{
+    deleteContactsFromML = ()=> {
+        myFetch(this.props.tickContacts,false,this.props.mailingListName)
+            .then(res=>{
+                if(res.ok) {
+
+                }
+            })
+    }// sxaaaaaaaaaaaal
     render(){
         return (
             <div id="menu">
                 <div>asdsd
-                    <button onClick = {this.props.deleteCheckedClients}>Delete checkeds</button>
+                    <button onClick = {this.deleteContactsFromML}>Delete checkeds</button>
                     <button onClick = {this.props.createML}>Create mailing list</button>   
                     {/* <button onClick = {this.props.send}>Send</button>        */}
                 </div>
@@ -18,5 +29,13 @@ class Menu extends Component{
     }
         
 }
+// porcnakan menu-um
+const mapStateToProps = state => {
+    return {
+        tickContacts: state.tickContacts.tickContacts,
+        mailingListName: state.tickContacts.mailingListName
+    }
+}
+// after delete update, redux....
 
-export default Menu;
+export default connect(mapStateToProps)(Menu);
