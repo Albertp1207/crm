@@ -10,14 +10,15 @@ class List extends Component{
         this.props.getContactsForML(this.props.match.params.listid)
     }
     //ERROR__
-    shouldComponentUpdate(nextProps){
-        console.log(this.props.match.params.listid+ "!==" +nextProps.match.params.listid)
+    //ok, navlink...
+    componentDidUpdate(prevProps){
+        console.log(this.props.match.params.listid+ "!==" +prevProps.match.params.listid)
 
-        if(this.props.match.params.listid !== nextProps.match.params.listid){
+        if(this.props.match.params.listid !== prevProps.match.params.listid){
             this.props.getContactsForML(this.props.match.params.listid)
-            return true
+           
         };
-        return false
+        return true
     }
     makeList = list => {
         console.log(list)
