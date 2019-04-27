@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getContactsList } from '../myRedux/actions/contactsListFetchAction';
-import { cancelApdatingContactClosePopup } from '../myRedux/actions/updateContactAction';
+import { cancelEditingContactClosePopup } from '../myRedux/actions/editContactAction';
 import myFetch from '../tools/fetch';
 import validation from '../tools/validation';
-import WaitAnimation from '../reusableComponents/waitAnimation';
+import WaitAnimation from './waitAnimation';
 
 
-class UpdatingContactPopup extends Component{
+class EditingContactPopup extends Component{
     state = {
         wait: false,
         error: '',
         changes: ''
     }
-    contact = this.props.updatingContactPopup.updatingContact;
+    contact = this.props.editingContactPopup.editingContact;
     contactData = {
         FullName: this.contact['Full Name'],
         CompanyName: this.contact['Company Name'],
@@ -54,7 +54,7 @@ class UpdatingContactPopup extends Component{
     }
 
     
-    updateContact = () => {
+    editContact = () => {
         if(
             this.contactData.FullName !== this.contact['Full Name'] ||
             this.contactData.CompanyName !== this.contact['Company Name'] ||
@@ -72,7 +72,7 @@ class UpdatingContactPopup extends Component{
                             }else{
                                 this.setState({wait: false, error: ''}); 
                                 this.props.getContactsList();
-                                this.props.cancelApdatingContactClosePopup();
+                                this.props.cancelEditingContactClosePopup();
                             }
                             
                         })
@@ -97,12 +97,12 @@ class UpdatingContactPopup extends Component{
     }
 
     cancel = () => {
-        this.props.cancelApdatingContactClosePopup();
+        this.props.cancelEditingContactClosePopup();
         
     }
 
     render() {
-        const { updatingContact } = this.props.updatingContactPopup;
+        const { editingContact } = this.props.editingContactPopup;
 
         return (
             <div className = 'popupWrap'>
@@ -111,7 +111,7 @@ class UpdatingContactPopup extends Component{
                         <div id = 'fullName' >
                             <label>Full Name </label>
                             <input  type = 'text' 
-                                    defaultValue = { updatingContact['Full Name'] }
+                                    defaultValue = { editingContact['Full Name'] }
                                     ref = {el => this.fullName = el} 
                                     onBlur = { this.changeContact } 
                                     name = 'fullName' 
@@ -121,7 +121,7 @@ class UpdatingContactPopup extends Component{
                         <div id = 'companyName'>
                             <label>Company Name</label>
                             <input  type = 'text' 
-                                    defaultValue = { updatingContact['Company Name'] }
+                                    defaultValue = { editingContact['Company Name'] }
                                     ref = {el => this.companyName = el} 
                                     onBlur = { this.changeContact } 
                                     name = 'companyName'
@@ -131,7 +131,7 @@ class UpdatingContactPopup extends Component{
                         <div id = 'position'>
                             <label>Position</label>
                             <input  type = 'text' 
-                                    defaultValue = { updatingContact['Position'] }
+                                    defaultValue = { editingContact['Position'] }
                                     ref = {el => this.position = el} 
                                     onBlur = { this.changeContact } 
                                     name = 'position'
@@ -141,7 +141,7 @@ class UpdatingContactPopup extends Component{
                         <div id = 'country'>
                             <label>Country</label>
                             <input  type = 'text' 
-                                    defaultValue = { updatingContact['Country'] }
+                                    defaultValue = { editingContact['Country'] }
                                     ref = {el => this.country = el} 
                                     onBlur = { this.changeContact } 
                                     name = 'country'
@@ -151,7 +151,7 @@ class UpdatingContactPopup extends Component{
                         <div id = 'email'>
                             <label>Email</label>
                             <input  type = 'email' 
-                                    defaultValue = { updatingContact['Email'] }
+                                    defaultValue = { editingContact['Email'] }
                                     ref = {el => this.email = el} 
                                     onBlur = { this.changeContact } 
                                     name = 'email'
@@ -160,7 +160,7 @@ class UpdatingContactPopup extends Component{
                             <p>{this.state.error}{this.state.changes}</p>
                         </div>
                         <div className = 'popupButtons'>
-                            <button onClick = { this.updateContact }>Save</button>
+                            <button onClick = { this.editContact }>Save</button>
                             <button onClick = { this.cancel }>Cancel</button>
                         </div>
                         
@@ -174,7 +174,7 @@ class UpdatingContactPopup extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        updatingContactPopup: state.updatingContactPopup
+        editingContactPopup: state.editingContactPopup
     }
 }
 
@@ -182,10 +182,10 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
             getContactsList,
-            cancelApdatingContactClosePopup
+            cancelEditingContactClosePopup
         },
         dispatch
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdatingContactPopup);
+export default connect(mapStateToProps, mapDispatchToProps)(EditingContactPopup);

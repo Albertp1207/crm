@@ -4,7 +4,7 @@ import ContactsListMenu from './contactsListMenu';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getContactsList } from '../../../myRedux/actions/contactsListFetchAction';
-import { addDeletingContactsEnablePopup } from '../../../myRedux/actions/deletingContactsAction';
+import { addContactsActivationButtons } from '../../../myRedux/actions/gatherContactsAction';
 import WaitAnimation from '../../../reusableComponents/waitAnimation';
 
 class ContactsList extends Component{
@@ -16,7 +16,7 @@ class ContactsList extends Component{
 
     getDeletingContacts = (e) => {
        
-        this.props.addDeletingContactsEnablePopup( e.target.value );
+        this.props.addContactsActivationButtons( e.target.value );
 
     }
 
@@ -28,7 +28,7 @@ class ContactsList extends Component{
             return <div>ERROR --- {error.message}</div>
         }
 
-        if(loading && lists.length === 0) {
+        if(loading) {
             return <WaitAnimation />
         }
         return (
@@ -69,7 +69,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
             getContactsList,
-            addDeletingContactsEnablePopup
+            addContactsActivationButtons
         },
         dispatch
     )

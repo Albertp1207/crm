@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 import { FaUserEdit } from "react-icons/fa";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { addApdatingContactOpenPopup } from '../../../../myRedux/actions/updateContactAction';
+import { addEditingContactOpenPopup } from '../../../../myRedux/actions/editContactAction';
 
 class ContatsListRow extends Component{
 
     chooseContact = () => {
-        let updatingContact = '';
+        let editingContact = '';
         
         for (let value of this.props.contacts.lists) {
             if (value.GuID === this.iconButId) {
-                updatingContact = value;
+                editingContact = value;
                 break;
             }
         }
-        this.props.addApdatingContactOpenPopup(updatingContact);
+        this.props.addEditingContactOpenPopup(editingContact);
         // console.log(updatingContact);
     }
     
@@ -47,7 +47,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
-            addApdatingContactOpenPopup
+            addEditingContactOpenPopup
         },
         dispatch
     )
