@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getContactsList } from '../myRedux/actions/contactsListFetchAction';
-import { cancelClearContactsClosePopups } from '../myRedux/actions/gatherContactsAction';
+import { closePopups } from '../myRedux/actions/openPopupsAction';
 import validation from '../tools/validation';
 import myFetch from '../tools/fetch';
 import WaitAnimation from './waitAnimation';
@@ -10,7 +10,7 @@ import WaitAnimation from './waitAnimation';
 
 
 class CreateMailingList extends Component{
-    validation = true;
+    validation = false;
 
     state = {
         wait: false,
@@ -22,6 +22,7 @@ class CreateMailingList extends Component{
         if (validation(el)) {
             this.validation = true;
             el.target.nextSibling.innerHTML = '';
+            this.setState({ error: ''});
         }else{
             this.validation = false;
             el.target.nextSibling.innerHTML = 'Filled incorrectly';
@@ -30,11 +31,13 @@ class CreateMailingList extends Component{
     }
 
     createMailingList = () => {
-        const { collectionContactsArr } = this.props.gatherContacts;
+        const { collectionSelected } = this.props.contacts;
+        
         let mailingList = {
                 EmailListName: this.emailListName.value,
-                Contacts: collectionContactsArr
+                Contacts: collectionSelected
             }
+
         if (this.validation) {
             this.setState({wait: true}); 
         
@@ -47,21 +50,21 @@ class CreateMailingList extends Component{
                 } else {        
                     this.setState({wait: false, error: ''});
                     this.props.getContactsList(); 
-                    this.props.cancelClearContactsClosePopups();
+                    this.props.closePopups();
                 } 
             })
             .catch(error => {
                 this.setState({wait: false, error: 'Check the data and try again'});
                 console.log(error);
             });
+        }else{
+            this.setState({ error: 'Check the data and try again'});
         }
                 
     }
 
     cancelCreating = () => {
-        this.props.cancelClearContactsClosePopups();
-        this.props.getContactsList();
-        console.log(this.props.gatherContacts.collectionContactsArr)
+        this.props.closePopups();
     }
     
     render() {
@@ -73,9 +76,8 @@ class CreateMailingList extends Component{
                         <div id = 'EmailListName":' >
                             <label>Email List Name </label>
                             <input type = 'text' ref = {el => this.emailListName = el} onChange = { this.createContact } name = 'emailListName' />
-                            <p></p>
+                            <p>{ this.state.error }</p>
                         </div>
-                        <div>{ this.state.error }</div>
                         <div className = 'popupButtons'>
                             <button onClick = { this.createMailingList }>Create</button>
                             <button onClick = { this.cancelCreating }>Cancel</button>
@@ -90,7 +92,7 @@ class CreateMailingList extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        gatherContacts: state.gatherContacts
+        contacts: state.contactsList
     }
 }
 
@@ -98,7 +100,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         {  
             getContactsList,
-            cancelClearContactsClosePopups
+            closePopups
         },
         dispatch
     )

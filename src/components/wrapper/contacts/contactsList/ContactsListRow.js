@@ -20,11 +20,11 @@ class ContatsListRow extends Component{
     }
     
     render () {
-        const { person , colback } = this.props;
+        const { person, colback, checked } = this.props;
         return (
             <div className = 'contactsListRow'>
                 <div>
-                    <input type = 'checkbox' onClick = { colback } value = {person.GuID} />
+                    <input type = 'checkbox' onClick = { colback } value = {person.GuID} defaultChecked = { checked } />
                 </div>
                 <div>{ person['Full Name'] }</div>
                 <div>{ person['Company Name'] }</div>

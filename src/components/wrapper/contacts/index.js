@@ -3,26 +3,26 @@ import ContactsListRow from './contactsList/ContactsListRow';
 import ContactsListMenu from './contactsListMenu';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getContactsList } from '../../../myRedux/actions/contactsListFetchAction';
-import { addContactsActivationButtons } from '../../../myRedux/actions/gatherContactsAction';
+import { getContactsList, addSelectedContacts } from '../../../myRedux/actions/contactsListFetchAction';
 import WaitAnimation from '../../../reusableComponents/waitAnimation';
 
 class ContactsList extends Component{
 
     componentDidMount = () => {
         this.props.getContactsList();
+        
     }
 
 
-    getDeletingContacts = (e) => {
+    getSelectedContacts = (e) => {
        
-        this.props.addContactsActivationButtons( e.target.value );
+        this.props.addSelectedContacts( e.target.value );
 
     }
 
     render() {
         // console.log(this.props.contacts);
-        const { lists, loading, error } = this.props.contacts;
+        const { lists, loading, error, selectedContacts } = this.props.contacts;
 
         if(error) {
             return <div>ERROR --- {error.message}</div>
@@ -48,8 +48,10 @@ class ContactsList extends Component{
                     <div className = 'contactsListBody'>
                         { lists.map( item => <ContactsListRow 
                                                 person = { item } 
-                                                colback = { this.getDeletingContacts }
-                                                key = { item.GuID } /> )
+                                                colback = { this.getSelectedContacts }
+                                                checked = { selectedContacts[item.GuID] }
+                                                key = { item.GuID } /> 
+                                                )
                         }
                     </div>
                 </div>
@@ -69,7 +71,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
             getContactsList,
-            addContactsActivationButtons
+            addSelectedContacts
         },
         dispatch
     )

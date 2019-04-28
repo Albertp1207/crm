@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getContactsList } from '../myRedux/actions/contactsListFetchAction';
-import { openDeletingContactsPopup, cancelClearContactsClosePopups } from '../myRedux/actions/gatherContactsAction';
+import { closePopups } from '../myRedux/actions/openPopupsAction';
 import myFetch from '../tools/fetch';
 import WaitAnimation from '../reusableComponents/waitAnimation';
 
@@ -13,24 +13,23 @@ class DeletingPopup extends Component{
         wait: false
     }
     deleteContacts = () => {
-        const { collectionContactsArr } = this.props.gatherContacts;
+        const { collectionSelected } = this.props.contacts
 
         this.setState({wait: true}); 
         
-        myFetch('/contacts', 'DELETE', collectionContactsArr)
+        myFetch('/contacts', 'DELETE', collectionSelected)
         .then(res => {
             // console.log(res); 
             this.setState({wait: false}); 
             this.props.getContactsList();
-            this.props.cancelClearContactsClosePopups();
+            this.props.closePopups();
         })
         .catch(error => console.log(error));        
     }
 
     cancelDeleting = () => {
-        this.props.cancelClearContactsClosePopups();
-        this.props.getContactsList();
-        console.log(this.props.gatherContacts.collectionContactsArr)
+        this.props.closePopups();
+        // console.log(this.props.gatherContacts.collectionContactsArr)
     }
     
     render() {
@@ -54,7 +53,7 @@ class DeletingPopup extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        gatherContacts: state.gatherContacts
+        contacts: state.contactsList
     }
 }
 
@@ -62,7 +61,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
             getContactsList,
-            cancelClearContactsClosePopups
+            closePopups
         },
         dispatch
     )

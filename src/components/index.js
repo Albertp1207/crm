@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 import Menu from "./menu";
 import Wrapper from "./wrapper";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../styles/index.sass';
 import logo from '../styles/images/logo.png';
 import AddContactPopup from './popups/AddContactPopup';
@@ -13,7 +13,7 @@ import CreateMailingList from '../reusableComponents/CreateMailingList1';
 
 class App extends Component{
     render(){
-        const { deletingPopupIsOpen, creatingEmailListPopupIsOpen } = this.props.gatherContacts;
+        const { deletingPopupIsOpen, creatingEmailListPopupIsOpen } = this.props.openPopups;
         const { editPopupIsOpen } = this.props.editingContactPopup;
         
         return (
@@ -22,9 +22,9 @@ class App extends Component{
                     <div className="header">
                         <div className = 'size'>
                             <div id = 'logo'>
-                                <a href = '#'>
+                                <Link to="/contacts">
                                     <img src = {logo} alt = 'logo'/>
-                                </a>
+                                </Link>
                             </div>
                             <h1>C<span>ustomer</span> R<span>elationship</span> M<span>anagement</span></h1>
                         </div>
@@ -48,7 +48,7 @@ class App extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        gatherContacts: state.gatherContacts,
+        openPopups: state.openPopups,
         editingContactPopup: state.editingContactPopup
     }
 }

@@ -1,8 +1,9 @@
 import myFetch from "../../tools/fetch";
 
-export const GET_CONTACTS_LIST_BEGIN = "GET_CONTACTS_LIST_BEGIN"
-export const GET_CONTACTS_LIST_SUCCESS = "GET_CONTACTS_LIST_SUCCESS"
-export const GET_CONTACTS_LIST_FAIL = "GET_CONTACTS_LIST_FAIL"
+export const GET_CONTACTS_LIST_BEGIN = "GET_CONTACTS_LIST_BEGIN";
+export const GET_CONTACTS_LIST_SUCCESS = "GET_CONTACTS_LIST_SUCCESS";
+export const GET_CONTACTS_LIST_FAIL = "GET_CONTACTS_LIST_FAIL";
+export const ADD_SELECTED_CONTACTS_ACTIVATION_BUTTONS = 'ADD_SELECTED_CONTACTS_ACTIVATION_BUTTONS';
 
 export const getContactsListBegin = () => ({
     type: GET_CONTACTS_LIST_BEGIN
@@ -28,3 +29,16 @@ export const getContactsList = () => {
             .catch(error => dispatch(getContactsListFail(error)));
     };
 }
+
+
+// add selected contacts
+
+export const addSelectedContacts = (guId) => ({
+        type: ADD_SELECTED_CONTACTS_ACTIVATION_BUTTONS,
+        guId
+})
+
+// let guIds = {};
+    // contacts.forEach(element => {
+    //     guIds[element.GuID] = false;
+    // });

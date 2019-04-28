@@ -1,7 +1,7 @@
 import sendEmailPopup from "./sendEmailPopupReducer";
 import contactsList from './contactsListReduser';
 import mailingLists from "./mailingListsReducer";
-import gatherContacts from './gatherContactsReduser';
+import openPopups from './openPopupsReduser';
 import templates from "./templatesReducer";
 import updatingContactPopup from "./editContactReducer";
 import tickContacts from "./tickContactsReducer";
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     mailingLists,
     sendEmailPopup,
     contactsList,
-    gatherContacts,
+    openPopups,
     templates,
     updatingContactPopup,
     tickContacts,

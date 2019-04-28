@@ -8,7 +8,7 @@ const initState = {
     editPopupIsOpen: false
 };
 
-export default function editingContactPopup(state = initState, action) {
+export default function editingContactPopupReducer(state = initState, action) {
     // console.log(action);
     
     switch (action.type) {
