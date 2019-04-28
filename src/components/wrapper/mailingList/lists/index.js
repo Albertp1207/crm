@@ -1,13 +1,58 @@
-import {getMailingLists} from "../../../../myRedux/actions/mailingListActions/mailingListFetchActions";
-import {openSendEmailPopup} from "../../../../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions"
+import React,{Component} from "react";
+import {NavLink,Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Lists from "./lists"
-import myFetch from "../../../../tools/fetch";
+import {getMailingLists,deleteEmailList} from "../../../../myRedux/actions/mailingListActions/mailingListFetchActions";
+import {openSendEmailPopup} from "../../../../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions"
+
+class Lists extends Component{
+    componentDidMount() {
+        this.props.getMailingLists();
+    } 
+
+    makeList = (lists) => {
+        return lists.map(el=>{
+            return (
+                <li key={el.EmailListID} listid={el.EmailListID}>
+                    <NavLink to={"/mailinglist/"+el.EmailListID} activeStyle={{
+                        pointerEvents: "none",
+                        cursor: "default",
+                        color: "grey"
+                    }}>{el.EmailListName}</NavLink>
+                    <label  onClick = {this.props.openSendEmailPopup} listid = {el.EmailListID} > Send </label>
+                    <Link to="/mailinglist">
+                        <label onClick={this.props.deleteEmailList} listid = {el.EmailListID} > delete </label>
+                    </Link>
+                </li>
+            )
+        })
+    }
+    render(){
+        let {error,lists,loading} = this.props;
+        // console.log(this.props)
+        if(error) {
+            return <div>ERROR --- {error.message}</div>
+        }
+
+        if( loading && lists.length === 0) {
+            return <div>Loading ...</div>
+        }
+
+        
+        return(
+            <div className="lists">
+                <ul>
+                    {this.makeList(lists)}
+                </ul>
+            </div>
+        )
+    }
+}
 
 const mapStateToProps = state => ({
     lists: state.mailingLists.lists,
     loading: state.mailingLists.loading,
-    error: state.mailingLists.error
+    error: state.mailingLists.error,
+    ticks: state.tickContacts
 })
 
 const mapDispatchToProps = dispatch => {
@@ -15,27 +60,21 @@ const mapDispatchToProps = dispatch => {
         getMailingLists: ()=>{
             dispatch(getMailingLists())
         },
-        onCklickOnListName:(ev)=>{
-            // console.log(ev.target.getAttribute("action"))
-            switch(ev.target.getAttribute("action")){
-                case "send":
-                    // console.log(ev.target.getAttribute("listid"))
-                    dispatch(openSendEmailPopup(null,ev.target.getAttribute("listid")))//pakel@ popupi koxmic !
-                    return;
-                default:
-                    return
-            }
+        openSendEmailPopup:ev=>{
+                    dispatch(openSendEmailPopup(null,ev.target.getAttribute("listid")))
+            
         },// funkcia poxancum Listsin ...???
-        deleteEmailList: (ev) => {
-            const id = ev.target.getAttribute("listid")
-            return myFetch("/emaillists?id="+id,"DELETE")
-                .then(res=>{
-                        dispatch(getMailingLists()) // ?
-                        return res
-                })
-                .catch(err=>console.log(err))
+        deleteEmailList: ev => {
+            dispatch(deleteEmailList(ev))
         }
     }
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Lists);
+
+
+
+
+ // uxarkel container funcer@ ...\/...
+ // miajamanak state ev props poxvel@...
+//shouldc-i mej hamematel imast ka te reactna anum ...?

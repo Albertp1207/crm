@@ -50,7 +50,11 @@ class emailSendPopup extends Component {
     }
     send = () => {
         myFetch(this.makeUrl(),"POST",this.props.sendEmailPopup.GuIDArr)
-        .then(aa=>console.log(aa))
+        .then(res=>{
+            if(res.ok) {
+                this.props.closePopup()
+            }
+        })
         .catch(err=>console.log(err))
     }
     render() {
@@ -111,6 +115,5 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(emailSendPopup);
-// petqa vercni templatesner@, @ntri, sargi silken -->...
 
 // zamikaniya classov OKa ?

@@ -16,7 +16,6 @@ export const getMailingListsFail = error => ({
     payload: {error}
 })
 
-
 export const getMailingLists = () => {
     // console.log("ASD_AS_D-")
     return dispatch => {
@@ -31,6 +30,19 @@ export const getMailingLists = () => {
     };
 }
 
+
+export const deleteEmailList = (ev) => {
+    return dispatch => {
+        const id = ev.target.getAttribute("listid")
+        return myFetch("/emaillists?id="+id,"DELETE")
+            .then(res=>{
+                    dispatch(getMailingLists()) // ?
+                    return res
+            })
+            .catch(err=>console.log(err))
+    }
+        
+}
 // promise-i mej return aneluc anpayman promise ????
 
 // error..tate update on an unmounted component. This is a no-op

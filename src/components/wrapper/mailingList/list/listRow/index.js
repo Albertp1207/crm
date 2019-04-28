@@ -1,29 +1,36 @@
-import React from "react"
+import React,{Component} from "react"
 import {connect} from "react-redux"
-import {tickContact,clearTicks} from "../../../../../myRedux/actions/tickActions/tickContactsML"
+import {tickContact} from "../../../../../myRedux/actions/tickActions/tickContactsML"
 
-const listRow = props => {
-    const {person} = props;
+class listRow extends Component{
+    // constructor(props){
+    //     super(props);
+    // }
 
     // bind doesn't work ???
-    return (
-        <div  className = 'contactsListRow'>                
-            <div><input  guiid= {person.GuID} onClick={()=>{props.tickContact(person.GuID)}} type = 'checkbox'/></div>
-            <div>{person['Full Name']}</div>
-            <div>{person['Company Name']}</div>
-            <div>{person['Position']}</div>
-            <div>{person['Country']}</div>
-            <div>{person['Email']}</div>
-            {/* <div><a href = '#'><FaUserEdit /></a></div> */}
-        </div>
-    )
+    render() {
+        const {person} = this.props;
+        return (
+            <div  className = 'contactsListRow'>                
+                <div><input onClick ={()=>this.props.tickContact(person.GuID)}  guiid= {person.GuID} type = 'checkbox'/></div>
+                <div>{person['Full Name']}</div>
+                <div>{person['Company Name']}</div>
+                <div>{person['Position']}</div>
+                <div>{person['Country']}</div>
+                <div>{person['Email']}</div>
+                {/* <div><a href = '#'><FaUserEdit /></a></div> */}
+            </div>
+        )
+    }
+    
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        tickContact: (id)=> dispatch(tickContact(id))
+        tickContact: id => dispatch(tickContact(id))
     }
 }
 export default connect(null,mapDispatchToProps)(listRow);
 
 // classi anun@ contact.., komponentin@ listRow... to AHo
+// Sync action blocking

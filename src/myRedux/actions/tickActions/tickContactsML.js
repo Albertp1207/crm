@@ -1,6 +1,6 @@
 export const TICK_CONTACT = "ADD_TICK";
-export const CLEAR_TICKS = "CLEAT_TICKS";
-export const PUT_NAME = "PUT_NAME";
+export const CLEAR_TICKS = "CLEAR_TICKS";
+export const PUT_ID = "PUT_ID";
 
 export const tickContact = id => ({
     type: TICK_CONTACT,
@@ -10,8 +10,8 @@ export const clearTicks = () => ({
     type: CLEAR_TICKS
 });
 
-export const putName = name => ({
-    type:PUT_NAME,
+export const putID = name => ({
+    type:PUT_ID,
     payload:{name}
 })
 

@@ -1,12 +1,12 @@
 import {
     TICK_CONTACT,
     CLEAR_TICKS,
-    PUT_NAME
+    PUT_ID
 } from "../actions/tickActions/tickContactsML"
 
 const initialState = {
     tickContacts:[],
-    mailingListName:null
+    MLID:null
 }
 export default function tickContactsReducer(state = initialState,action) {
     let copyArr = state.tickContacts.slice();
@@ -23,11 +23,15 @@ export default function tickContactsReducer(state = initialState,action) {
                 tickContacts:copyArr
             }
         case CLEAR_TICKS:
-            return {...state,tickContacts:[]}
-        case PUT_NAME:
+        console.log("C!!!R!!!!!")
+            return {
+                tickContacts:[],
+                MLID:null
+            }
+        case PUT_ID:
             return {
                 ...state,
-                mailingListName:action.payload.name
+                MLID:action.payload.name
             }
             
         default:
