@@ -1,5 +1,5 @@
 import React,{ Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import ContactsList from './contacts';
 import MailingList from "./mailingList";
 

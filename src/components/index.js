@@ -9,13 +9,13 @@ import DeletingPopup from '../reusableComponents/DeletingPopup';
 import { connect } from 'react-redux';
 import EditingContactPopup from '../reusableComponents/EditingContactPopup';
 import CreateMailingList from '../reusableComponents/CreateMailingList1';
-
+import Indicator from "../reusableComponents/indicator"
 
 class App extends Component{
     render(){
         const { deletingPopupIsOpen, creatingEmailListPopupIsOpen } = this.props.openPopups;
         const { editPopupIsOpen } = this.props.editingContactPopup;
-        
+        const {bgColor,isOpen,text} = this.props.indicator;
         return (
             <Router>
                 <div className="main">
@@ -40,6 +40,7 @@ class App extends Component{
                 { creatingEmailListPopupIsOpen ? < CreateMailingList />: null}
                 { deletingPopupIsOpen ? < DeletingPopup />: null }
                 { editPopupIsOpen ? < EditingContactPopup />: null}
+                { isOpen ?<Indicator bgColor = {bgColor} text = {text}/> : null}
             </Router>
 
         );
@@ -49,7 +50,8 @@ class App extends Component{
 const mapStateToProps = (state) => {
     return {
         openPopups: state.openPopups,
-        editingContactPopup: state.editingContactPopup
+        editingContactPopup: state.editingContactPopup,
+        indicator: state.indicator
     }
 }
 

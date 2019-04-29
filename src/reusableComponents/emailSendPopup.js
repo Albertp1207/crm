@@ -1,7 +1,8 @@
 import React,{Component} from "react";
 import {connect} from "react-redux";
-import {getTemplates} from "../myRedux/actions/templatesActions/getTemplatesAction"
+import {getTemplates} from "../myRedux/actions/templatesActions/getTemplatesAction";
 import {closeSendEmailPopup} from "../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions";
+import {openIndicator,closeIndicator,setContentIndicator,closeIndicatorAsync} from "../myRedux/actions/indicatorActions/indicatorAction"
 import myFetch from "../tools/fetch"
 
 
@@ -49,13 +50,21 @@ class emailSendPopup extends Component {
         })
     }
     send = () => {
+        this.props.openIndicator();
         myFetch(this.makeUrl(),"POST",this.props.sendEmailPopup.GuIDArr)
         .then(res=>{
+            console.log(res)
             if(res.ok) {
-                this.props.closePopup()
+                this.props.closePopup();
+                this.props.closeIndicatorAsync({text:"OK !",bgColor:"green"})
+            } else {
+                this.props.closeIndicatorAsync({text:"Error !",bgColor:"red"})
+
             }
         })
-        .catch(err=>console.log(err))
+        .catch(err=>{
+            this.props.closeIndicatorAsync({text:"CATCH Error !",bgColor:"red"})
+            console.log(err)})
     }
     render() {
         // console.log(this.props.st)
@@ -110,7 +119,14 @@ const mapDispatchToProps = dispatch => {
         },
         getTemplates:()=>{
             dispatch(getTemplates())
+        },
+        openIndicator: ()=>{
+            dispatch(openIndicator())
+        },
+        closeIndicatorAsync: (content) => {
+            dispatch(closeIndicatorAsync(content))
         }
+        
 }
 }
 

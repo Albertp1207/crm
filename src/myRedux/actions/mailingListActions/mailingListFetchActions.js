@@ -34,6 +34,7 @@ export const getMailingLists = () => {
 export const deleteEmailList = (ev) => {
     return dispatch => {
         const id = ev.target.getAttribute("listid")
+        // why return fetch ?
         return myFetch("/emaillists?id="+id,"DELETE")
             .then(res=>{
                     dispatch(getMailingLists()) // ?
