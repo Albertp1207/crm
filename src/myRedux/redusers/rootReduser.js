@@ -7,6 +7,7 @@ import updatingContactPopup from "./editContactReducer";
 import tickContacts from "./tickContactsReducer";
 import MLContacts from  "./MLContactsReducer";
 import editingContactPopup from "./editContactReducer";
+import indicator from "./indicatorReducer";
 import { combineReducers } from "redux";
 
 
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
     updatingContactPopup,
     tickContacts,
     MLContacts,
-    editingContactPopup
+    editingContactPopup,
+    indicator
 });
 
 export default rootReducer;

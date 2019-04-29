@@ -1,21 +1,26 @@
 import React,{Component} from "react";
-import { Link } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import { FaUsers } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
-
+// variable in module or in class ?
 class Menu extends Component{
+    activeStyle = {
+            pointerEvents: "none",
+            cursor: "default",
+            color: "grey"      
+    }
     render(){
         return (
             <div id="mainMenu">
                 <div className = 'itemMenu contactsMenu'>
-                    <Link to="/contacts">
+                    <NavLink activeStyle={this.activeStyle}  to="/contacts">
                         <FaUsers />
-                    </Link>                    
+                    </NavLink>                    
                 </div>
                 <div className = 'itemMenu mailingList'>
-                    <Link to="/mailinglist">
+                    <NavLink activeStyle={this.activeStyle} to="/mailinglist">
                         <IoIosSend /> 
-                    </Link>                    
+                    </NavLink>                    
                 </div>
                  
                 
