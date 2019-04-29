@@ -10,7 +10,8 @@ import WaitAnimation from '../reusableComponents/waitAnimation';
 
 class DeletingPopup extends Component{
     state = {
-        wait: false
+        wait: false,
+        error: ''
     }
     deleteContacts = () => {
         const { collectionSelected } = this.props.contacts
@@ -24,7 +25,11 @@ class DeletingPopup extends Component{
             this.props.getContactsList();
             this.props.closePopups();
         })
-        .catch(error => console.log(error));        
+        .catch(error => {
+            console.log(error.statusText);
+            this.props.getContactsList();
+            this.setState({wait: false, error: 'Update the database and try again'});
+        });        
     }
 
     cancelDeleting = () => {
@@ -39,6 +44,7 @@ class DeletingPopup extends Component{
                 <div className = 'popupContent'>
                     <div className = 'popupSize'>
                         <p>You want to delete the selected contacts ?</p>
+                        <p>{this.state.error}</p>
                         <div className = 'popupButtons'>
                             <button onClick = { this.deleteContacts }>Ok</button>
                             <button onClick = { this.cancelDeleting }>Cancel</button>

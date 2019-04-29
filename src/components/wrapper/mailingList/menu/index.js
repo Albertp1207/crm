@@ -35,7 +35,7 @@ class Menu extends Component{
 }
 // porcnakan menu-um
 const mapStateToProps = state => {
-    console.log(state.tickContacts)
+    // console.log(state.tickContacts)
     return {
         tickContacts: state.tickContacts.tickContacts,
         MLID: state.tickContacts.MLID

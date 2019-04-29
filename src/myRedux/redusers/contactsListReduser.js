@@ -2,7 +2,8 @@ import {
     GET_CONTACTS_LIST_BEGIN,
     GET_CONTACTS_LIST_SUCCESS,
     GET_CONTACTS_LIST_FAIL,
-    ADD_SELECTED_CONTACTS_ACTIVATION_BUTTONS
+    ADD_SELECTED_CONTACTS_ACTIVATION_BUTTONS,
+    SELECT_ALL
 } from "../actions/contactsListFetchAction"
 
 const initState = {
@@ -11,13 +12,15 @@ const initState = {
     error: null,
     selectedContacts: {},
     collectionSelected: [],
+    selectAll: false,
     buttonsNotActive: true,
 };
 
 export default function contactsListReducer(state = initState, action) {
     let guIds = {};
     let collectionSel = [];
-    // console.log(state.collectionSelected);
+    let selectAllCopy = false;
+    let buttonsNotActiveCopy = false;
 
     switch(action.type) {
 
@@ -39,26 +42,19 @@ export default function contactsListReducer(state = initState, action) {
               }
           });
           // console.log(guIds);
-        if (collectionSel.length !== 0) {
+          if (collectionSel.length !== 0) {
+            buttonsNotActiveCopy = false;
+          }else{
+            buttonsNotActiveCopy = true;
+          }
           return {
             ...state,
             loading: false,
             lists: action.payload.lists,
             selectedContacts: guIds,
             collectionSelected: collectionSel,
-            buttonsNotActive: false,
-          };
-        }else{
-          return {
-            ...state,
-            loading: false,
-            lists: action.payload.lists,
-            selectedContacts: guIds,
-            collectionSelected: collectionSel,
-            buttonsNotActive: true,
-          };
-        }
-        
+            buttonsNotActive: buttonsNotActiveCopy
+          }
           
     
         case GET_CONTACTS_LIST_FAIL:
@@ -69,9 +65,11 @@ export default function contactsListReducer(state = initState, action) {
             lists: []
           };
 
-        case ADD_SELECTED_CONTACTS_ACTIVATION_BUTTONS:
-          let selectedCon = state.selectedContacts;
 
+        case ADD_SELECTED_CONTACTS_ACTIVATION_BUTTONS:
+          let selectedCon = {...state.selectedContacts};
+          selectAllCopy = false;
+          
           if (selectedCon[action.guId]) {
             selectedCon[action.guId] = false;
           }else{
@@ -82,29 +80,51 @@ export default function contactsListReducer(state = initState, action) {
               collectionSel.push(key); 
             }
           }
-          // console.log(selectedCon);
-          // console.log(collectionSel);
-          if (collectionSel.length !== 0) {
-            return {
-              ...state,
-              selectedContacts: selectedCon,
-              collectionSelected: collectionSel,
-              buttonsNotActive: false,
-            }
-          }else{
-            return {
-              ...state,
-              selectedContacts: selectedCon,
-              collectionSelected: collectionSel,
-              buttonsNotActive: true,
-            }
-          }
           
+          if (collectionSel.length !== 0) {
+            buttonsNotActiveCopy = false;
+          }else{
+            buttonsNotActiveCopy = true;
+          }
+          if (Object.values(selectedCon).every(item => item)) {
+            selectAllCopy = true;
+          }else{
+            selectAllCopy = false;
+          }
+          return {
+            ...state,
+            selectedContacts: selectedCon,
+            collectionSelected: collectionSel,
+            selectAll: selectAllCopy,
+            buttonsNotActive: buttonsNotActiveCopy
+          }
+
+          
+          case SELECT_ALL:
+            selectedCon = {...state.selectedContacts};
+            selectAllCopy = !state.selectAll;
+
+            for (let key in selectedCon) {
+              selectedCon[key] = selectAllCopy;
+              collectionSel.push(key);
+            }
+            
+            // console.log(selectedCon);
+            return {
+              ...state,
+              selectedContacts: selectedCon,
+              collectionSelected: collectionSel,
+              selectAll: selectAllCopy,
+              buttonsNotActive: !selectAllCopy
+            }
+
     
         default:
           return state;
       }
 }
+
+
 
 
 

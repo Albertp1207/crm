@@ -3,26 +3,29 @@ import ContactsListRow from './contactsList/ContactsListRow';
 import ContactsListMenu from './contactsListMenu';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getContactsList, addSelectedContacts } from '../../../myRedux/actions/contactsListFetchAction';
+import { getContactsList, addSelectedContacts, selectAll } from '../../../myRedux/actions/contactsListFetchAction';
 import WaitAnimation from '../../../reusableComponents/waitAnimation';
 
 class ContactsList extends Component{
-
+    
     componentDidMount = () => {
         this.props.getContactsList();
         
     }
 
-
     getSelectedContacts = (e) => {
-       
         this.props.addSelectedContacts( e.target.value );
 
     }
 
+    chooseAll = () => {
+        // console.log(11);
+        this.props.selectAll()
+    }
+
     render() {
         // console.log(this.props.contacts);
-        const { lists, loading, error, selectedContacts } = this.props.contacts;
+        const { lists, loading, error, selectedContacts, selectAll } = this.props.contacts;
 
         if(error) {
             return <div>ERROR --- {error.message}</div>
@@ -36,7 +39,10 @@ class ContactsList extends Component{
                 <div className = 'contactsListTable'>
                     <div className = 'contactsListHead'>
                         <div className = 'contactsListRow'>
-                            <div>Select</div>
+                            <div>
+                                Select All
+                                <input type = 'checkbox' onChange = { this.chooseAll } checked = { selectAll }/>
+                            </div>
                             <div>Full Name</div>
                             <div>Company Name</div>
                             <div>Position</div>
@@ -64,6 +70,7 @@ class ContactsList extends Component{
 const mapStateToProps = (state) => {
     return {
         contacts: state.contactsList
+        
     }
 }
 
@@ -71,7 +78,8 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
             getContactsList,
-            addSelectedContacts
+            addSelectedContacts,
+            selectAll
         },
         dispatch
     )
