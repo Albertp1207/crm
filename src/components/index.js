@@ -8,12 +8,13 @@ import AddContactPopup from './popups/AddContactPopup';
 import DeletingPopup from '../reusableComponents/DeletingPopup';
 import { connect } from 'react-redux';
 import EditingContactPopup from '../reusableComponents/EditingContactPopup';
-import CreateMailingList from '../reusableComponents/CreateMailingList1';
-import Indicator from "../reusableComponents/indicator"
+import CreateMailingList from '../reusableComponents/CreateMailingList';
+import Indicator from "../reusableComponents/indicator";
+import AddToExistingList from "../reusableComponents/AddToExistingListPopup";
 
 class App extends Component{
     render(){
-        const { deletingPopupIsOpen, creatingEmailListPopupIsOpen } = this.props.openPopups;
+        const { deletingPopupIsOpen, creatingEmailListPopupIsOpen, addToExistingListIsOpen } = this.props.openPopups;
         const { editPopupIsOpen } = this.props.editingContactPopup;
         const {bgColor,isOpen,text} = this.props.indicator;
         return (
@@ -38,6 +39,7 @@ class App extends Component{
                 </div>
                 <Route path = '/contacts/add_contact' component = { AddContactPopup } />
                 { creatingEmailListPopupIsOpen ? < CreateMailingList />: null}
+                { addToExistingListIsOpen ? < AddToExistingList />: null}
                 { deletingPopupIsOpen ? < DeletingPopup />: null }
                 { editPopupIsOpen ? < EditingContactPopup />: null}
                 { isOpen ?<Indicator bgColor = {bgColor} text = {text}/> : null}

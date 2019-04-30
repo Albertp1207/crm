@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaUsers } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
 // variable in module or in class ?

@@ -3,7 +3,8 @@ import {
     GET_CONTACTS_LIST_SUCCESS,
     GET_CONTACTS_LIST_FAIL,
     ADD_SELECTED_CONTACTS_ACTIVATION_BUTTONS,
-    SELECT_ALL
+    SELECT_ALL,
+    CANCEL_SELECTED
 } from "../actions/contactsListFetchAction"
 
 const initState = {
@@ -21,7 +22,7 @@ export default function contactsListReducer(state = initState, action) {
     let collectionSel = [];
     let selectAllCopy = false;
     let buttonsNotActiveCopy = false;
-
+  
     switch(action.type) {
 
         case GET_CONTACTS_LIST_BEGIN:
@@ -100,7 +101,7 @@ export default function contactsListReducer(state = initState, action) {
           }
 
           
-          case SELECT_ALL:
+        case SELECT_ALL:
             selectedCon = {...state.selectedContacts};
             selectAllCopy = !state.selectAll;
 
@@ -118,6 +119,20 @@ export default function contactsListReducer(state = initState, action) {
               buttonsNotActive: !selectAllCopy
             }
 
+
+        case CANCEL_SELECTED:
+          selectedCon = {...state.selectedContacts};
+
+          for (let key in selectedCon) {
+            selectedCon[key] = false;
+          }
+          return {
+            ...state,
+            selectedContacts: selectedCon,
+            collectionSelected: [],
+            selectAll: false,
+            buttonsNotActive: true
+          }
     
         default:
           return state;
