@@ -51,7 +51,7 @@ class AddContactPopup extends Component{
     sendContact = () => {
         
         if(Object.values(this.validAllData).every(val => val)){
-            this.setState({wait: true});
+            this.setState({wait: true, error: ''});
             myFetch('/contacts', 'POST', this.contactData)
             .then(res => {
                 // console.log(res); 
