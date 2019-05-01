@@ -11,12 +11,14 @@ import EditingContactPopup from '../reusableComponents/EditingContactPopup';
 import CreateMailingList from '../reusableComponents/CreateMailingList';
 import Indicator from "../reusableComponents/indicator";
 import AddToExistingList from "../reusableComponents/AddToExistingListPopup";
+import EmailSendPopup from '../reusableComponents/emailSendPopup';
 
 class App extends Component{
     render(){
         const { deletingPopupIsOpen, creatingEmailListPopupIsOpen, addToExistingListIsOpen } = this.props.openPopups;
         const { editPopupIsOpen } = this.props.editingContactPopup;
         const {bgColor,isOpen,text} = this.props.indicator;
+        const {isOpenSendEmailPopup} = this.props;
         return (
             <Router>
                 <div className="main">
@@ -43,6 +45,7 @@ class App extends Component{
                 { deletingPopupIsOpen ? < DeletingPopup />: null }
                 { editPopupIsOpen ? < EditingContactPopup />: null}
                 { isOpen ?<Indicator bgColor = {bgColor} text = {text}/> : null}
+                { isOpenSendEmailPopup ? <EmailSendPopup/> : null }
             </Router>
 
         );
@@ -53,7 +56,8 @@ const mapStateToProps = (state) => {
     return {
         openPopups: state.openPopups,
         editingContactPopup: state.editingContactPopup,
-        indicator: state.indicator
+        indicator: state.indicator,
+        isOpenSendEmailPopup: state.sendEmailPopup.isOpen
     }
 }
 
