@@ -20,7 +20,7 @@ class ContactsListMenu extends Component{
                 <Button name = 'Create Mailing List' openPopup = { this.props.openCreatingEmailListPopup } disable = { buttonsNotActive } />
                 <Button name = 'Add to Existing List' openPopup = { this.props.addToExistingListPopup } disable = { buttonsNotActive } />
                 <ButtonLink name = 'Add New Contact' path = '/contacts/add_contact' />
-                <ButtonLink name = 'Upload File' path = '/' />
+                <ButtonLink name = 'Upload File' path = '/contacts/uplaod_file' />
                 <Button name = 'Delete Contact' openPopup = { this.props.openDeletingPopup } disable = { buttonsNotActive } />
             </div>
         );

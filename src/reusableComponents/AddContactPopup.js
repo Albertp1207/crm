@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import  { Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getContactsList } from '../../myRedux/actions/contactsListFetchAction';
-import myFetch from '../../tools/fetch';
-import validation from '../../tools/validation';
-import WaitAnimation from '../../reusableComponents/waitAnimation';
+import { getContactsList } from '../myRedux/actions/contactsListFetchAction';
+import myFetch from '../tools/fetch';
+import validation from '../tools/validation';
+import WaitAnimation from '../reusableComponents/waitAnimation';
 
 
 class AddContactPopup extends Component{
