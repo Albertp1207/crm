@@ -4,18 +4,23 @@ import Button from './button/Button';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { openDeletingPopup, openCreatingEmailListPopup, addToExistingListPopup } from '../../../../myRedux/actions/openPopupsAction';
+import { openSendEmailPopup } from '../../../../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions';
 
 
 class ContactsListMenu extends Component{
+    openSendEmail = () =>{
+        this.props.openSendEmailPopup(this.props.contacts.collectionSelected)
+    } 
+
     render() {
         const { buttonsNotActive } = this.props.contacts;
         return (
             <div className = 'contactsListMenu'>
-                <ButtonLink name = 'Send Email' path = '/' />
+                <Button name = 'Send Email' openPopup = { this.openSendEmail } disable = { buttonsNotActive } />
                 <Button name = 'Create Mailing List' openPopup = { this.props.openCreatingEmailListPopup } disable = { buttonsNotActive } />
                 <Button name = 'Add to Existing List' openPopup = { this.props.addToExistingListPopup } disable = { buttonsNotActive } />
                 <ButtonLink name = 'Add New Contact' path = '/contacts/add_contact' />
-                <ButtonLink name = 'Upload File' path = '/' />
+                <ButtonLink name = 'Upload File' path = '/contacts/uplaod_file' />
                 <Button name = 'Delete Contact' openPopup = { this.props.openDeletingPopup } disable = { buttonsNotActive } />
             </div>
         );
@@ -34,7 +39,8 @@ const mapDispatchToProps = (dispatch) => {
         { 
             openDeletingPopup,
             openCreatingEmailListPopup,
-            addToExistingListPopup
+            addToExistingListPopup,
+            openSendEmailPopup
         },
         dispatch
     )

@@ -4,7 +4,7 @@ import Wrapper from "./wrapper";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../styles/index.sass';
 import logo from '../styles/images/logo.png';
-import AddContactPopup from './popups/AddContactPopup';
+import AddContactPopup from '../reusableComponents/AddContactPopup';
 import DeletingPopup from '../reusableComponents/DeletingPopup';
 import { connect } from 'react-redux';
 import EditingContactPopup from '../reusableComponents/EditingContactPopup';
@@ -12,6 +12,8 @@ import CreateMailingList from '../reusableComponents/CreateMailingList';
 import Indicator from "../reusableComponents/indicator";
 import SubmitPopup from "../reusableComponents/SubmitPopup"
 import AddToExistingList from "../reusableComponents/AddToExistingListPopup";
+import EmailSendPopup from '../reusableComponents/emailSendPopup';
+import UploadFilePopup from '../reusableComponents/UploadFilePopup';
 
 class App extends Component{
     render(){
@@ -19,6 +21,9 @@ class App extends Component{
         const { editPopupIsOpen } = this.props.editingContactPopup;
         // const {bgColor,isOpen,text} = this.props.indicator;
         const {isOpen} = this.props.submitPopup
+        const {bgColor,text} = this.props.indicator;
+        const isOpenIndicator = this.props.indicator.isOpen
+        const {isOpenSendEmailPopup} = this.props;
         return (
             <Router>
                 <div className="main">
@@ -40,12 +45,15 @@ class App extends Component{
                     </section>
                 </div>
                 <Route path = '/contacts/add_contact' component = { AddContactPopup } />
+                <Route path = '/contacts/uplaod_file' component = { UploadFilePopup } />
                 { creatingEmailListPopupIsOpen ? < CreateMailingList />: null}
                 { addToExistingListIsOpen ? < AddToExistingList />: null}
                 { deletingPopupIsOpen ? < DeletingPopup />: null }
                 { editPopupIsOpen ? < EditingContactPopup />: null}
                 {isOpen ? <SubmitPopup /> : null}
                 {/* { isOpen ?<Indicator bgColor = {bgColor} text = {text}/> : null} */}
+                { isOpenIndicator ?<Indicator bgColor = {bgColor} text = {text}/> : null}
+                { isOpenSendEmailPopup ? <EmailSendPopup/> : null }
             </Router>
 
         );
@@ -57,7 +65,11 @@ const mapStateToProps = (state) => {
         openPopups: state.openPopups,
         editingContactPopup: state.editingContactPopup,
         indicator: state.indicator,
+<<<<<<< HEAD
         submitPopup: state.submitPopup
+=======
+        isOpenSendEmailPopup: state.sendEmailPopup.isOpen
+>>>>>>> c7440015a6f70056268953d1f0a391971b713cee
     }
 }
 

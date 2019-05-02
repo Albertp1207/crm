@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import  { Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getContactsList } from '../../myRedux/actions/contactsListFetchAction';
-import myFetch from '../../tools/fetch';
-import validation from '../../tools/validation';
-import WaitAnimation from '../../reusableComponents/waitAnimation';
+import { getContactsList } from '../myRedux/actions/contactsListFetchAction';
+import myFetch from '../tools/fetch';
+import validation from '../tools/validation';
+import WaitAnimation from '../reusableComponents/waitAnimation';
 
 
 class AddContactPopup extends Component{
@@ -51,7 +51,7 @@ class AddContactPopup extends Component{
     sendContact = () => {
         
         if(Object.values(this.validAllData).every(val => val)){
-            this.setState({wait: true});
+            this.setState({wait: true, error: ''});
             myFetch('/contacts', 'POST', this.contactData)
             .then(res => {
                 // console.log(res); 

@@ -53,7 +53,7 @@ class emailSendPopup extends Component {
         this.props.openIndicator();
         myFetch(this.makeUrl(),"POST",this.props.sendEmailPopup.GuIDArr)
         .then(res=>{
-            console.log(res)
+            // console.log(res)
             if(res.ok) {
                 this.props.closePopup();
                 this.props.closeIndicatorAsync({text:"OK !",bgColor:"green"})
