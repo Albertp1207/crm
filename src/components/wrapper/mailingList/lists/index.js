@@ -3,7 +3,7 @@ import {NavLink,Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {getMailingLists,deleteEmailList} from "../../../../myRedux/actions/mailingListActions/mailingListFetchActions";
 import {openSendEmailPopup} from "../../../../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions"
-
+import {openSubmitPopup} from "../../../../myRedux/actions/submitPopupActions/submitPopupActions"
 class Lists extends Component{
     componentDidMount() {
         this.props.getMailingLists();
@@ -20,7 +20,7 @@ class Lists extends Component{
                     }}>{el.EmailListName}</NavLink>
                     <label  onClick = {this.props.openSendEmailPopup} listid = {el.EmailListID} > Send </label>
                     <Link to="/mailinglist">
-                        <label onClick={this.props.deleteEmailList} listid = {el.EmailListID} > delete </label>
+                        <label onClick={(ev)=>this.props.openSubmitPopup(()=>this.props.deleteEmailList(el.EmailListID))} listid = {el.EmailListID} > delete </label>
                     </Link>
                 </li>
             )
@@ -66,14 +66,16 @@ const mapDispatchToProps = dispatch => {
         },// funkcia poxancum Listsin ...???
         deleteEmailList: ev => {
             dispatch(deleteEmailList(ev))
+        },
+        openSubmitPopup: f => {
+            dispatch(openSubmitPopup(f))
         }
     }
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Lists);
 
-
-
+//()=>()=>bind ??? askd aopsd 
 
  // uxarkel container funcer@ ...\/...
  // miajamanak state ev props poxvel@...

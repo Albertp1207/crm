@@ -1,11 +1,8 @@
-//delete checks
-// send,delete list
-// add new list
-
 import React,{Component} from "react";
 import myFetch from "../../../../tools/addOrDeleteContactsFromML";
 import {getContactsForML} from "../../../../myRedux/actions/MLContactsActions/MLContactsFetchActions"
 import {openSendEmailPopup} from "../../../../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions"
+import {openSubmitPopup} from "../../../../myRedux/actions/submitPopupActions/submitPopupActions"
 import {connect} from "react-redux";
 
 
@@ -20,13 +17,12 @@ class Menu extends Component{
             .catch(error=>console.log(error))
     }// sxaaaaaaaaaaaal
     render(){
+        const isActive = this.props.tickContacts.length > 0;
         return (
             <div id="menu">
-                <div>asdsd
-                    <button onClick = {this.deleteContactsFromML}>Delete checkeds</button>
-                    <button onClick = {this.props.createML}>Create mailing list</button>  
-                    <button onClick = {()=>this.props.openSendEmailPopup(this.props.tickContacts)}>send for checkeds contacts</button> 
-                    {/* <button onClick = {this.props.send}>Send</button>        */}
+                <div>
+                    <button onClick = {()=>this.props.openSubmitPopup(this.deleteContactsFromML)} disabled={!isActive}>Delete checkeds</button>
+                    <button onClick = {()=>this.props.openSendEmailPopup(this.props.tickContacts)} disabled={!isActive}>send for checkeds contacts</button> 
                 </div>
             </div>
         )
@@ -44,7 +40,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     getContactsForML: (id)=>dispatch(getContactsForML(id)),
-    openSendEmailPopup: (guIDArr)=> dispatch(openSendEmailPopup(guIDArr))
+    openSendEmailPopup: (guIDArr)=> dispatch(openSendEmailPopup(guIDArr)),
+    openSubmitPopup: f => {
+        dispatch(openSubmitPopup(f))
+    }
 })
 // after delete update, redux....
 
