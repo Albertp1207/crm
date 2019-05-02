@@ -51,7 +51,6 @@ class App extends Component{
                 { deletingPopupIsOpen ? < DeletingPopup />: null }
                 { editPopupIsOpen ? < EditingContactPopup />: null}
                 {isOpen ? <SubmitPopup /> : null}
-                {/* { isOpen ?<Indicator bgColor = {bgColor} text = {text}/> : null} */}
                 { isOpenIndicator ?<Indicator bgColor = {bgColor} text = {text}/> : null}
                 { isOpenSendEmailPopup ? <EmailSendPopup/> : null }
             </Router>
@@ -65,11 +64,8 @@ const mapStateToProps = (state) => {
         openPopups: state.openPopups,
         editingContactPopup: state.editingContactPopup,
         indicator: state.indicator,
-<<<<<<< HEAD
-        submitPopup: state.submitPopup
-=======
+        submitPopup: state.submitPopup,
         isOpenSendEmailPopup: state.sendEmailPopup.isOpen
->>>>>>> c7440015a6f70056268953d1f0a391971b713cee
     }
 }
 
