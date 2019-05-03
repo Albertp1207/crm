@@ -23,6 +23,7 @@
         justify-content: center
         align-items: center
         position: relative
+        animation: animate .3s ease
         .popupSize
             text-align: end
             .popupButtons
@@ -48,3 +49,10 @@
                 p 
                     height: 22px
                     text-align: end
+
+
+@keyframes animate
+  0%
+    transform: scale(0.2)
+  100%
+    transform: scale(1)

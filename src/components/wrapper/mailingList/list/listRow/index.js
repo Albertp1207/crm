@@ -12,7 +12,10 @@ class listRow extends Component{
         const {person} = this.props;
         return (
             <div  className = 'contactsListRow'>                
-                <div><input onClick ={()=>this.props.tickContact(person.GuID)}  guiid= {person.GuID} type = 'checkbox'/></div>
+                <div>
+                    <input onClick ={()=>this.props.tickContact(person.GuID)}  guiid= {person.GuID} type = 'checkbox' id = {person.GuID}/>
+                    <label htmlFor={person.GuID}></label>
+                </div>
                 <div>{person['Full Name']}</div>
                 <div>{person['Company Name']}</div>
                 <div>{person['Position']}</div>

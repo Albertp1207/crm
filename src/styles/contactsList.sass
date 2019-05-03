@@ -19,6 +19,7 @@
                 width: 100%
                 padding: 1% 0 1%
                 display: flex
+                align-items: center
                 justify-content: space-around
                 div 
                     // background: green
@@ -30,8 +31,8 @@
                     &:first-child, &.iconButHead
                         width: 4%
                         min-width: 60px
-                    input
-                        cursor: pointer
+                    // input
+                    //     cursor: pointer
 
 
 
@@ -47,8 +48,8 @@
         border-bottom: 1px solid rgba(0, 0, 0, 0.1)
         // margin-bottom: 10px
         transition: all .2s
-        &:nth-child(odd)
-            background: rgba(#555, 0.1)
+        // &:nth-child(odd)
+        //     background: rgba(#555, 0.1)
         &:hover
             background: rgba(#090, 0.3)
         div 
@@ -64,14 +65,13 @@
             &:first-child, &.iconBut
                 width: 4%
                 min-width: 60px
-            input
-                cursor: pointer
-            
-// .iconBut
-//     cursor: pointer
-// ::-webkit-scrollbar {
-//   width: 20px;
-// }
+
+
+.iconBut
+    cursor: pointer
+    *
+        font-size: 18px
+
 
 ::-webkit-scrollbar-track
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)

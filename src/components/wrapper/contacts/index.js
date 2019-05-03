@@ -40,7 +40,8 @@ class ContactsList extends Component{
                     <div className = 'contactsListHead'>
                         <div className = 'contactsListRow'>
                             <div>
-                                <input type = 'checkbox' onChange = { this.chooseAll } checked = { selectAll }/>
+                                <input type = 'checkbox' onChange = { this.chooseAll } checked = { selectAll } id = 'all'/>
+                                <label htmlFor="all"></label>
                             </div>
                             <div>Full Name</div>
                             <div>Company Name</div>

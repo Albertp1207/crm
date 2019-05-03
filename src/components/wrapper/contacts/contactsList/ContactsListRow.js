@@ -24,7 +24,8 @@ class ContatsListRow extends Component{
         return (
             <div className = 'contactsListRow'>
                 <div>
-                    <input type = 'checkbox' onChange = { colback } value = {person.GuID} checked = { checked } />
+                    <input type = 'checkbox' onChange = { colback } value = {person.GuID} checked = { checked } id={person.GuID}/>
+                    <label htmlFor={person.GuID}></label>
                 </div>
                 <div>{ person['Full Name'] }</div>
                 <div>{ person['Company Name'] }</div>
