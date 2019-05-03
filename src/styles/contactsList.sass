@@ -4,47 +4,91 @@
     .contactsListTable
         width: 100%
         height: 90%
-        overflow-x: scroll
+        // overflow-x: scroll
         .contactsListHead
             width: 100%
             min-width: 800px
             height: 60px
+            display: flex
+            justify-content: center
+            align-items: center
+            padding-right: 18px
             .contactsListRow
+                background: rgba(#555, 0.3)
                 color: #2b2b2b
                 width: 100%
                 padding: 1% 0 1%
                 display: flex
-                justify-content: space-between
-                align-items: center
+                justify-content: space-around
                 div 
+                    // background: green
                     font-size: 14px
-                    width: 14%
+                    font-weight: 500
+                    width: 17%
                     text-align: center
-                    padding: 5px 0 5px
-                    &:first-child, &:last-child
-                        width: 5%
+                    padding: 5px 4px 5px
+                    &:first-child, &.iconButHead
+                        width: 4%
+                        min-width: 60px
+                    input
+                        cursor: pointer
+
 
 
 .contactsListBody
     width: 100%
-    height: calc(100% - 50px)
-    overflow: overlay
+    height: calc(100% - 60px)
+    overflow-y: scroll
     min-width: 800px
     .contactsListRow
         width: 100%
         display: flex
         justify-content: space-around
         border-bottom: 1px solid rgba(0, 0, 0, 0.1)
-        margin-bottom: 10px
+        // margin-bottom: 10px
+        transition: all .2s
+        &:nth-child(odd)
+            background: rgba(#555, 0.1)
+        &:hover
+            background: rgba(#090, 0.3)
         div 
-            background: green
+            // background: green
             font-size: 14px
-            width: 18%
+            width: 17%
             text-align: center
+            display: flex
+            justify-content: center
+            align-items: center
             padding: 5px 4px 5px
             word-break: break-all
-            &:first-child, &:last-child
-                width: fit-content
+            &:first-child, &.iconBut
+                width: 4%
+                min-width: 60px
+            input
+                cursor: pointer
+            
+// .iconBut
+//     cursor: pointer
+// ::-webkit-scrollbar {
+//   width: 20px;
+// }
 
-.iconBut
-    cursor: pointer
+::-webkit-scrollbar-track
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+	background-color: #F5F5F5
+
+::-webkit-scrollbar
+	width: 16px
+	background-color: #F5F5F5
+
+::-webkit-scrollbar-thumb
+	background-color: #aaa
+	background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent)
+
+
+
+
+
+@media only screen and (max-width: 880px)
+    .contactsListTable
+        overflow-x: scroll
