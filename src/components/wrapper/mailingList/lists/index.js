@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import {getMailingLists,deleteEmailList} from "../../../../myRedux/actions/mailingListActions/mailingListFetchActions";
 import {openSendEmailPopup} from "../../../../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions"
 import {openSubmitPopup} from "../../../../myRedux/actions/submitPopupActions/submitPopupActions"
+import { IoIosSend } from "react-icons/io";
+import { IoMdRemoveCircle } from "react-icons/io";
+
 class Lists extends Component{
     componentDidMount() {
         this.props.getMailingLists();
@@ -13,14 +16,14 @@ class Lists extends Component{
         return lists.map(el=>{
             return (
                 <li key={el.EmailListID} listid={el.EmailListID}>
-                    <NavLink to={"/mailinglist/"+el.EmailListID} activeStyle={{
+                    <NavLink className = "mlName" to={"/mailinglist/"+el.EmailListID} activeStyle={{
                         pointerEvents: "none",
                         cursor: "default",
                         color: "grey"
                     }}>{el.EmailListName}</NavLink>
-                    <label  onClick = {this.props.openSendEmailPopup} listid = {el.EmailListID} > Send </label>
-                    <Link to="/mailinglist">
-                        <label onClick={(ev)=>this.props.openSubmitPopup(()=>this.props.deleteEmailList(el.EmailListID))} listid = {el.EmailListID} > delete </label>
+                    <label  className = "sendML"  onClick = {this.props.openSendEmailPopup} listid = {el.EmailListID} ><IoIosSend /></label>
+                    <Link className ="deleteML" to="/mailinglist">
+                        <label onClick={(ev)=>this.props.openSubmitPopup(()=>this.props.deleteEmailList(el.EmailListID))} listid = {el.EmailListID} ><IoMdRemoveCircle /></label>
                     </Link>
                 </li>
             )
