@@ -7,13 +7,13 @@ class Menu extends Component{
     activeStyle = {
             pointerEvents: "none",
             cursor: "default",
-            color: "grey"      
+            color: "red"     
     }
     render(){
         return (
             <div id="mainMenu">
                 <div className = 'itemMenu contactsMenu'>
-                    <NavLink activeStyle={this.activeStyle}  to="/contacts">
+                    <NavLink activeStyle={this.activeStyle} to="/contacts">
                         <FaUsers />
                     </NavLink>                    
                 </div>

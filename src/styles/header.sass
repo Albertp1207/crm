@@ -1,14 +1,20 @@
 .header
     height: 10%
     min-height: 58px
-    max-height: 100px;
+    // max-height: 100px
     font-family: Orbitron
-    color: $font-color
-    background: $header-bg
+    // background: $header-bg
+    background: url('images/Background-CRM.png') no-repeat 
+    background-size: cover
+    background-position: center
+    // margin-top: 0.5%
     display: flex
     align-content: center
+    box-shadow: 5px 5px 2px 0 #888
+    z-index: 99
     .size
         width: 100%
+        background: rgba(#5498FD, 0.8)
         display: flex
         justify-content: space-between
         align-items: center
@@ -16,23 +22,28 @@
         #logo
             width: 6%
             min-width: 32px
-            max-width: 85px
+            max-width: 50px
             a 
                 display: inline-block
+                // height: fit-content
                 img 
                     width: 100%
         h1 
+            color: rgba($font-color, 1)
             text-align: end
-            font-size: 35px
-            font-family: Times
+            font-weight: 800
+            font-size: 30px
+            font-family: Orbitron
             span 
-                font-size: 30px
-                font-family: Times
-                color: $header-span
+                font-size: 20px
+                font-weight: 100
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+                color: rgba($header-span, 0.5)
 
 @media only screen and (max-width: 640px) 
     .header
-        h1 
-            font-size: 24px
-            span 
-                font-size: 11px
+        .size
+            h1 
+                font-size: 25px
+                span 
+                    font-size: 15px

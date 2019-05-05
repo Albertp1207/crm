@@ -72,7 +72,7 @@ class UploadFilePopup extends Component{
                             </div>
                             <div className = 'popupButtons'>
                                 <button type = 'submit'>Add</button>
-                                <button onClick = { this.cancel }>Cancel</button>
+                                <button type = 'button' onClick = { this.cancel }>Cancel</button>
                             </div>
                         </form>                       
                     </div>
