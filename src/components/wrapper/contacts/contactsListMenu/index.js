@@ -18,7 +18,7 @@ class ContactsListMenu extends Component{
     render() {
         const { buttonsNotActive } = this.props.contacts;
         return (
-            <div className = 'contactsListMenu'>
+            <div className = 'buttonsContainer'>
                 <Button name = 'Send Email' openPopup = { this.openSendEmail } disable = { buttonsNotActive } icon = {<IoIosSend />} />
                 <Button name = 'Create Mailing List' openPopup = { this.props.openCreatingEmailListPopup } disable = { buttonsNotActive } icon = {<IoMdCreate />} />
                 <Button name = 'Add to Existing List' openPopup = { this.props.addToExistingListPopup } disable = { buttonsNotActive } icon = {<IoMdAdd />}/>
