@@ -4,7 +4,7 @@ import {getContactsForML} from "../../../../myRedux/actions/MLContactsActions/ML
 import {openSendEmailPopup} from "../../../../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions"
 import {openSubmitPopup} from "../../../../myRedux/actions/submitPopupActions/submitPopupActions"
 import {connect} from "react-redux";
-
+import {IoMdRemoveCircleOutline,IoIosSend} from "react-icons/io";
 
 class Menu extends Component{
     deleteContactsFromML = ()=> {
@@ -20,9 +20,15 @@ class Menu extends Component{
         const isActive = this.props.tickContacts.length > 0;
         return (
             <div id="menu">
-                <div>
-                    <button onClick = {()=>this.props.openSubmitPopup(this.deleteContactsFromML)} disabled={!isActive}>Delete checkeds</button>
-                    <button onClick = {()=>this.props.openSendEmailPopup(this.props.tickContacts)} disabled={!isActive}>send for checkeds contacts</button> 
+                <div className = "buttonsContainer">
+                    <button className="buttons" onClick = {()=>this.props.openSubmitPopup(this.deleteContactsFromML)} disabled={!isActive}>
+                        <span className = "butIcons"><IoMdRemoveCircleOutline/></span>
+                        <span className = "butName ">Delete Checkeds</span>
+                    </button>
+                    <button className="buttons" onClick = {()=>this.props.openSendEmailPopup(this.props.tickContacts)} disabled={!isActive}>
+                        <span className = "butIcons"><IoIosSend/></span>
+                        <span className = "butName ">Send for Checkeds</span>
+                    </button> 
                 </div>
             </div>
         )

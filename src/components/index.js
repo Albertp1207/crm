@@ -3,7 +3,7 @@ import Menu from "./menu";
 import Wrapper from "./wrapper";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../styles/index.sass';
-import logo from '../styles/images/Logo2.jpg';
+import logo from '../styles/images/logo3.png';
 import AddContactPopup from '../reusableComponents/AddContactPopup';
 import DeletingPopup from '../reusableComponents/DeletingPopup';
 import { connect } from 'react-redux';
