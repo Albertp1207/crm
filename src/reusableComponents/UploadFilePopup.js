@@ -34,7 +34,7 @@ class UploadFilePopup extends Component{
         const URL = "http://visual.istclabz.com:2112/api/contacts/upload";
         const method = 'POST';
         const formData = new FormData();
-        formData.append('datafile', file);
+        formData.append('data', file);
         console.log(formData);
         return fetch(URL,{
             method: 'POST',
