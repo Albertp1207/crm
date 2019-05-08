@@ -7,7 +7,7 @@ class Menu extends Component{
     activeStyle = {
             pointerEvents: "none",
             cursor: "default",
-            color: "#c93131"     
+            color: "grey"     
     }
     render(){
         return (

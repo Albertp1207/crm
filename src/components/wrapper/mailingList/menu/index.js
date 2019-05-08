@@ -23,11 +23,11 @@ class Menu extends Component{
                 <div className = "buttonsContainer">
                     <button className="buttons" onClick = {()=>this.props.openSubmitPopup(this.deleteContactsFromML)} disabled={!isActive}>
                         <span className = "butIcons"><IoMdRemoveCircleOutline/></span>
-                        <span className = "butName ">Delete Checkeds</span>
+                        <span className = "butName ">Delete</span>
                     </button>
                     <button className="buttons" onClick = {()=>this.props.openSendEmailPopup(this.props.tickContacts)} disabled={!isActive}>
                         <span className = "butIcons"><IoIosSend/></span>
-                        <span className = "butName ">Send for Checkeds</span>
+                        <span className = "butName ">Send</span>
                     </button> 
                 </div>
             </div>

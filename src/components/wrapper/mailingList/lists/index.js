@@ -21,7 +21,7 @@ class Lists extends Component{
                         cursor: "default",
                         color: "grey"
                     }}>{el.EmailListName}</NavLink>
-                    <label  className = "sendML"  onClick = {this.props.openSendEmailPopup} listid = {el.EmailListID} ><IoIosSend /></label>
+                    <label  className = "sendML"  onClick = {()=>this.props.openSendEmailPopup(el.EmailListID)} listid = {el.EmailListID} ><IoIosSend /></label>
                     <Link className ="deleteML" to="/mailinglist">
                         <label onClick={(ev)=>this.props.openSubmitPopup(()=>this.props.deleteEmailList(el.EmailListID))} listid = {el.EmailListID} ><IoMdRemoveCircle /></label>
                     </Link>
@@ -63,8 +63,8 @@ const mapDispatchToProps = dispatch => {
         getMailingLists: ()=>{
             dispatch(getMailingLists())
         },
-        openSendEmailPopup:ev=>{
-                    dispatch(openSendEmailPopup(null,ev.target.getAttribute("listid")))
+        openSendEmailPopup:id=>{
+                    dispatch(openSendEmailPopup(null,id))
             
         },// funkcia poxancum Listsin ...???
         deleteEmailList: ev => {
