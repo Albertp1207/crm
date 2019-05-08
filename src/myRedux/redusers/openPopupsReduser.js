@@ -1,14 +1,18 @@
 import {
-    OPEN_DELETING_POPUP,
     OPEN_CREATING_EMAIL_LIST_POPUP,
     OPEN_ADD_TO_EXISTING_LIST_POPUP,
+    OPEN_ADD_NEW_CONTACT_POPUP,
+    OPEN_UPLOAD_FILE_POPUP,
+    OPEN_DELETING_POPUP,
     CLOSE_POPUPS
 } from '../actions/openPopupsAction';
 
 const initState = {
-    deletingPopupIsOpen: false,
     creatingEmailListPopupIsOpen: false,
-    addToExistingListIsOpen: false
+    addToExistingListIsOpen: false,
+    addNewContactIsOpen: false,
+    uploadFileIsOpen: false,
+    deletingPopupIsOpen: false
 };
 
 
@@ -17,37 +21,47 @@ export default function openPopupsReducer(state = initState, action) {
     
     switch (action.type) {
 
-        case OPEN_DELETING_POPUP:
-            return {
-                deletingPopupIsOpen: true,
-                creatingEmailListPopupIsOpen: false,
-                addToExistingListIsOpen: false
-            };
-
         case OPEN_CREATING_EMAIL_LIST_POPUP:
             return {
-                deletingPopupIsOpen: false,
+                ...state,
                 creatingEmailListPopupIsOpen: true,
-                addToExistingListIsOpen: false
             };
 
         case OPEN_ADD_TO_EXISTING_LIST_POPUP:
             return {
-                deletingPopupIsOpen: false,
-                creatingEmailListPopupIsOpen: false,
+                ...state,
                 addToExistingListIsOpen: true
+            };
+
+        case OPEN_ADD_NEW_CONTACT_POPUP:
+            return {
+                ...state,
+                addNewContactIsOpen: true
+            };
+
+        case OPEN_UPLOAD_FILE_POPUP:
+            return {
+                ...state,
+                uploadFileIsOpen: true
+            };
+
+        case OPEN_DELETING_POPUP:
+            return {
+                ...state,
+                deletingPopupIsOpen: true
             };
             
         case CLOSE_POPUPS:
             return {
-                deletingPopupIsOpen: false,
                 creatingEmailListPopupIsOpen: false,
-                addToExistingListIsOpen: false
+                addToExistingListIsOpen: false,
+                addNewContactIsOpen: false,
+                uploadFileIsOpen: false,
+                deletingPopupIsOpen: false
             };
 
         default:
             return state;
     }
-
     
 }

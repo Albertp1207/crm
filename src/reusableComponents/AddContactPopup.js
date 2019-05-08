@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import  { Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getContactsList } from '../myRedux/actions/contactsListFetchAction';
+import { closePopups } from '../myRedux/actions/openPopupsAction';
 import myFetch from '../tools/fetch';
 import validation from '../tools/validation';
 import WaitAnimation from '../reusableComponents/waitAnimation';
@@ -10,7 +10,6 @@ import WaitAnimation from '../reusableComponents/waitAnimation';
 
 class AddContactPopup extends Component{
     state = {
-        cancel: false,
         wait: false,
         error: ''
     }
@@ -58,8 +57,9 @@ class AddContactPopup extends Component{
                 if(res.status === 400){                //catch bad request
                     this.setState({wait: false, error: 'Check the data and try again'});
                 }else{
-                    this.setState({wait: false, cancel: true, error: ''}); 
+                    this.setState({wait: false, error: ''}); 
                     this.props.getContactsList();
+                    this.props.closePopups();
                 }
                 
             })
@@ -80,17 +80,12 @@ class AddContactPopup extends Component{
     }
 
     cancel = () => {
-        this.setState({cancel: true})
+        this.props.closePopups();
         
     }
 
     render() {
-        
-
-        if (this.state.cancel) {
-            return <Redirect from = '/contacts/add_contact' to='/contacts'  />;
-        }
-        
+                
         return (
             <div className = 'popupWrap'>
                 <div className = 'popupContent'>
@@ -142,7 +137,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
-            getContactsList
+            getContactsList,
+            closePopups
         },
         dispatch
     )

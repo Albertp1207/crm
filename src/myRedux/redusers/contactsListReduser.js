@@ -34,14 +34,21 @@ export default function contactsListReducer(state = initState, action) {
 
     
         case GET_CONTACTS_LIST_SUCCESS:
-          action.payload.lists.forEach(element => {
+          if (action.payload.lists.length === 0) {
+            selectAllCopy = false;
+          } else {
+            selectAllCopy = true;
+            action.payload.lists.forEach(element => {
               if(state.selectedContacts[element.GuID]){
                 guIds[element.GuID] = true;
                 collectionSel.push(element.GuID);
               }else{
                 guIds[element.GuID] = false;
+                selectAllCopy = false;
               }
-          });
+            });
+          }
+          
           // console.log(guIds);
           if (collectionSel.length !== 0) {
             buttonsNotActiveCopy = false;
@@ -54,6 +61,7 @@ export default function contactsListReducer(state = initState, action) {
             lists: action.payload.lists,
             selectedContacts: guIds,
             collectionSelected: collectionSel,
+            selectAll: selectAllCopy,
             buttonsNotActive: buttonsNotActiveCopy
           }
           
@@ -103,12 +111,19 @@ export default function contactsListReducer(state = initState, action) {
           
         case SELECT_ALL:
             selectedCon = {...state.selectedContacts};
-            selectAllCopy = !state.selectAll;
+            // selectAllCopy = !state.selectAll;
 
-            for (let key in selectedCon) {
-              selectedCon[key] = selectAllCopy;
-              collectionSel.push(key);
+            if (Object.keys(selectedCon).length === 0) {
+              selectAllCopy = false;
+            } else {
+              selectAllCopy = !state.selectAll;
+              for (let key in selectedCon) {
+                selectedCon[key] = selectAllCopy;
+                collectionSel.push(key);
+              }
             }
+
+            
             
             // console.log(selectedCon);
             return {

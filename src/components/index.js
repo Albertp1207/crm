@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 import Menu from "./menu";
 import Wrapper from "./wrapper";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import '../styles/index.sass';
 import logo from '../styles/images/logo3.png';
 import AddContactPopup from '../reusableComponents/AddContactPopup';
@@ -17,7 +17,12 @@ import UploadFilePopup from '../reusableComponents/UploadFilePopup';
 
 class App extends Component{
     render(){
-        const { deletingPopupIsOpen, creatingEmailListPopupIsOpen, addToExistingListIsOpen } = this.props.openPopups;
+        const { creatingEmailListPopupIsOpen, 
+                addToExistingListIsOpen,
+                addNewContactIsOpen,
+                uploadFileIsOpen, 
+                deletingPopupIsOpen
+                } = this.props.openPopups;
         const { editPopupIsOpen } = this.props.editingContactPopup;
         // const {bgColor,isOpen,text} = this.props.indicator;
         const {isOpen} = this.props.submitPopup
@@ -44,13 +49,13 @@ class App extends Component{
                         </div>
                     </section>
                 </div>
-                <Route path = '/contacts/add_contact' component = { AddContactPopup } />
-                <Route path = '/contacts/uplaod_file' component = { UploadFilePopup } />
+                { addNewContactIsOpen ? < AddContactPopup />: null }
+                { uploadFileIsOpen ? < UploadFilePopup />: null }
                 { creatingEmailListPopupIsOpen ? < CreateMailingList />: null}
                 { addToExistingListIsOpen ? < AddToExistingList />: null}
                 { deletingPopupIsOpen ? < DeletingPopup />: null }
                 { editPopupIsOpen ? < EditingContactPopup />: null}
-                {isOpen ? <SubmitPopup /> : null}
+                { isOpen ? <SubmitPopup /> : null }
                 { isOpenIndicator ?<Indicator bgColor = {bgColor} text = {text}/> : null}
                 { isOpenSendEmailPopup ? <EmailSendPopup/> : null }
             </Router>

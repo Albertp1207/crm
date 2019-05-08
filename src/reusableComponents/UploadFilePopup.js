@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import  { Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getContactsList } from '../myRedux/actions/contactsListFetchAction';
+import { closePopups } from '../myRedux/actions/openPopupsAction';
 import WaitAnimation from '../reusableComponents/waitAnimation';
 
 
@@ -15,7 +15,7 @@ class UploadFilePopup extends Component{
     }
    
     cancel = () => {
-        this.setState({cancel: true})
+        this.props.closePopups()
         
     }
 
@@ -34,10 +34,11 @@ class UploadFilePopup extends Component{
         const URL = "http://visual.istclabz.com:2112/api/contacts/upload";
         const method = 'POST';
         const formData = new FormData();
+
         formData.append('data', file);
         console.log(formData);
         return fetch(URL,{
-            method: 'POST',
+            method,
             headers: {
                 'content-type': 'multipart/form-data'
             },
@@ -46,10 +47,6 @@ class UploadFilePopup extends Component{
     }
 
     render() {
-
-        if (this.state.cancel) {
-            return <Redirect from = '/contacts/upload_file' to='/contacts'  />;
-        }
         
         return (
             <div className = 'popupWrap'>
@@ -92,7 +89,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         { 
-            getContactsList
+            getContactsList,
+            closePopups
         },
         dispatch
     )
