@@ -8,6 +8,12 @@ input[type=checkbox] + label {
   input[type=checkbox] {
     display: none;
   }
+
+  .contactsListHead{
+    input[type=checkbox] + label:before{
+      border: 0.1em solid #fff;
+    }
+  }
   
   input[type=checkbox] + label:before {
     content: "\2714";
@@ -29,9 +35,9 @@ input[type=checkbox] + label {
   }
   
   input[type=checkbox]:checked + label:before {
-    background-color: MediumSeaGreen;
+    background-color: #eee;
     border-color: MediumSeaGreen;
-    color: #fff;
+    color: MediumSeaGreen;
   }
   
   input[type=checkbox]:disabled + label:before {
