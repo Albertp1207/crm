@@ -43,7 +43,7 @@ class DeletingPopup extends Component{
             <div className = 'popupWrap'>
                 <div className = 'popupContent'>
                     <div className = 'popupSize'>
-                        <p>You want to delete the selected contacts ?</p>
+                        <p>You want to delete the selected contacts?</p>
                         <p>{this.state.error}</p>
                         <div className = 'popupButtons'>
                             <button onClick = { this.deleteContacts }>Ok</button>

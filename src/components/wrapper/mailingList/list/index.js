@@ -52,7 +52,7 @@ class List extends Component{
 
         
         return(
-            <div  className="contactsListTable" >
+            <div  className="contactsListTable" id = 'contactsListTableML' >
                  <div className = 'contactsListHead'>
                     <div className = 'contactsListRow'>
                         <div>Select</div>

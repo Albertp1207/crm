@@ -38,7 +38,7 @@ class emailSendPopup extends Component {
         // console.log(list)
         return list.map(el => {
             return (
-            <div onClick = {this.selectTemplate} key = {el.TemplateId} >
+            <div onClick = {this.selectTemplate} key = {el.TemplateId} className = 'radio'>
                 <input 
                     name="temapltesRadio"
                     teminmp = "true"
