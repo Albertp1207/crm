@@ -2,7 +2,7 @@
     position: absolute
     width: 100%
     height: 100%
-    background: rgba(0, 0, 0, 0.9)
+    // background: rgba(0, 0, 0, 0.9)
     display: flex
     justify-content: center
     align-items: center
@@ -12,82 +12,86 @@
         position: relative
         .waitItem
             width: 40px
-            height: 10px
+            height: 4px
             position: absolute
             top: calc(50% - 5px)
             left: 50%
             transform-origin: left center
-            padding: 3px 0 3px 25px
+            // padding: 3px 0 3px 25px
             div
-                width: 15px
+                width: 10px
                 height: 4px
-                border-radius: 6px
+                border-radius: 8px
                 background: white
                 position: absolute
+                // background: black
+                right: 0
         .waitItem_1
             transform: rotate(0deg)
             div
-                animation: bgcolor 1.1s infinite
-                animation-delay: .3s
+                animation: bgcolor 550ms infinite
+                animation-delay: 150ms
         .waitItem_2
             transform: rotate(30deg)
             div
-                animation: bgcolor 1.1s infinite
-                animation-delay: .4s
+                animation: bgcolor 550ms infinite
+                animation-delay: 200ms
         .waitItem_3
             transform: rotate(60deg)
             div
-                animation: bgcolor 1.1s infinite
-                animation-delay: .5s
+                animation: bgcolor 550ms infinite
+                animation-delay: 250ms
         .waitItem_4
             transform: rotate(90deg)
             div
-                animation: bgcolor 1.1s infinite
-                animation-delay: .6s
+                animation: bgcolor 550ms infinite
+                animation-delay: 300ms
         .waitItem_5
             transform: rotate(120deg)
             div
-                animation: bgcolor 1.1s infinite
-                animation-delay: .7s
+                animation: bgcolor 550ms infinite
+                animation-delay: 350ms
         .waitItem_6
             transform: rotate(150deg)
             div
-                animation: bgcolor 1.1s infinite
-                animation-delay: .8s
+                animation: bgcolor 550ms infinite
+                animation-delay: 400ms
         .waitItem_7
             transform: rotate(180deg)
             div
-                animation: bgcolor 1.1s infinite
-                animation-delay: .9s
+                animation: bgcolor 550ms infinite
+                animation-delay: 450ms
         .waitItem_8
             transform: rotate(210deg)
             div
-                animation: bgcolor 1.1s infinite
-                animation-delay: 1s
+                animation: bgcolor 550ms infinite
+                animation-delay: 500ms
         .waitItem_9
             transform: rotate(240deg)
             div
-                animation: bgcolor 1.1s infinite
-                animation-delay: 1.1s
+                animation: bgcolor 550ms infinite
+                animation-delay: 550ms
         .waitItem_10
             transform: rotate(270deg)
             div
-                animation: bgcolor 1.1s infinite
+                animation: bgcolor 550ms infinite
                 animation-delay: 0
         .waitItem_11
             transform: rotate(300deg)
             div
-                animation: bgcolor 1.1s infinite
-                animation-delay: .1s
+                animation: bgcolor 550ms infinite
+                animation-delay: 50ms
         .waitItem_12
             transform: rotate(330deg)
             div
-                animation: bgcolor 1.1s infinite
-                animation-delay: .2s
+                animation: bgcolor 550ms infinite
+                animation-delay: 100ms
 
 
 @keyframes bgcolor 
     0%
         background-color: #000
+        width: 25px
     100%
         background-color: #fff
+        width: 10px
