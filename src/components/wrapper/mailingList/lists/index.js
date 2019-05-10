@@ -6,7 +6,7 @@ import {openSendEmailPopup} from "../../../../myRedux/actions/sendEmailPopupActi
 import {openSubmitPopup} from "../../../../myRedux/actions/submitPopupActions/submitPopupActions"
 import { IoIosSend } from "react-icons/io";
 import { IoMdRemoveCircle } from "react-icons/io";
-
+import Wait from "../../../../reusableComponents/waitAnimation";
 class Lists extends Component{
     componentDidMount() {
         this.props.getMailingLists()
@@ -38,7 +38,7 @@ class Lists extends Component{
         }
 
         if( loading && lists.length === 0) {
-            return <div>Loading ...</div>
+            return <Wait />
         }
 
         

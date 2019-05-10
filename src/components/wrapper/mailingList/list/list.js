@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import myFetch from "../../../../tools/fetch";
 // import Table from "../../../../reusableComponents/Table"
 import ListRow from "./listRow";
+import Wait from "../../../../reusableComponents/waitAnimation";
 
 class List extends Component{
     componentDidMount(){
@@ -41,7 +42,7 @@ class List extends Component{
         console.log(list)
 
         if( loading && list.length === 0) {
-            return <div>Loading ...</div>
+            return <Wait />
         }
 
         

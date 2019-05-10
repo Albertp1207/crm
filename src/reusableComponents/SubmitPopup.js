@@ -9,6 +9,7 @@ const SubmitPopup = props => {
                     <div className = 'popupSize'>
                         Are you sure ?
                         <div className = 'popupButtons'>
+                            {/* link>button if(props.link) */}
                             <button onClick = { ()=>{props.callback(props.args);props.closeSubmitPopup()} }>YES</button>
                             <button onClick = { props.closeSubmitPopup }>Cancel</button>
                         </div>                        
