@@ -9,7 +9,8 @@ import { IoMdRemoveCircle } from "react-icons/io";
 
 class Lists extends Component{
     componentDidMount() {
-        this.props.getMailingLists();
+        this.props.getMailingLists()
+        ;
     } 
 
     makeList = (lists) => {

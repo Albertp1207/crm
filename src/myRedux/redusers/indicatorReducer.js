@@ -5,7 +5,7 @@ import {
 } from "../actions/indicatorActions/indicatorAction"
 
 const initState = {
-    bgColor: "yellow",
+    specClass: "wait",
     text: "Wait ...",
     isOpen: false
 };
@@ -15,12 +15,13 @@ export default function indicatorReducer(state = initState,action) {
         case OPEN_INDICATOR:
           return {
             ...state,
+            specClass: "wait",
             isOpen: true
           };
     
         case CLOSE_INDICATOR:
           return {
-            bgColor: "yellow",
+            specClass: 'wait',
             text: "Wait ...",
             isOpen: false
         };
@@ -29,7 +30,7 @@ export default function indicatorReducer(state = initState,action) {
           return {
             ...state,
             text: action.payload.text,
-            bgColor: action.payload.bgColor
+            specClass: action.payload.specClass
           };
     
         default:

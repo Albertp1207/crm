@@ -2,10 +2,8 @@ import React,{Component} from "react";
 import {connect} from "react-redux";
 import {getTemplates} from "../myRedux/actions/templatesActions/getTemplatesAction";
 import {closeSendEmailPopup} from "../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions";
-import {openIndicator,closeIndicator,setContentIndicator,closeIndicatorAsync} from "../myRedux/actions/indicatorActions/indicatorAction"
+import {openIndicator,closeIndicatorAsync} from "../myRedux/actions/indicatorActions/indicatorAction"
 import myFetch from "../tools/fetch"
-
-
 
 class emailSendPopup extends Component {
     state = {
@@ -50,20 +48,20 @@ class emailSendPopup extends Component {
         })
     }
     send = () => {
+        this.props.closePopup();
         this.props.openIndicator();
         myFetch(this.makeUrl(),"POST",this.props.sendEmailPopup.GuIDArr)
         .then(res=>{
             // console.log(res)
             if(res.ok) {
-                this.props.closePopup();
-                this.props.closeIndicatorAsync({text:"OK !",bgColor:"green"})
+                this.props.closeIndicatorAsync({text:"OK !",specClass:"ok"})
             } else {
-                this.props.closeIndicatorAsync({text:"Error !",bgColor:"red"})
+                this.props.closeIndicatorAsync({text:"Error !",specClass:"fail"})
 
             }
         })
         .catch(err=>{
-            this.props.closeIndicatorAsync({text:"CATCH Error !",bgColor:"red"})
+            this.props.closeIndicatorAsync({text:"CATCH Error !",specClass:"fail"})
             console.log(err)})
     }
     render() {

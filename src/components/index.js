@@ -26,7 +26,7 @@ class App extends Component{
         const { editPopupIsOpen } = this.props.editingContactPopup;
         // const {bgColor,isOpen,text} = this.props.indicator;
         const {isOpen} = this.props.submitPopup
-        const {bgColor,text} = this.props.indicator;
+        const {specClass,text} = this.props.indicator;
         const isOpenIndicator = this.props.indicator.isOpen
         const {isOpenSendEmailPopup} = this.props;
         return (
@@ -56,7 +56,7 @@ class App extends Component{
                 { deletingPopupIsOpen ? < DeletingPopup />: null }
                 { editPopupIsOpen ? < EditingContactPopup />: null}
                 { isOpen ? <SubmitPopup /> : null }
-                { isOpenIndicator ?<Indicator bgColor = {bgColor} text = {text}/> : null}
+                { isOpenIndicator ?<Indicator specClass = {specClass} text = {text}/> : null}
                 { isOpenSendEmailPopup ? <EmailSendPopup/> : null }
             </Router>
 
