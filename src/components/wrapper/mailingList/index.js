@@ -14,7 +14,9 @@ class MailingList extends Component {
             <div className="mailinglist">
             
                 <VisibleLists /> 
-                <Route path='/mailinglist/:listid' component = {List} />
+                <div className = 'mailinglistTable'>
+                    <Route path='/mailinglist/:listid' component = {List} />
+                </div>
                 <Menu />
                 {isOpenSendEmailPopup ? <EmailSendPopup/> : null }
                 

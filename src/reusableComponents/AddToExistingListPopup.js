@@ -22,6 +22,7 @@ class AddToExistingList extends Component{
 
     handleChange = (event) => {
         this.setState({selID: event.target.value});
+        this.setState({error: ''});
     }
 
     addToExistingList = () => {
@@ -96,11 +97,13 @@ class AddToExistingList extends Component{
                                         )}
                             </select>
                         </div>
+                        <div>
+                            <p>{this.state.error}</p>
+                        </div>
                         <div className = 'popupButtons'>
                             <button onClick = { this.addToExistingList }>Add</button>
                             <button onClick = { this.canceladdToExistingListPopup }>Cancel</button>
                         </div>
-                        <div>{this.state.error}</div>
                     </div>
                     { this.state.wait? <WaitAnimation />: null }
                 </div>
