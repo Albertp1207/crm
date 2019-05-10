@@ -3,9 +3,9 @@ export const CLOSE_SUBMIT_POPUP = "CLOSE_SUBMIT_POPUP";
 export const DO_CALLBACK = "DO_CALLBACK"
 
 
-export const openSubmitPopup = (callback,args) => ({
+export const openSubmitPopup = (callback,link) => ({
     type: OPEN_SUBMIT_POPUP,
-    payload: {callback,args}
+    payload: {callback,link}
 })
 export const closeSubmitPopup = () => ({
     type: CLOSE_SUBMIT_POPUP
