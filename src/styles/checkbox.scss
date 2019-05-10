@@ -35,7 +35,6 @@ input[type=checkbox] + label {
   }
   
   input[type=checkbox]:checked + label:before {
-    background-color: #eee;
     border-color: MediumSeaGreen;
     color: MediumSeaGreen;
   }

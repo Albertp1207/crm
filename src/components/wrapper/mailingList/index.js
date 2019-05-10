@@ -18,7 +18,7 @@ class MailingList extends Component {
                     <Route path='/mailinglist/:listid' component = {List} />
                 </div>
                 <Menu />
-                {isOpenSendEmailPopup ? <EmailSendPopup/> : null }
+                
                 
             </div>
         )

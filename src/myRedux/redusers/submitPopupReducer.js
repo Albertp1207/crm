@@ -21,7 +21,7 @@ export default function submitPopupReducer(state = initState,action) {
         };
     
         case CLOSE_SUBMIT_POPUP:
-          console.log("CLOSE")
+          // console.log("CLOSE")
           return {
             isOpen:false,
             callback:null,

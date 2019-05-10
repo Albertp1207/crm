@@ -58,6 +58,7 @@ class App extends Component{
                 { isOpen ? <SubmitPopup /> : null }
                 { isOpenIndicator ?<Indicator specClass = {specClass} text = {text}/> : null}
                 { isOpenSendEmailPopup ? <EmailSendPopup/> : null }
+            
             </Router>
 
         );
