@@ -7,7 +7,7 @@ import {
 const initState = {
   isOpen:false,
   callback:null,
-  args: null
+  link: null
 };
 
 export default function submitPopupReducer(state = initState,action) {    
@@ -17,7 +17,7 @@ export default function submitPopupReducer(state = initState,action) {
           return {
             isOpen:true,
             callback:action.payload.callback,
-            args: action.payload.args
+            link: action.payload.link
         };
     
         case CLOSE_SUBMIT_POPUP:
@@ -25,7 +25,7 @@ export default function submitPopupReducer(state = initState,action) {
           return {
             isOpen:false,
             callback:null,
-            args: null
+            link: null
           }
         default:
           return state;

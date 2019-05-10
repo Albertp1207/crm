@@ -1,6 +1,7 @@
 import React from "react"
 import {connect} from "react-redux"
 import {closeSubmitPopup} from "../myRedux/actions/submitPopupActions/submitPopupActions"
+import {Link} from "react-router-dom"
 const SubmitPopup = props => {
     console.log(props)
     return    (
@@ -9,8 +10,13 @@ const SubmitPopup = props => {
                     <div className = 'popupSize'>
                         Are you sure ?
                         <div className = 'popupButtons'>
-                            {/* link>button if(props.link) */}
-                            <button onClick = { ()=>{props.callback(props.args);props.closeSubmitPopup()} }>YES</button>
+                            {props.link ?
+                                <Link to = {props.link}>
+                                    <button onClick = { ()=>{props.callback(props.args);props.closeSubmitPopup()} }>YES</button>
+                                </Link>:
+                                <button onClick = { ()=>{props.callback(props.args);props.closeSubmitPopup()} }>YES</button>
+                            }
+                            
                             <button onClick = { props.closeSubmitPopup }>Cancel</button>
                         </div>                        
                     </div>
@@ -20,7 +26,8 @@ const SubmitPopup = props => {
 
 const mapStateToProps = state => ({
     callback:state.submitPopup.callback,
-    args: state.submitPopup.args
+    link: state.submitPopup.link,
+
 })
 const mapDispatchToProps = dispatch => ({
     closeSubmitPopup:()=> dispatch(closeSubmitPopup())

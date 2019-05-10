@@ -23,9 +23,9 @@ class Lists extends Component{
                         color: "grey"
                     }}>{el.EmailListName}</NavLink>
                     <label  className = "sendML"  onClick = {()=>this.props.openSendEmailPopup(el.EmailListID)} listid = {el.EmailListID} ><IoIosSend /></label>
-                    <Link className ="deleteML" to="/mailinglist">
-                        <label onClick={(ev)=>this.props.openSubmitPopup(()=>this.props.deleteEmailList(el.EmailListID))} listid = {el.EmailListID} ><IoMdRemoveCircle /></label>
-                    </Link>
+                    
+                    <label className ="deleteML" onClick={(ev)=>this.props.openSubmitPopup(()=>this.props.deleteEmailList(el.EmailListID))} listid = {el.EmailListID} ><IoMdRemoveCircle /></label>
+                    
                 </li>
             )
         })
@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(deleteEmailList(ev))
         },
         openSubmitPopup: f => {
-            dispatch(openSubmitPopup(f))
+            dispatch(openSubmitPopup(f,"/mailinglist"))
         }
     }
 }
