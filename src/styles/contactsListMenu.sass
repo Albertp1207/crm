@@ -12,12 +12,10 @@
             padding: 6px 6px
             border: 1px solid #5C666B
             // border: none
-            margin: 0 4px 4px 0
+            margin-right: 15px
             border-radius: 3px
             font-size: 13px
-            // font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-            // font-weight: 300
-            // color: #000
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
             color: #fff
             text-align: center
             cursor: pointer
@@ -25,8 +23,10 @@
             display: flex
             align-items: center
             transition: all .2s
+            &:last-child
+                margin-right: 0px
             .butIcons
-                margin-right: 2px
+                margin-right: 5px
                 font-size: 15px
                 display: flex
             &:hover:not(:disabled)
@@ -42,7 +42,17 @@
                 cursor: default
                 border: 1px solid #888
 
-@media only screen and (max-width: 850px)
+
+@media only screen and (max-width: 1040px)
+    #container
+        .buttonsContainer
+            .buttons
+                margin-right: 10px
+                &:last-child
+                    margin-right: 0px
+
+
+@media only screen and (max-width: 990px)
     #container
         .buttonsContainer
             .buttons
@@ -56,11 +66,13 @@
             .buttons
                 font-size: 10px
 
-@media only screen and (max-width: 580px)
+@media only screen and (max-width: 640px)
     #container
         .buttonsContainer
             .buttons
-                margin: 0 8px 4px 0
+                margin-right: 15px
+                &:last-child
+                    margin-right: 0px
                 .butIcons
                     margin: 0
                     font-size: 16px

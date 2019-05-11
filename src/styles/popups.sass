@@ -47,7 +47,7 @@
                 & > *
                     width: 100%
                     transition: all .3s
-                input, select
+                input:not(#file), select
                     background: rgba(#fff, 0.8)
                     height: 23px
                     border: none
@@ -66,15 +66,18 @@
                     width: 80px
                     padding: 0.35em 0
                     border: 0.1em solid #FFFFFF
+                    outline: none
                     margin: 0 0.3em 0.3em 0
                     border-radius: 0.12em
                     font-weight: 300
                     color: #FFFFFF
                     text-align: center
+                    cursor: pointer
                     transition: all .2s
                     &:hover
-                        color: #000
-                        background: #fff
+                        // color: #000
+                        background: #d44141
+                        border-color: #d44141
            
 
 

@@ -5,7 +5,7 @@ import {getMailingLists,deleteEmailList} from "../../../../myRedux/actions/maili
 import {openSendEmailPopup} from "../../../../myRedux/actions/sendEmailPopupActions/sendEmailPopupActions"
 import {openSubmitPopup} from "../../../../myRedux/actions/submitPopupActions/submitPopupActions"
 import { IoIosSend } from "react-icons/io";
-import { IoMdRemoveCircle } from "react-icons/io";
+import { MdDelete } from "react-icons/md";
 import Wait from "../../../../reusableComponents/waitAnimation";
 class Lists extends Component{
     componentDidMount() {
@@ -24,7 +24,7 @@ class Lists extends Component{
                     }}>{el.EmailListName}</NavLink>
                     <label  className = "sendML"  onClick = {()=>this.props.openSendEmailPopup(el.EmailListID)} listid = {el.EmailListID} ><IoIosSend /></label>
                     
-                    <label className ="deleteML" onClick={(ev)=>this.props.openSubmitPopup(()=>this.props.deleteEmailList(el.EmailListID))} listid = {el.EmailListID} ><IoMdRemoveCircle /></label>
+                    <label className ="deleteML" onClick={(ev)=>this.props.openSubmitPopup(()=>this.props.deleteEmailList(el.EmailListID))} listid = {el.EmailListID} ><MdDelete /></label>
                     
                 </li>
             )

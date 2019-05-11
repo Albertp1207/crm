@@ -1,6 +1,6 @@
 #wrapper
-    width: 100%
-    max-width: 1000px
+    width: 90%
+    // max-width: 1000px
     margin: 0 auto
     height: 100%
     display: flex
@@ -26,7 +26,7 @@
                 background: rgba(#c93131, 1)
                 color: #fff
                 width: 100%
-                padding: 0.5% 18px 0.5% 0
+                padding: 0.5% 10px 0.5% 0
                 display: flex
                 align-items: center
                 justify-content: space-around
@@ -48,7 +48,7 @@
 .contactsListBody
     width: 100%
     height: calc(99.5% - 60px)
-    overflow-y: scroll
+    overflow-y: auto
     min-width: 600px
     .contactsListRow
         width: 100%
@@ -88,12 +88,17 @@
 	background-color: #EFEFEF
 
 ::-webkit-scrollbar
-	width: 13px
-	background-color:#cccccc
+	width: 8px
+	background-color: #cccccc
+
+::-webkit-scrollbar:horizontal
+    height: 8px
+
 
 ::-webkit-scrollbar-thumb
-	background-color: #e1e1e1
-	background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 30%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent)
+	background-color: rgba(#C93131, 0.9)
+	
+
 
 
 
