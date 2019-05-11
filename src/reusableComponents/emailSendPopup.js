@@ -85,8 +85,12 @@ class emailSendPopup extends Component {
         return (
             <div className = 'popupWrap'>
                 <div className = 'popupContent'>
-                    <div className = 'popupSize'>      
-                        {this.makeTemaplesList(templates)}       
+                    <div className = 'popupSize'>
+                        <div id = 'radioWrapper'>
+                            <div>    
+                                {this.makeTemaplesList(templates)} 
+                            </div>   
+                        </div>     
                         <div className = 'popupButtons'>     
                             <button onClick = {this.send}>send</button>                   
                             <button onClick = {this.props.closePopup}>Close</button>

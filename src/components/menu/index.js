@@ -12,12 +12,12 @@ class Menu extends Component{
     render(){
         return (
             <div id="mainMenu">
-                <div className = 'itemMenu contactsMenu'>
+                <div className = 'itemMenu contactsMenu' title = 'Contacts'>
                     <NavLink activeStyle={this.activeStyle} to="/contacts">
                         <FaUsers />
                     </NavLink>                    
                 </div>
-                <div className = 'itemMenu mailingList'>
+                <div className = 'itemMenu mailingList' title = 'Mailing List'>
                     <NavLink activeStyle={this.activeStyle} to="/mailinglist">
                         <IoIosSend /> 
                     </NavLink>                    
