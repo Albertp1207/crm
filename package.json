@@ -12,7 +12,8 @@
     "react-scripts": "2.1.8",
     "read-excel-file": "^3.0.0",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "xlsx": "^0.14.3"
   },
   "scripts": {
     "start": "react-scripts start",

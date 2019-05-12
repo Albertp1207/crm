@@ -97,3 +97,19 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UploadFilePopup);
+
+
+
+// this.setState({file: e.target.files[0]});
+//         console.log(e.target.files);
+//         var reader = new FileReader();
+
+//         reader.onload = e => {
+//             const data = e.target.result;
+//             let workbook = XLSX.read(data,{type:"binary"});
+
+//             const wsname = workbook.SheetNames[0];
+//             const ws = workbook.Sheets[wsname];
+
+//             const dataRes = XLSX.utils.sheet_to_csv(ws,{header:1});
+//             console.log(dataRes)

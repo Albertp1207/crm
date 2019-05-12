@@ -73,7 +73,7 @@ class emailSendPopup extends Component {
 
         if( loading) {
             return (
-            <div className = 'popupWrap'>
+            <div className = 'popupWrap senPopup'>
                 <div className = 'popupContent'>
                     <div className = 'popupSize'> 
                         <div>LOADING ...</div>
@@ -83,7 +83,7 @@ class emailSendPopup extends Component {
             )
         }
         return (
-            <div className = 'popupWrap'>
+            <div className = 'popupWrap senPopup'>
                 <div className = 'popupContent'>
                     <div className = 'popupSize'>
                         <div id = 'radioWrapper'>

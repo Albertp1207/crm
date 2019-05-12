@@ -5,10 +5,10 @@ import {Link} from "react-router-dom"
 const SubmitPopup = props => {
     console.log(props)
     return    (
-    <div className = 'popupWrap'>
+    <div className = 'popupWrap submitPopup'>
                 <div className = 'popupContent'>
                     <div className = 'popupSize'>
-                        Are you sure ?
+                        <label>Are you sure ? </label>
                         <div className = 'popupButtons'>
                             {props.link ?
                                 <Link to = {props.link}>
