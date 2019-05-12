@@ -65,7 +65,7 @@ class UploadFilePopup extends Component{
                         <form name="form1" onSubmit={this.onFormSubmit}>
                             <div>
                                 <label htmlFor="datafile">Data File</label>
-                                <input name="datafile" type="file" onChange={this.onChange} />
+                                <input name="datafile" type="file" onChange={this.onChange} id = 'file'/>
                             </div>
                             <div className = 'popupButtons'>
                                 <button type = 'submit'>Add</button>
