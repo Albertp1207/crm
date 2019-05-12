@@ -46,9 +46,11 @@ class EditingContactPopup extends Component{
         if (validation(el)) {
             this.validAllData[el.target.getAttribute('name')] = true;
             el.target.nextSibling.innerHTML = '';
+            el.target.style.borderBottom = '2px solid green'
         }else{
             this.validAllData[el.target.getAttribute('name')] = false;
             el.target.nextSibling.innerHTML = 'Filled incorrectly';
+            el.target.style.borderBottom = '2px solid #c93131'
         }
         // console.log(this.validAllData);
     }
@@ -86,7 +88,7 @@ class EditingContactPopup extends Component{
                             // console.log(this.validAllDatay[key]);
                             if (!this.validAllData[key]) {
                                 document.getElementsByName(key)[0].nextSibling.innerHTML = 'Filled incorrectly';
-                                
+                                document.getElementsByName(key)[0].style.borderBottom = '2px solid #c93131'
                             }
                         }
                     }

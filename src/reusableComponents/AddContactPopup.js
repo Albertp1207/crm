@@ -75,7 +75,7 @@ class AddContactPopup extends Component{
                 // console.log(this.validAllDatay[key]);
                 if (!this.validAllData[key]) {
                     document.getElementsByName(key)[0].nextSibling.innerHTML = 'Filled incorrectly';
-                    document.getElementsByName(key)[0].style.borderBottom = '2px solid red'
+                    document.getElementsByName(key)[0].style.borderBottom = '2px solid #c93131'
                 }
             }
         }

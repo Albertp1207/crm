@@ -48,6 +48,9 @@ class emailSendPopup extends Component {
         })
     }
     send = () => {
+        if(!this.state.choosedTemplate){
+            return
+        }
         this.props.closePopup();
         this.props.openIndicator();
         myFetch(this.makeUrl(),"POST",this.props.sendEmailPopup.GuIDArr)
@@ -67,6 +70,8 @@ class emailSendPopup extends Component {
     render() {
         // console.log(this.props.st)
         const {error,loading,templates} = this.props.templates
+        const {choosedTemplate} = this.state
+        let classes = choosedTemplate ? "" : "noActive"
         if(error) {
             return <div>ERROR --- {error.message}</div>
         }
@@ -92,8 +97,8 @@ class emailSendPopup extends Component {
                             </div>   
                         </div>     
                         <div className = 'popupButtons'>     
-                            <button onClick = {this.send}>send</button>                   
-                            <button onClick = {this.props.closePopup}>Close</button>
+                            <button onClick = {this.send} className = {"sendB "+classes}>send</button>                   
+                            <button onClick = {this.props.closePopup} className = {classes}>Close</button>
                             {/* <button onClick = { this.sendContact }>Add</button>
                             <button onClick = { this.cancel }>Cancel</button> */}
                         </div>

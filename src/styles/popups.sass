@@ -12,13 +12,11 @@
     z-index: 100
     .popupContent
         font-size: 14px
+        border: 2px solid #672f2fcf
+        background: #1a272ef0
         width: 40%
-        min-width: 310px
-        max-width: 420px
-        // height: 50%
-        // min-height: 280px
-        // max-height: 400px
-        background: $popupCont-bg
+        min-width: 250px
+        max-width: 340px
         padding: 1%
         display: flex
         justify-content: center
@@ -31,6 +29,10 @@
             p 
                 text-align: center
                 font-size: 16px
+                font-size: 19px
+                width: 75%
+                text-align: center
+            // text-align: end
             #radioWrapper
                 display: flex
                 justify-content: center
@@ -65,23 +67,22 @@
                 display: flex
                 justify-content: space-around
                 button
-                    cursor: pointer
-                    background: transparent
+                    outline: 0
+                    font-size: 17px
                     width: 80px
                     padding: 0.35em 0
-                    border: 0.1em solid #FFFFFF
-                    outline: none
                     margin: 0 0.3em 0.3em 0
-                    border-radius: 0.12em
                     font-weight: 300
-                    color: #FFFFFF
+                    color: white
                     text-align: center
-                    cursor: pointer
                     transition: all .2s
+                    border: 0
+                    background: #a12d2f
+                    border-radius: 0.12em
+                    cursor: pointer
                     &:hover
-                        // color: #000
-                        background: #d44141
-                        border-color: #d44141
+                        color: white
+                        background: #b16668
            
 
 
@@ -151,6 +152,15 @@
                 &:hover
                     color: white
                     background: #b16668
+            .sendB.noActive
+                cursor: default
+                opacity: 0.7
+                &:hover
+                    background: #a12d2f
+
+            .sendB
+                &:hover
+                    background: #ff0000
             .radio    
                 font-family: Times New Roman      
                 font-size: 19px    
@@ -159,9 +169,3 @@
                     color: blue
                 input,label
                     cursor: pointer
-
-            a
-                button
-                    &:hover
-                        background: #ff0000
-                        color: white
