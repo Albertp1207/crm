@@ -1,0 +1,48 @@
+.header
+    height: 10%
+    min-height: 70px
+    // max-height: 100px
+    font-family: Orbitron
+    // background: $header-bg
+    background: url('images/Background-CRM.png') no-repeat 
+    background-size: cover
+    background-position: center
+    // margin-top: 0.5%
+    display: flex
+    align-content: center
+    z-index: 99
+    .size
+        width: 100%
+        background: rgba(#000, 0.8)
+        display: flex
+        justify-content: space-between
+        align-items: center
+        padding: 1% 2%
+        #logo
+            width: 70px
+            // min-width: 60px
+            // max-width: 90px
+            a 
+                display: inline-block
+                // height: fit-content
+                img 
+                    width: 100%
+        h1 
+            color: rgba(#c93131, 1)
+            text-align: end
+            font-weight: 800
+            font-size: 30px
+            font-family: Orbitron
+            span 
+                font-size: 20px
+                font-weight: 100
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+                color: rgba($header-span, 0.5)
+
+@media only screen and (max-width: 640px) 
+    .header
+        .size
+            h1 
+                font-size: 25px
+                span 
+                    font-size: 15px

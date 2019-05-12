@@ -1,0 +1,59 @@
+@mixin flex() 
+    display: flex
+    flex-direction: column
+    justify-content: center
+    
+#mainMenu
+    width: 10%
+    min-width: 60px
+    max-width: 110px
+    // background: url('./images/inventory.jpg') no-repeat
+    // background-size: cover
+    // background-position: center
+    @include flex()
+    align-items: center
+
+.itemMenu
+    width: 55px
+    height: 55px
+    margin: 20px 0 5px
+    border-radius: 50px
+    a 
+        background: rgba(#1a272ef0, 1)
+        // background: rgba(#2a424c, 1)
+
+        font-size: 25px
+        height: 100%
+        color: white
+        @include flex()
+        border-radius: 50%
+        transition: all .3s
+        align-items: center
+        &:hover
+            background: rgba(200, 0, 0, 0.9)
+            transform: rotateZ(360deg)
+
+.active
+    &:hover
+        transform: none
+
+// @media only screen and (max-width: 1024px) 
+//     #mainMenu
+//         a 
+//             font-size: 15px
+
+// @media only screen and (max-width: 768px) 
+//     #mainMenu
+//         a 
+//             span 
+//                 font-size: 12px
+
+// @media only screen and (max-width: 640px) 
+//     #mainMenu
+//         a 
+//             font-size: 18px
+//             span 
+//                 display: none
+
+
+    

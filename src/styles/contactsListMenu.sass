@@ -1,0 +1,82 @@
+#container
+    .buttonsContainer
+        height: 10%
+        min-height: 55px
+        // background: #87EAFF
+        display: flex
+        justify-content: center
+        align-items: center
+        .buttons
+            // background: rgba(#fff, 0.6)            
+            background: rgb(36, 62, 77)
+            padding: 6px 6px
+            border: 1px solid #5C666B
+            // border: none
+            margin-right: 15px
+            border-radius: 3px
+            font-size: 13px
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+            color: #fff
+            text-align: center
+            cursor: pointer
+            display: inline-block
+            display: flex
+            align-items: center
+            transition: all .2s
+            &:last-child
+                margin-right: 0px
+            .butIcons
+                margin-right: 5px
+                font-size: 15px
+                display: flex
+            &:hover:not(:disabled)
+                border: 1px solid #d44141
+                color: #fff
+                background: #d44141
+                margin-bottom: 8px
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5)
+            &:disabled
+                border: 1px solid #d5d5d5
+                color: #888
+                background: #d5d5d5
+                cursor: default
+                border: 1px solid #888
+
+
+@media only screen and (max-width: 1040px)
+    #container
+        .buttonsContainer
+            .buttons
+                margin-right: 10px
+                &:last-child
+                    margin-right: 0px
+
+
+@media only screen and (max-width: 990px)
+    #container
+        .buttonsContainer
+            .buttons
+                font-size: 12px
+                .butIcons
+                    font-size: 14px
+
+@media only screen and (max-width: 790px)
+    #container
+        .buttonsContainer
+            .buttons
+                font-size: 10px
+
+@media only screen and (max-width: 640px)
+    #container
+        .buttonsContainer
+            .buttons
+                margin-right: 15px
+                &:last-child
+                    margin-right: 0px
+                .butIcons
+                    margin: 0
+                    font-size: 16px
+                .butName
+                    display: none
+
+                 

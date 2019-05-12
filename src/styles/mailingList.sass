@@ -1,0 +1,76 @@
+// .main 
+//     overflow-y: hidden !important
+.mailinglist    
+    height: 100%
+    .lists            
+        height: calc(25% - 10px)
+        overflow: auto
+        // margin-right: 10px
+        margin-bottom: 10px
+    .mailinglistTable
+        height: 65%
+        #contactsListTableML
+            height: 100%
+    #menu
+        height: 10%
+    .buttons
+        height: 30px
+        width: 120px
+        padding: 6px 6px
+        border: 1px solid #d44141
+        border: 0
+        justify-content: space-around
+        padding: 0 30px !important
+    ul 
+        margin: 0 auto
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-around
+        padding: 1%
+        max-width: 1000px
+        padding-right: 30px
+
+    li        
+        margin-right: 1%
+        min-width: 235px
+        max-width: 375px
+        font-family: Verdana, Geneva, Tahoma, sans-serif
+        width: 50%
+        border-left: 5px solid #c93131
+        margin-bottom: 7px
+        display: flex
+        background-color: #1a272ef0
+        // background-color: #2a424c
+        padding: 7px
+        align-items: center
+        font-size: 18px
+        .mlName
+            width: 70%
+            padding-left: 7%
+            flex-grow: 10
+            flex-shrink: 2
+            color: white
+            &:hover
+                color: #c93131
+        .sendML, .deleteML
+            cursor: pointer
+            color: white
+            flex-grow: 2
+            display: flex
+            justify-content: center
+            align-items: center
+            font-size: 25px
+            
+        .sendML
+            &:hover
+                color: #3cb371
+        .deleteML
+            &:hover
+                color: #F04C43
+        
+.deleteML 
+    label
+        cursor: pointer
+        display: flex
+        justify-content: center
+        align-items: center

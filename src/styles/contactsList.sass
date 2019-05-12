@@ -1,0 +1,110 @@
+#wrapper
+    width: 90%
+    // max-width: 1000px
+    margin: 0 auto
+    height: 100%
+    display: flex
+    flex-direction: column
+    padding-right: 10px
+    .lists 
+        margin-right: 10px
+    .contactsListTable
+        width: 100%
+        height: 90%
+        padding-right: 10px
+        // overflow-x: scroll
+        .contactsListHead
+            // background: rgba(#555, 0.3)
+            width: 100%
+            min-width: 600px
+            display: flex
+            justify-content: center
+            align-items: center
+            // padding-right: 18px
+            margin-bottom: 0.5%
+            .contactsListRow
+                background: rgba(#c93131, 1)
+                color: #fff
+                width: 100%
+                padding: 0.5% 10px 0.5% 0
+                display: flex
+                align-items: center
+                justify-content: space-around
+                div 
+                    // background: green
+                    font-size: 14px
+                    font-weight: 500
+                    width: 17%
+                    text-align: center
+                    padding: 5px 4px 5px
+                    &:first-child, &.iconButHead
+                        width: 4%
+                        min-width: 60px
+                    // input
+                    //     cursor: pointer
+
+
+
+.contactsListBody
+    width: 100%
+    height: calc(99.5% - 60px)
+    overflow-y: auto
+    min-width: 600px
+    .contactsListRow
+        width: 100%
+        display: flex
+        justify-content: space-around
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+        // margin-bottom: 10px
+        transition: all .2s
+        // &:nth-child(odd)
+        //     background: rgba(#555, 0.1)
+        &:hover
+            background: rgba(#a7a7a74d, 0.3)
+        div 
+            // background: green
+            font-size: 14px
+            width: 17%
+            text-align: center
+            display: flex
+            justify-content: center
+            align-items: center
+            padding: 5px 4px 5px
+            word-break: break-all
+            &:first-child, &.iconBut
+                width: 4%
+                min-width: 60px
+
+
+.iconBut
+    cursor: pointer
+    *
+        font-size: 18px
+        &:hover
+            color: #3cb371
+
+
+::-webkit-scrollbar-track
+	background-color: #EFEFEF
+
+::-webkit-scrollbar
+	width: 8px
+	background-color: #cccccc
+
+::-webkit-scrollbar:horizontal
+    height: 8px
+
+
+::-webkit-scrollbar-thumb
+	background-color: rgba(#C93131, 0.9)
+	
+
+
+
+
+
+
+@media only screen and (max-width: 850px)
+    .contactsListTable
+        overflow-x: scroll
+        overflow-y: hidden

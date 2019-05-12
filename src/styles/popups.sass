@@ -1,0 +1,171 @@
+.popupWrap
+    color: white
+    background: $popupWrap-bg
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    position: absolute
+    display: flex
+    justify-content: center
+    align-items: center
+    z-index: 100
+    .popupContent
+        font-size: 14px
+        border: 2px solid #672f2fcf
+        background: #1a272ef0
+        width: 40%
+        min-width: 250px
+        max-width: 340px
+        padding: 1%
+        display: flex
+        justify-content: center
+        align-items: center
+        position: relative
+        animation: animate .3s ease
+        .popupSize
+            width: 90%
+            padding: 2% 8%
+            p 
+                text-align: center
+                font-size: 16px
+                font-size: 19px
+                width: 75%
+                text-align: center
+            // text-align: end
+            #radioWrapper
+                display: flex
+                justify-content: center
+                div
+                    width: fit-content
+                    div.radio
+                        display: flex
+                        align-items: center
+                        padding-bottom: 1%
+                        input
+                            margin-right: 10px
+                        label
+                            &:hover
+                                color: #888
+            div:not(.popupButtons):not(.radio)
+                & > *
+                    width: 100%
+                    transition: all .3s
+                input:not(#file), select
+                    background: rgba(#fff, 0.8)
+                    height: 23px
+                    border: none
+                    border-bottom: 2px solid transparent
+                    outline: none
+                p
+                    height: 22px
+                    color: #C93131
+                    font-size: 13px
+                    text-align: end
+            .popupButtons                
+                margin-top: 20px
+                display: flex
+                justify-content: space-around
+                button
+                    outline: 0
+                    font-size: 17px
+                    width: 80px
+                    padding: 0.35em 0
+                    margin: 0 0.3em 0.3em 0
+                    font-weight: 300
+                    color: white
+                    text-align: center
+                    transition: all .2s
+                    border: 0
+                    background: #a12d2f
+                    border-radius: 0.12em
+                    cursor: pointer
+                    &:hover
+                        color: white
+                        background: #b16668
+           
+
+
+@keyframes animate
+  0%
+    transform: scale(0.2)
+  100%
+    transform: scale(1)
+
+
+.popupWrap.submitPopup
+    .popupContent
+        border: 2px solid #672f2fcf
+        background: #1a272ef0
+        width: 40%
+        min-width: 250px
+        max-width: 340px
+        .popupSize
+            font-size: 19px
+            width: 75%
+            text-align: center
+            button
+                outline: 0
+                font-size: 18px
+                width: 80px
+                padding: 0.35em 0
+                margin: 0 0.3em 0.3em 0
+                font-weight: 300
+                color: white
+                text-align: center
+                transition: all .2s
+                border: 0
+                background: #a12d2f
+                &:hover
+                    color: white
+                    background: #b16668
+            a
+                button
+                    &:hover
+                        background: #ff0000
+                        color: white
+
+           
+.popupWrap.senPopup    
+    .popupContent
+        border: 2px solid #672f2fcf
+        background: #1a272ef0
+        width: 40%
+        min-width: 250px
+        max-width: 340px
+        .popupSize
+            font-size: 19px
+            width: 75%
+            text-align: center
+            button
+                outline: 0
+                font-size: 18px
+                width: 80px
+                padding: 0.35em 0
+                margin: 0 0.3em 0.3em 0
+                font-weight: 300
+                color: white
+                text-align: center
+                transition: all .2s
+                border: 0
+                background: #a12d2f
+                &:hover
+                    color: white
+                    background: #b16668
+            .sendB.noActive
+                cursor: default
+                opacity: 0.7
+                &:hover
+                    background: #a12d2f
+
+            .sendB
+                &:hover
+                    background: #ff0000
+            .radio    
+                font-family: Times New Roman      
+                font-size: 19px    
+                color: #dedede
+                &hover
+                    color: blue
+                input,label
+                    cursor: pointer
