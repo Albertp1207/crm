@@ -17,15 +17,17 @@ class CreateMailingList extends Component{
         error: ''
     }
 
-    createContact = (el) => {
+    createListName = (el) => {
         
         if (validation(el)) {
             this.validation = true;
             el.target.nextSibling.innerHTML = '';
             this.setState({ error: ''});
+            el.target.style.borderBottom = '2px solid green'
         }else{
             this.validation = false;
             el.target.nextSibling.innerHTML = 'Filled incorrectly';
+            el.target.style.borderBottom = '2px solid #c93131'
         }
         
     }
@@ -75,7 +77,7 @@ class CreateMailingList extends Component{
                     <div className = 'popupSize'>
                         <div id = 'EmailListName":' >
                             <label>Email List Name </label>
-                            <input type = 'text' ref = {el => this.emailListName = el} onChange = { this.createContact } name = 'emailListName' />
+                            <input type = 'text' ref = {el => this.emailListName = el} onChange = { this.createListName } name = 'emailListName' />
                             <p>{ this.state.error }</p>
                         </div>
                         <div className = 'popupButtons'>

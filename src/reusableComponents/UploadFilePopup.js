@@ -27,10 +27,11 @@ class UploadFilePopup extends Component{
     }
     onChange = (e) => {
         this.setState({file: e.target.files[0]});
-        console.log(e.target.files);
+        console.log(e.target.files[0]);
     }
 
     fileUpload = (file) => {
+        console.log(file);
         const URL = "http://visual.istclabz.com:2112/api/contacts/upload";
         const method = 'POST';
         const formData = new FormData();
@@ -40,7 +41,8 @@ class UploadFilePopup extends Component{
         return fetch(URL,{
             method,
             headers: {
-                'content-type': 'multipart/form-data'
+                'Content-type': 'multipart/form-data',
+                'Accept': 'application/json'
             },
             body: formData
         })
