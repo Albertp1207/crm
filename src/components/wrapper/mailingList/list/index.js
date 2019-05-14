@@ -3,7 +3,7 @@ import ListRow from "./listRow";
 import {getContactsForML} from "../../../../myRedux/actions/MLContactsActions/MLContactsFetchActions"
 import { connect } from "react-redux";
 import {clearTicks,putID} from "../../../../myRedux/actions/tickActions/tickContactsML"
-
+import WaitAnimation from '../../../../reusableComponents/waitAnimation';
 class List extends Component{
     componentDidMount(){
         this.props.getContactsForML(this.props.match.params.listid)
@@ -40,14 +40,14 @@ class List extends Component{
     }
 
     render() {     
-        console.log(this.props.ticks)
+        // console.log(this.props.ticks)
         let {error,list,loading} = this.props;
         if(error) {
             return <div>ERROR --- {error.message}</div>
         }
 
         if( loading && list.length === 0) {
-            return <div>Loading ...</div>
+            return <WaitAnimation />
         }
 
         

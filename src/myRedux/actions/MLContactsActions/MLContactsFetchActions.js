@@ -24,13 +24,13 @@ export const putGuID = guID => ({
 
 
 export const getContactsForML = (guID) => {
-    console.log(guID)
+    // console.log(guID)
     return dispatch => {
         dispatch(getContactsForMLBegin());
         dispatch(putGuID(guID))
         return myFetch(`/emaillists?id=${guID}`,"GET")
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 dispatch(getContactsForMLSuccess(data))
             })
             .catch(error => dispatch(getContactsForMLFail(error)));        

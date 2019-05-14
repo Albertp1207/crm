@@ -57,7 +57,7 @@ class CreateMailingList extends Component{
             })
             .catch(error => {
                 this.setState({wait: false, error: 'Check the data and try again'});
-                console.log(error);
+                // console.log(error);
             });
         }else{
             this.setState({ error: 'Check the data and try again'});

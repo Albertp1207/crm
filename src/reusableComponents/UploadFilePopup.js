@@ -22,7 +22,7 @@ class UploadFilePopup extends Component{
     onFormSubmit = (e) => {
         e.preventDefault();
         this.fileUpload(this.state.file).then((response)=>{
-            console.log(response);
+            // console.log(response);
           })
     }
     onChange = (e) => {

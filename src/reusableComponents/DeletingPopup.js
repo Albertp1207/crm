@@ -26,7 +26,7 @@ class DeletingPopup extends Component{
             this.props.closePopups();
         })
         .catch(error => {
-            console.log(error.statusText);
+            // console.log(error.statusText);
             this.props.getContactsList();
             this.setState({wait: false, error: 'Update the database and try again'});
         });        

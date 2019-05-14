@@ -23,7 +23,6 @@ export default function tickContactsReducer(state = initialState,action) {
                 tickContacts:copyArr
             }
         case CLEAR_TICKS:
-        console.log("C!!!R!!!!!")
             return {
                 tickContacts:[],
                 MLID:null
