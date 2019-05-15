@@ -14,20 +14,26 @@ class CreateMailingList extends Component{
 
     state = {
         wait: false,
-        error: ''
+        error: '',
+        validInput: { msg: '', style: null}
     }
 
     createListName = (el) => {
         
         if (validation(el)) {
             this.validation = true;
-            el.target.nextSibling.innerHTML = '';
-            this.setState({ error: ''});
-            el.target.style.borderBottom = '2px solid green'
+            this.setState({ error: '', validInput: {
+                    msg: '', 
+                    style: {borderBottom: '2px solid green'}
+                }
+            });
         }else{
             this.validation = false;
-            el.target.nextSibling.innerHTML = 'Filled incorrectly';
-            el.target.style.borderBottom = '2px solid #c93131'
+            this.setState({ validInput: {
+                    msg: 'Filled incorrectly', 
+                    style: {borderBottom: '2px solid #c93131'}
+                }
+            });
         }
         
     }
@@ -57,10 +63,14 @@ class CreateMailingList extends Component{
             })
             .catch(error => {
                 this.setState({wait: false, error: 'Check the data and try again'});
-                console.log(error);
+                // console.log(error);
             });
         }else{
-            this.setState({ error: 'Check the data and try again'});
+            this.setState({ validInput: {
+                                    msg: 'Filled incorrectly', 
+                                    style: {borderBottom: '2px solid #c93131'}
+                                }
+            });
         }
         
     }
@@ -77,8 +87,13 @@ class CreateMailingList extends Component{
                     <div className = 'popupSize'>
                         <div id = 'EmailListName":' >
                             <label>Email List Name </label>
-                            <input type = 'text' ref = {el => this.emailListName = el} onChange = { this.createListName } name = 'emailListName' />
-                            <p>{ this.state.error }</p>
+                            <input  type = 'text' 
+                                    ref = {el => this.emailListName = el} 
+                                    onChange = { this.createListName } 
+                                    style = { this.state.validInput.style }
+                                    name = 'emailListName' 
+                            />
+                            <p>{ this.state.error }{this.state.validInput.msg}</p>
                         </div>
                         <div className = 'popupButtons'>
                             <button onClick = { this.createMailingList }>Create</button>

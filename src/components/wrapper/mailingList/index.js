@@ -4,12 +4,9 @@ import VisibleLists from "./lists";
 import List from "./list";
 import Menu from "./menu"
 import { connect } from 'react-redux'
-import EmailSendPopup from "../../../reusableComponents/emailSendPopup"
 
 class MailingList extends Component {
     render(){
-        let {isOpenSendEmailPopup} = this.props;
-
         return (
             <div className="mailinglist">
             

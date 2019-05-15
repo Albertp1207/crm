@@ -22,7 +22,7 @@ export default function MLContactsReducer(state = initState,action) {
           };
     
         case GET_CONTACTS_FOR_ML_SUCCESS:
-       console.log(action.payload)
+      //  console.log(action.payload)
 
           return {
             ...state,

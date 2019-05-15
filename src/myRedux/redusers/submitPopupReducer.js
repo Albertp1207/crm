@@ -1,7 +1,6 @@
 import {
     OPEN_SUBMIT_POPUP,
-    CLOSE_SUBMIT_POPUP,
-    DO_CALLBACK
+    CLOSE_SUBMIT_POPUP
 } from "../actions/submitPopupActions/submitPopupActions"
 
 const initState = {

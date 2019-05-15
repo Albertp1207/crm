@@ -3,7 +3,7 @@ import {connect} from "react-redux"
 import {closeSubmitPopup} from "../myRedux/actions/submitPopupActions/submitPopupActions"
 import {Link} from "react-router-dom"
 const SubmitPopup = props => {
-    console.log(props)
+    // console.log(props)
     return    (
     <div className = 'popupWrap submitPopup'>
                 <div className = 'popupContent'>

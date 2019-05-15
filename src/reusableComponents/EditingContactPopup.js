@@ -12,7 +12,14 @@ class EditingContactPopup extends Component{
     state = {
         wait: false,
         error: '',
-        changes: ''
+        changes: '',
+        validAllData: {
+            fullName: true,
+            companyName: true,
+            position: true,
+            country: true,
+            email: true
+        }
     }
     contact = this.props.editingContactPopup.editingContact;
     contactData = {
@@ -23,16 +30,14 @@ class EditingContactPopup extends Component{
         Email: this.contact['Email'],
         GuID: this.contact['GuID']
     };
-    validAllData = {
-        fullName: true,
-        companyName: true,
-        position: true,
-        country: true,
-        email: true,
-    };
+
+    wrongStyle = {borderBottom: '2px solid #c93131'};
+    rightStyle = {borderBottom: '2px solid green'};
+    
     
     changeContact = (el) => {
-        // console.log(el.target.getAttribute('name'),el.target.value );
+        const elemName = el.target.getAttribute('name');
+
         this.setState({changes: ""});
 
         this.contactData = {
@@ -44,15 +49,18 @@ class EditingContactPopup extends Component{
             Email: this.email.value,
         };
         if (validation(el)) {
-            this.validAllData[el.target.getAttribute('name')] = true;
-            el.target.nextSibling.innerHTML = '';
-            el.target.style.borderBottom = '2px solid green'
+            this.setState({validAllData:{
+                    ...this.state.validAllData,
+                    [elemName]: true
+                }
+            });
         }else{
-            this.validAllData[el.target.getAttribute('name')] = false;
-            el.target.nextSibling.innerHTML = 'Filled incorrectly';
-            el.target.style.borderBottom = '2px solid #c93131'
+            this.setState({validAllData:{
+                    ...this.state.validAllData,
+                    [elemName]: false
+                }
+            });
         }
-        // console.log(this.validAllData);
     }
 
     
@@ -64,7 +72,7 @@ class EditingContactPopup extends Component{
             this.contactData.Country !== this.contact['Country'] ||
             this.contactData.Email !== this.contact['Email']
             ){
-                    if(Object.values(this.validAllData).every(val => val)){
+                    if(Object.values(this.state.validAllData).every(val => val)){
                         this.setState({wait: true});
                         myFetch('/contacts', 'PUT', this.contactData)
                         .then(res => {
@@ -83,14 +91,6 @@ class EditingContactPopup extends Component{
                             console.log(error);
                         });
                         
-                    } else {
-                        for (let key in this.validAllData) {
-                            // console.log(this.validAllDatay[key]);
-                            if (!this.validAllData[key]) {
-                                document.getElementsByName(key)[0].nextSibling.innerHTML = 'Filled incorrectly';
-                                document.getElementsByName(key)[0].style.borderBottom = '2px solid #c93131'
-                            }
-                        }
                     }
             } else {
                 this.setState({changes: "Didn't make a change"});
@@ -116,9 +116,10 @@ class EditingContactPopup extends Component{
                                     defaultValue = { editingContact['Full Name'] }
                                     ref = {el => this.fullName = el} 
                                     onBlur = { this.changeContact } 
+                                    style = { this.state.validAllData.fullName? this.rightStyle: this.wrongStyle }
                                     name = 'fullName' 
                                     />
-                            <p></p>
+                            <p>{ !this.state.validAllData.fullName? 'Filled incorrectly': null }</p>
                         </div>
                         <div id = 'companyName'>
                             <label>Company Name</label>
@@ -126,9 +127,10 @@ class EditingContactPopup extends Component{
                                     defaultValue = { editingContact['Company Name'] }
                                     ref = {el => this.companyName = el} 
                                     onBlur = { this.changeContact } 
+                                    style = { this.state.validAllData.companyName? this.rightStyle: this.wrongStyle }
                                     name = 'companyName'
                                     />
-                            <p></p>
+                            <p>{ !this.state.validAllData.companyName? 'Filled incorrectly': null }</p>
                         </div>
                         <div id = 'position'>
                             <label>Position</label>
@@ -136,9 +138,10 @@ class EditingContactPopup extends Component{
                                     defaultValue = { editingContact['Position'] }
                                     ref = {el => this.position = el} 
                                     onBlur = { this.changeContact } 
+                                    style = { this.state.validAllData.position? this.rightStyle: this.wrongStyle }
                                     name = 'position'
                                     />
-                            <p></p>
+                            <p>{ !this.state.validAllData.position? 'Filled incorrectly': null }</p>
                         </div>
                         <div id = 'country'>
                             <label>Country</label>
@@ -146,9 +149,10 @@ class EditingContactPopup extends Component{
                                     defaultValue = { editingContact['Country'] }
                                     ref = {el => this.country = el} 
                                     onBlur = { this.changeContact } 
+                                    style = { this.state.validAllData.country? this.rightStyle: this.wrongStyle }
                                     name = 'country'
                                     />
-                            <p></p>
+                            <p>{ !this.state.validAllData.country? 'Filled incorrectly': null }</p>
                         </div>
                         <div id = 'email'>
                             <label>Email</label>
@@ -156,9 +160,10 @@ class EditingContactPopup extends Component{
                                     defaultValue = { editingContact['Email'] }
                                     ref = {el => this.email = el} 
                                     onBlur = { this.changeContact } 
+                                    style = { this.state.validAllData.email? this.rightStyle: this.wrongStyle }
                                     name = 'email'
                                     />
-                            <p></p>
+                            <p>{ !this.state.validAllData.email? 'Filled incorrectly': null }</p>
                             <p>{this.state.error}{this.state.changes}</p>
                         </div>
                         <div className = 'popupButtons'>
