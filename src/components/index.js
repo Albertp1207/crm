@@ -16,6 +16,7 @@ import EmailSendPopup from '../reusableComponents/emailSendPopup';
 import UploadFilePopup from '../reusableComponents/UploadFilePopup';
 
 class App extends Component{
+
     render(){
         const { creatingEmailListPopupIsOpen, 
                 addToExistingListIsOpen,
