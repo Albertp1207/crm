@@ -1,5 +1,5 @@
 ## CRM project 
-![mkyT8WNDJi](https://user-images.githubusercontent.com/43323378/58381132-c2cf5600-7fca-11e9-964c-84bcec74d3bd.gif)
+![H8YiLbGbwx](https://user-images.githubusercontent.com/43323378/58384936-5cfac280-7ffa-11e9-94d0-68d42b4ee2e6.gif)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
