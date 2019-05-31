@@ -2,7 +2,8 @@
 ![H8YiLbGbwx](https://user-images.githubusercontent.com/43323378/58384936-5cfac280-7ffa-11e9-94d0-68d42b4ee2e6.gif)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Check project functionality [here](http://visual.istclabz.com:1001/contacts).
+
+Check project functionality [here](http://visual.istclabz.com:1001).
 ## Available Scripts
 
 In the project directory, you can run:
