@@ -1,7 +1,9 @@
-## Check project functionality [here](http://visual.istclabz.com:1001).
+
 
 ## CRM project 
 ![H8YiLbGbwx](https://user-images.githubusercontent.com/43323378/58384936-5cfac280-7ffa-11e9-94d0-68d42b4ee2e6.gif)
+
+## Check project functionality [here](http://visual.istclabz.com:1001).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
